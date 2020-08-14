@@ -27,22 +27,22 @@ elimination, clearly showing the updated matrix after every row operation.
 \end{equation}
 which gives
 \begin{equation}
-    \begin{pmatrix}
+    \begin{bmatrix}
         a_{11}      &   a_{12}      &   a_{13}              \\
         a_{21}      &   a_{22}      &   a_{23}              \\
         a_{31}      &   a_{32}      &   a_{33}              \\
-    \end{pmatrix}
-    \begin{pmatrix}
+    \end{bmatrix}
+    \begin{bmatrix}
         x_{1}       \\
         x_{2}       \\
         x_{3}       \\
-    \end{pmatrix}
+    \end{bmatrix}
     =
-    \begin{pmatrix}
+    \begin{bmatrix}
         b_{1}       \\
         b_{2}       \\
         b_{3}       \\
-    \end{pmatrix}
+    \end{bmatrix}
 \end{equation}
 
 \section{Exercise 2}
@@ -52,82 +52,82 @@ direct numerical solution, matrix elimination, etc.,).  Furthermore, if a
 system has no solution state it has no solution and briefly describe why it
 has no solution. 
 \begin{equation}
-    \begin{pmatrix}
+    \begin{bmatrix}
         1       &   3       &   1   \\
         4       &   0       &   2   \\
         1       &   3       &   4   \\
-    \end{pmatrix}
-    \begin{pmatrix}
+    \end{bmatrix}
+    \begin{bmatrix}
         x       \\
         y       \\
         z       \\
-    \end{pmatrix}
-    \begin{pmatrix}
+    \end{bmatrix}
+    \begin{bmatrix}
         5       \\
         6       \\
         3       \\
-    \end{pmatrix}
+    \end{bmatrix}
 \end{equation}
 
 \begin{equation}
-    \begin{pmatrix}
+    \begin{bmatrix}
         1       &   3       &   1   \\
         4       &   1       &   2   \\
         0       &   0       &   4   \\
-    \end{pmatrix}
-    \begin{pmatrix}
+    \end{bmatrix}
+    \begin{bmatrix}
         x       \\
         y       \\
         z       \\
-    \end{pmatrix}
-    \begin{pmatrix}
+    \end{bmatrix}
+    \begin{bmatrix}
         1       \\
         2       \\
         1       \\
-    \end{pmatrix}
+    \end{bmatrix}
 \end{equation}
 
   
 \begin{equation}
-    \begin{pmatrix}
+    \begin{bmatrix}
         1       &   3       &   1   \\
         4       &   1       &   2   \\
         0       &   0       &   4   \\
-    \end{pmatrix}
-    \begin{pmatrix}
+    \end{bmatrix}
+    \begin{bmatrix}
         x       \\
         y       \\
         z       \\
-    \end{pmatrix}
-    \begin{pmatrix}
+    \end{bmatrix}
+    \begin{bmatrix}
         1       \\
         2       \\
         1       \\
-    \end{pmatrix}
+    \end{bmatrix}
 \end{equation}
 
 \begin{equation}
-    \begin{pmatrix}
+    \begin{bmatrix}
         0       &   1       &   2   &   0   &   0   \\
         5       &   0       &   2   &   0   &   0   \\
         0       &   0       &   0   &   1   &   1   \\
         0       &   0       &   0   &   0   &   1   \\
         0       &   0       &   1   &   0   &   3   \\
-    \end{pmatrix}
-    \begin{pmatrix}
+    \end{bmatrix}
+    \begin{bmatrix}
         x_{1}   \\
         x_{2}   \\
         x_{3}   \\
         x_{4}   \\
         x_{5}   \\
-    \end{pmatrix}
-    \begin{pmatrix}
+    \end{bmatrix}
+    \begin{bmatrix}
         1       \\
         2       \\
         3       \\
         4       \\
         5       \\
-    \end{pmatrix}
+    \end{bmatrix}
 \end{equation}
 \newpage
 \section{Exercise 3}
@@ -163,29 +163,29 @@ point.
 Use
 \begin{equation}
     A   = 
-    \begin{pmatrix}
+    \begin{bmatrix}
         a_{11}  &   a_{12}  &   a_{13}  \\
         a_{21}  &   a_{22}  &   a_{23}  \\
         a_{31}  &   a_{32}  &   a_{33}  \\
-    \end{pmatrix}
+    \end{bmatrix}
 \end{equation}
 
 \begin{equation}
     B   = 
-    \begin{pmatrix}
+    \begin{bmatrix}
         b_{11}  &   b_{12}  &   b_{13}  \\
         b_{21}  &   b_{22}  &   b_{23}  \\
         b_{31}  &   b_{32}  &   b_{33}  \\
-    \end{pmatrix}
+    \end{bmatrix}
 \end{equation}
 and 
 \begin{equation}
     C   = 
-    \begin{pmatrix}
+    \begin{bmatrix}
         c_{11}  &   c_{12}  &   c_{13}  \\
         c_{12}  &   c_{22}  &   c_{23}  \\
         c_{13}  &   c_{23}  &   c_{33}  \\
-    \end{pmatrix}
+    \end{bmatrix}
 \end{equation}
 
 to verify the following
@@ -194,5 +194,83 @@ to verify the following
     \item $\left(A^{-1}\right)^{T} = \left(A^{T}\right)^{-1}$  
     \item $C^{T} = C$
 \end{enumerate}
+
+\section{Exercise 6}
+Find the $LU$ and $LDU$ factorizations by hand for the following matrices.
+
+\begin{equation}
+    A = 
+    \begin{bmatrix}
+        1       &       3       &   2   \\
+        3       &       5       &   4   \\
+        2       &       4       &   6   \\
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    B = 
+    \begin{bmatrix}
+        1       &       0       &   1   \\
+        2       &       2       &   2   \\
+        3       &       4       &   5   \\
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    C = 
+    \begin{bmatrix}
+        2       &       1       &   3   \\
+        3       &       2       &   3   \\
+        3       &       1       &   0   \\
+    \end{bmatrix}
+\end{equation}
+
+\section{Exercise 7}
+Using Python generate a $LU$ factorization tool (subroutine) that takes
+in a $N \times N$ matrix and outputs both $L$ and $U$ factors. Next, use
+your factorization tool to compute the $LU$ factors for a matrix with 
+$N=10, 100, 200, 300, 400, 500, 1000$ and plot $N$ versus time it takes to
+compute the factorization. Use the pseudo code provided to learn see how to
+time different blocks of code and generate random matrices. 
+
+\section{Exercise 8}
+Find the inverse by hand for the following matrices. If a matrix does not
+exist briefly state why it cannot be inverted.
+
+\begin{equation}
+    A = 
+    \begin{bmatrix}
+        1       &       0       &   1   \\
+        2       &       1       &   3   \\
+        0       &       0       &   1   \\
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    B = 
+    \begin{bmatrix}
+        2       &       1       &   1   \\
+        1       &       2       &   1   \\
+        1       &       1       &   2   \\
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    C = 
+    \begin{bmatrix}
+        2       &       -1      &   -1  \\
+        -1      &       2       &   -1  \\
+        -1      &       -1      &   2   \\
+    \end{bmatrix}
+\end{equation}
+
+\section{Exercise 9}
+Using Python generate a matrix inverse tool (subroutine) that takes in a $N
+\times N$ matrix and outputs its inverse. Similarly to the previous
+assignment, use your inverse tool to compute the $A^{-1}$ for a matrix
+with $N=10, 100, 200, 300, 400, 500, 1000$ and plot $N$ versus time it
+takes to compute the inverse.
+
+
     
 \end{document}
