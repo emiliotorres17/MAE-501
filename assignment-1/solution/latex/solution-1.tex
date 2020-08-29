@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+%-------------------------------------------------------------------------%
+% Preamble                                                                %
+%-------------------------------------------------------------------------%
+\newcommand{\pdftitle}{assignment-1}
+\input{preamble}
+\fancyhead[L]{MAE 501 Assignment 1 Solutions}
+\fancyhead[C]{}
+\fancyhead[R]{E. Torres}
+\renewcommand{\headrulewidth}{1pt}
+\fancyfoot[L]{\today}
+\fancyfoot[C]{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\footrulewidth}{1pt}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+   \hskip -\arraycolsep
+   \let\@ifnextchar\new@ifnextchar
+   \array{#1}}
+\makeatother
+
+%-------------------------------------------------------------------------%
+% Document                                                                %
+%-------------------------------------------------------------------------%
+\begin{document}
+\input{latex-inputs/exercise-1.tex}
+\input{latex-inputs/exercise-2.tex}
+\input{latex-inputs/exercise-3.tex}
+\end{document}
+
