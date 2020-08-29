@@ -1,0 +1,198 @@
+\section{Exercise 2}
+Solve the following system of equations, showing all relevant steps and
+stating the method used to solve the system (e.g., $LU$ factorization,
+direct numerical solution, matrix elimination, etc.,).  Furthermore, if a
+system has no solution state it has no solution and briefly describe why it
+has no solution. 
+\begin{enumerate}[label=(\alph*)]
+    \item The following system of equations can be solved using the
+        inverse matrix approach, namely
+        \begin{subequations}
+            \begin{equation}
+                \mathbf{x} = \mathbf{A}^{-1}\mathbf{b}
+            \end{equation}
+            therefore we need to obtain $A^{-1}$. We can determine the
+            inverse of matrix $\mathbf{A}$ using the augmented matrix
+            method. Where the matrix $\mathbf{A}$ is augmented with the
+            identity matrix $\mathbf{I}$, and row operations are performed
+            until the left hand side of the augmented matrix is the
+            identity matrix. Starting with the augmented matrix
+            \begin{equation}
+                \begin{bmatrix}[ccc|ccc]
+                    1   &   3   &   1   &   1   &   0   &   0   \\
+                    4   &   0   &   2   &   0   &   1   &   0   \\
+                    1   &   3   &   4   &   0   &   0   &   1   
+                \end{bmatrix}
+            \end{equation}
+            Then we can take $4r_{1} - r_{2}$ to zero out the $a_{21}$
+            term giving
+            \begin{equation}
+                \begin{bmatrix}[ccc|ccc]
+                    1   &   3   &   1   &   1   &   0   &   0   \\
+                    0   &   12  &   2   &   4   &   -1  &   0   \\
+                    1   &   3   &   4   &   0   &   0   &   1   
+                \end{bmatrix}
+            \end{equation}
+            Next, the $a_{31}$ is zeroed out by performing $r_{1} - r_{3}$
+            giving
+            \begin{equation}
+                \begin{bmatrix}[ccc|ccc]
+                    1   &   3   &   1   &   1   &   0   &   0   \\
+                    0   &   12  &   2   &   4   &   -1  &   0   \\
+                    0   &   0   &   -3  &   1   &   0   &   -1   
+                \end{bmatrix}
+            \end{equation}
+            Now we continue zeroing out entries of $\mathbf{A}$ moving up
+            the matrix starting with $a_{23}$ by performing $-\frac{2}{3}r_{3} -
+            r_{2}$ giving
+            \begin{equation}
+                \begin{bmatrix}[ccc|ccc]
+                    1   &   3   &   1   &   1               &   0   &   0               \\
+                    0   &   -12 &   0   &  -\frac{14}{3}    &   1   &   \frac{2}{3}     \\
+                    0   &   0   &   -3  &   1               &   0   &   -1   
+                \end{bmatrix}
+            \end{equation}
+            Moving up the third column we zero out $a_{13}$ using $-\frac{1}{3}r_{3}-r1$
+            giving
+            \begin{equation}
+                \begin{bmatrix}[ccc|ccc]
+                    -1  &   -3  &   0   &   -\frac{1}{3}    &   0   &   -\frac{1}{3}    \\
+                    0   &   -12 &   0   &  -\frac{14}{3}    &   1   &   \frac{2}{3}     \\
+                    0   &   0   &   -3  &   1               &   0   &   -1   
+                \end{bmatrix}
+            \end{equation}
+            Next we can zero $a_{12}$ with $\frac{1}{4}r_{2}-r_{1}$ giving
+            \begin{equation}
+                \begin{bmatrix}[ccc|ccc]
+                    1   &   0   &   0   &   \frac{1}{6}     &   \frac{1}{4}     &   -\frac{1}{6}    \\
+                    0   &   -12 &   0   &  -\frac{14}{3}    &   1               &   \frac{2}{3}     \\
+                    0   &   0   &   -3  &   1               &   0               &   -1   
+                \end{bmatrix}
+            \end{equation}
+            Lastly we can multiply each trace entry by its reciprocal, i.e.,
+            $r_{2}=-\frac{r_{2}}{12}$ and $r_{3} = -\frac{r_{3}}{3}$, to
+            finally get the inverse of matrix $\mathbf{A}$,
+            \begin{equation}
+                \begin{bmatrix}[ccc|ccc]
+                    1   &   0   &   0   &   \frac{1}{6}     &   \frac{1}{4}     &   -\frac{1}{6}    \\
+                    0   &   1   &   0   &   \frac{7}{18}    &   -\frac{1}{12}   &   -\frac{1}{18}    \\
+                    0   &   0   &   1   &   -\frac{1}{3}    &   0               &   \frac{1}{3}   
+                \end{bmatrix}
+            \end{equation}
+            Thus 
+            \begin{empheq}[box=\widefbox]{equation}
+                \mathbf{x} = \mathbf{A}^{-1}\mathbf{b} =
+                    \begin{bmatrix}[ccc]
+                        \frac{1}{6}     &   \frac{1}{4}     &   -\frac{1}{6}    \\  
+                        \frac{7}{18}    &   -\frac{1}{12}   &   -\frac{1}{18}    \\ 
+                        -\frac{1}{3}    &   0               &   \frac{1}{3}         
+                    \end{bmatrix}
+                    \begin{bmatrix}[c]
+                        5   \\
+                        6   \\
+                        3
+                    \end{bmatrix}
+                    =
+                    \begin{bmatrix}[c]
+                        \frac{23}{18}       \\
+                        \frac{44}{24}       \\
+                        -\frac{2}{3}
+                    \end{bmatrix}
+            \end{empheq}
+        \end{subequations}
+    \item From the system of equations
+        \begin{equation}
+            \begin{bmatrix}
+                1   & 4     &       2   \\
+                2   & 8     &       4   \\
+                1   & 5     &       4   
+            \end{bmatrix}
+            \begin{bmatrix}
+                x   \\
+                y   \\
+                z
+            \end{bmatrix}
+            \begin{bmatrix}
+                1   \\
+                2   \\
+                1
+            \end{bmatrix}
+        \end{equation}
+        it is obvious that the second row is a linear
+        combination of the first row, i.e. $r_{2}=2r_{1}$. Therefore the
+        second equation in the system adds no new information, that we do
+        not already have from the first row. Thus we have a system with
+        three unknowns, $x,y,z$, and only two equations and we cannot
+        obtained an unique solution.    
+    \item \emph{\textbf{Still need to add}}
+    \item The easiest way to solve this system of equations 
+        \begin{subequations}
+            \begin{equation}
+                \begin{bmatrix}
+                    0       &   1       &   2   &   0   &   0   \\
+                    5       &   0       &   2   &   0   &   0   \\
+                    0       &   0       &   0   &   1   &   1   \\
+                    0       &   0       &   0   &   0   &   1   \\
+                    0       &   0       &   1   &   0   &   3   \\
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_{1}   \\
+                    x_{2}   \\
+                    x_{3}   \\
+                    x_{4}   \\
+                    x_{5}   \\
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1       \\
+                    2       \\
+                    3       \\
+                    4       \\
+                    5       \\
+                \end{bmatrix}
+            \end{equation}
+        is to swap the rows so that all the entries along the trace 
+        are non-zero giving 
+            \begin{equation}
+                \begin{bmatrix}
+                    5       &   0       &   2   &   0   &   0   \\
+                    0       &   1       &   2   &   0   &   0   \\
+                    0       &   0       &   1   &   0   &   3   \\
+                    0       &   0       &   0   &   1   &   1   \\
+                    0       &   0       &   0   &   0   &   1   \\
+                \end{bmatrix}         =
+                \begin{bmatrix}
+                    x_{1}   \\
+                    x_{2}   \\
+                    x_{3}   \\
+                    x_{4}   \\
+                    x_{5}   \\
+                \end{bmatrix}        =
+                \begin{bmatrix}
+                    2       \\
+                    1       \\
+                    5       \\
+                    3       \\
+                    4       \\
+                \end{bmatrix}
+            \end{equation}
+        \end{subequations}
+        Now the system of equations can be solved quite easily using
+        backwards substitution. Thus 
+            \begin{empheq}[box=\widefbox]{equation}
+                \begin{bmatrix}
+                    x_{1}   \\
+                    x_{2}   \\
+                    x_{3}   \\
+                    x_{4}   \\
+                    x_{5}   \\
+                \end{bmatrix}        =
+                \begin{bmatrix}
+                    16/5    \\
+                    15      \\
+                    -7      \\
+                    -1      \\
+                    4       
+                \end{bmatrix}
+            \end{empheq}
+
+\end{enumerate}
