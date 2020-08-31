@@ -85,55 +85,27 @@ Prove the following matrix properties:
                 \left(A^{-1}\right)^{T} = \left(A^{T}\right)^{-1}
                 \label{eq:ex-4-b}
             \end{equation}
-            let's consider a $2 \times 2$ (i.e., $N=2$) matrix
+            start with 
             \begin{equation}
-                A = 
-                \begin{bmatrix}
-                    a_{1,1}         &       a_{1,2}      \\
-                    a_{2,1}         &       a_{2,2}
-                \end{bmatrix}
+                A^{-1} A = I
             \end{equation}
-            where we can calculate $A^{-1}$ using,
+            where from  part(a) we know that 
             \begin{equation}
-                A^{-1} = \frac{1}{\text{det}\left(A\right)} \text{adj}(A)
-                \label{eq:a-inverse}
+                \left(A^{-1}A\right)^{T} =  A^{T}\left(A^{-1}\right)^{T} = I^{T}
             \end{equation}
-            namely,
+            and since
             \begin{equation}
-                A^{-1} = 
-                \begin{bmatrix}
-                    \frac{a_{2,2}}{a_{1,1}a_{2,2} -a_{1,2}a_{2,1}}      &   \frac{-a_{1,2}}{a_{1,1}a_{2,2} -a_{1,2}a_{2,1}}      \\   
-                    \frac{-a_{2,1}}{a_{1,1}a_{2,2} -a_{1,2}a_{2,1}}     &   \frac{a_{1,1}}{a_{1,1}a_{2,2} -a_{1,2}a_{2,1}}         
-                \end{bmatrix}
+                I^{T} = I 
             \end{equation}
-            Thus
+            then
             \begin{equation}
-                \left(A^{-1}\right)^{T} =
-                \begin{bmatrix}
-                    \frac{a_{2,2}}{a_{1,1}a_{2,2} -a_{1,2}a_{2,1}}      &   \frac{-a_{2,1}}{a_{1,1}a_{2,2} -a_{1,2}a_{2,1}}      \\   
-                    \frac{-a_{1,2}}{a_{1,1}a_{2,2} -a_{1,2}a_{2,1}}      &   \frac{a_{1,1}}{a_{1,1}a_{2,2} -a_{1,2}a_{2,1}}         
-                \end{bmatrix}
-                \label{eq:a-inverse-transpose}
-            \end{equation}
-            Next, we can evaluate the RHS of Eq.~(\ref{eq:ex-4-b}), starting with
-            \begin{equation}
-                A^{T} = 
-                \begin{bmatrix}
-                    a_{1,1}     &   a_{2,1}     \\
-                    a_{1,2}     &   a_{2,2}
-                \end{bmatrix}
-            \end{equation}
-            Similarly to the above we can find the inverse of $A^{T}$ using
-            Eq.~(\ref{eq:a-inverse}) giving
-            \begin{equation}
-                \left(A^{T}\right)^{-1} =
-                \begin{bmatrix}
-                    \frac{a_{2,2}}{a_{1,1}a_{2,2} -a_{1,2}a_{2,1}}      &   \frac{-a_{2,1}}{a_{1,1}a_{2,2} -a_{1,2}a_{2,1}}      \\   
-                    \frac{-a_{1,2}}{a_{1,1}a_{2,2} -a_{1,2}a_{2,1}}      &   \frac{a_{1,1}}{a_{1,1}a_{2,2} -a_{1,2}a_{2,1}}         
-                \end{bmatrix}
-            \end{equation}
+                A^{-1}A = A^{T}\left(A^{-1}\right)^{T}= I
+            \end{equation}                  
+            Thus 
+            \begin{empheq}[box=\widefbox]{equation}
+                \left(A^{-1}\right)^{T} =\left( A^{T}\right)^{-1}
+            \end{empheq}
         \end{subequations}
-        which we can see is equivalent to Eq.~(\ref{eq:a-inverse-transpose}).
 
     \item Lets consider the following symmetric matrix  
         \begin{subequations}
