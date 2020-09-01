@@ -22,7 +22,7 @@ import os
 import sys                                      
 from subprocess import call                     
 import time                                     
-from numpy import copy, identity, random, zeros 
+from numpy import copy, identity, random, zeros, array 
 import scipy.linalg as la                       
 import matplotlib.pyplot as plt                 
 #=========================================================================#
@@ -111,42 +111,42 @@ if __name__ == '__main__':
     #---------------------------------------------------------------------#
     # Testing LU                                                          #
     #---------------------------------------------------------------------#
-    A               = random.rand(3,3)
+    A               = array([[2,1,3],[3,2,3],[3,1,0]])
     (Lower,Upper)   = LU_factorization(A)
     print_matrix(Lower, 'L')
     print_matrix(Upper, 'U')
     print_matrix(A - (Lower@Upper), 'A-LU')
-    #---------------------------------------------------------------------#
-    # Time study                                                          #
-    #---------------------------------------------------------------------#
-    N       = [100, 200, 300, 400, 500, 1000, 2000]
-    times   = zeros(len(N))
-    times2  = zeros(len(N))
-    for k, i in enumerate(N):
-        A               = random.rand(i,i)          # random matrix
-        tic             = time.time()               # start time
-        (Lower,Upper)   = LU_factorization(A)       # LU
-        toc             = time.time()               # end time
-        times[k]        = toc-tic                   # time elapsed
-        tic             = time.time()
-        (p, l, u)       = la.lu(A)
-        toc             = time.time()
-        times2[k]       = toc-tic
-    #---------------------------------------------------------------------#
-    # Plotting the solutions                                              #
-    #---------------------------------------------------------------------#
-    plot_setting()
-    plt.plot(times, N, 'ro--', lw=1.5, label='Custom LU')
-    plt.plot(times2, N, 'bo--', lw=1.5, label='Scipy LU')
-    #---------------------------------------------------------------------#
-    # Plot settings                                                       #
-    #---------------------------------------------------------------------#
-    plt.ylabel('Matrix size')
-    plt.xlabel('time')
-    plt.grid(True)
-    plt.legend(loc=0)
-    plt.savefig(media_path + 'exercise-6.png')
-    plt.close()
+    ##---------------------------------------------------------------------#
+    ## Time study                                                          #
+    ##---------------------------------------------------------------------#
+    #N       = [100, 200, 300, 400, 500, 1000, 2000]
+    #times   = zeros(len(N))
+    #times2  = zeros(len(N))
+    #for k, i in enumerate(N):
+    #    A               = random.rand(i,i)          # random matrix
+    #    tic             = time.time()               # start time
+    #    (Lower,Upper)   = LU_factorization(A)       # LU
+    #    toc             = time.time()               # end time
+    #    times[k]        = toc-tic                   # time elapsed
+    #    tic             = time.time()
+    #    (p, l, u)       = la.lu(A)
+    #    toc             = time.time()
+    #    times2[k]       = toc-tic
+    ##---------------------------------------------------------------------#
+    ## Plotting the solutions                                              #
+    ##---------------------------------------------------------------------#
+    #plot_setting()
+    #plt.plot(times, N, 'ro--', lw=1.5, label='Custom LU')
+    #plt.plot(times2, N, 'bo--', lw=1.5, label='Scipy LU')
+    ##---------------------------------------------------------------------#
+    ## Plot settings                                                       #
+    ##---------------------------------------------------------------------#
+    #plt.ylabel('Matrix size')
+    #plt.xlabel('time')
+    #plt.grid(True)
+    #plt.legend(loc=0)
+    #plt.savefig(media_path + 'exercise-6.png')
+    #plt.close()
 
     print('**** Successful run ****')
     sys.exit(0)

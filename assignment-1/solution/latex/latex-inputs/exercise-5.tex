@@ -1,2 +1,278 @@
 \section{Exercise 5}
-\emph{\textbf{Still need to do}}
+\begin{enumerate}[label=(\alph*)]
+    \item    
+        \begin{subequations}
+            \begin{equation}
+                A =
+                \begin{bmatrix}
+                    1       &       3       &       2   \\
+                    3       &       5       &       4   \\
+                    2       &       4       &       6   \\
+                \end{bmatrix}
+            \end{equation}
+            As covered in lecture we know that $A$ can be factored into
+            a product of lower and upper matrices, namely 
+            \begin{equation}
+                A = LU =
+                \begin{bmatrix}
+                    1       &       0       &       0   \\
+                    l_{2,1} &       1       &       0   \\
+                    l_{3,1} &       l_{3,2} &       1   \\
+                \end{bmatrix}
+                \begin{bmatrix}
+                    u_{1,2} &       u_{1,2}     &       u_{1,2}     \\
+                    0       &       u_{2,2}     &       u_{2,2}     \\
+                    0       &       0           &       u_{3,2}     \\
+                \end{bmatrix}
+            \end{equation}
+            where the non-zero off diagonal entries of $L$ are the
+            multipliers used in forward elimination, and the entries of $U$
+            are the values after all the row operations are performed.
+            Therefore, the easiest way to perform $LU$ decomposition is to
+            set $U=A$ and perform forward elimination. Starting with the
+            first row, since $r_{2}-3r_{1}$ zeros out $a_{2,1}$, we know
+            that $l_{2,1} = 3$, and that the updated $U$ matrix is 
+            \begin{equation}
+                U =
+                \begin{bmatrix}
+                    1       &       3       &       2   \\
+                    0       &       -4      &      -2   \\
+                    2       &       4       &       6   \\
+                \end{bmatrix}
+            \end{equation}
+            To cancel out the third row we need $r_{3}-2r_{1}$, therefore
+            $l_{31} = 2$ and the updated $U$ is
+            \begin{equation}
+                U =
+                \begin{bmatrix}
+                    1       &       3       &       2   \\
+                    0       &      -4       &      -2   \\
+                    0       &      -2       &       2   \\
+                \end{bmatrix}
+            \end{equation}
+            Lastly, $r_{3}-\frac{1}{2}r_{2}$ would zero out the last entry,
+            therefore $l_{32}= 1/2$, and
+            \begin{equation}
+                U =
+                \begin{bmatrix}
+                    1       &       3       &       2   \\
+                    0       &      -4       &      -2   \\
+                    0       &      0        &       3   
+                \end{bmatrix}
+            \end{equation}
+            Thus
+            \begin{empheq}[box=\widefbox]{equation}
+               A = LU=
+                \begin{bmatrix}
+                    1       &      0        &       0       \\
+                    3       &      1        &       0       \\
+                    2       &      1/2      &       1       
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1       &      3        &       2   \\
+                    0       &      -4       &      -2   \\
+                    0       &      0        &       3   
+                \end{bmatrix}
+            \end{empheq}
+            Furthermore, we can obtain the $A=LDU$ factorization, by
+            dividing $U$ by a diagonal matrix $D$ that contains the pivots,
+            namely
+            \begin{empheq}[box=\widefbox]{equation}
+               A = LDU =
+                \begin{bmatrix}
+                    1       &      0        &       0       \\
+                    3       &      1        &       0       \\
+                    2       &      1/2      &       1       \\
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1       &      0        &       0       \\
+                    0       &      -4       &       0       \\
+                    0       &      0        &       3       \\
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1       &      3        &       2   \\
+                    0       &      1        &      -2   \\
+                    0       &      0        &       1   \\
+                \end{bmatrix}
+            \end{empheq}
+        \end{subequations}
+    \item 
+        \begin{subequations}
+            \begin{equation}
+                B =
+                \begin{bmatrix}
+                    1           &       0       &       1   \\
+                    2           &       2       &       2   \\
+                    3           &       4       &       5   
+                \end{bmatrix}
+            \end{equation}
+            Using the same methodology as part(a), we use
+            $r_{2}-2r_{1}$  which gives $l_{21}=2$ and
+            \begin{equation}
+                U = 
+                \begin{bmatrix}
+                    1           &       0       &       1   \\
+                    0           &       2       &       0   \\
+                    3           &       4       &       5   
+                \end{bmatrix}
+            \end{equation}
+            Next, we need $r_{3}-3r_{1}$, therefore $l_{31}=3$ and 
+            \begin{equation}
+                U = 
+                \begin{bmatrix}
+                    1           &       0       &       1   \\
+                    0           &       2       &       0   \\
+                    0           &       4       &       -1   
+                \end{bmatrix}
+            \end{equation}
+            Lastly, we need $r_{3}-2r_{2}$ giving $l_{32}=2$ and 
+            \begin{equation}
+                U = 
+                \begin{bmatrix}
+                    1           &       0       &       1   \\
+                    0           &       2       &       0   \\
+                    0           &       0       &       -1   
+                \end{bmatrix}
+            \end{equation}
+            Thus
+            \begin{empheq}[box=\widefbox]{equation}
+                B = LU =
+                \begin{bmatrix}
+                    1           &       0       &       0   \\
+                    2           &       1       &       0   \\
+                    3           &       2       &       1   
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1           &       0       &       1   \\
+                    0           &       2       &       0   \\
+                    0           &       0       &       -1   
+                \end{bmatrix}
+            \end{empheq}
+            and
+            \begin{empheq}[box=\widefbox]{equation}
+                B = LDU =
+                \begin{bmatrix}
+                    1           &       0       &       0   \\
+                    2           &       1       &       0   \\
+                    3           &       2       &       1   
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1           &       0       &       0   \\
+                    0           &       2       &       0   \\
+                    0           &       0       &       -1   
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1           &       0       &       1   \\
+                    0           &       1       &       0   \\
+                    0           &       0       &       1   
+                \end{bmatrix}
+            \end{empheq}
+        \end{subequations}
+            
+        \item 
+            \begin{subequations}
+                \begin{equation}
+                    \begin{bmatrix}
+                        2       &       1       &   3   \\
+                        3       &       2       &   3   \\
+                        3       &       1       &   0 
+                    \end{bmatrix}
+                \end{equation}
+                First, since there is a zero pivot in the third row 
+                we know were going to need a permutation matrix. A good
+                chose for this problem would be to make the following row
+                switches, 
+                \begin{equation}
+                    r_{1} \rightarrow r_{3}
+                \end{equation}
+                \begin{equation}
+                    r_{2} \rightarrow r_{1}
+                \end{equation}
+                \begin{equation}
+                    r_{1} \rightarrow r_{3}
+                \end{equation}
+                Therefore we get 
+                \begin{equation}
+                    PA = 
+                    \begin{bmatrix}
+                        0       &       1       &   0   \\
+                        0       &       0       &   1   \\
+                        1       &       0       &   0  
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        2       &       1       &   3   \\
+                        3       &       2       &   3   \\
+                        3       &       1       &   0 
+                    \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                        3       &       2       &   3   \\
+                        3       &       1       &   0   \\
+                        2       &       1       &   3  
+                    \end{bmatrix}
+                \end{equation}
+                Now we can apply the same methodology as above, starting
+                with $r_{2}-r_{1}$, therefore $l_{2,1} = 1$ and  
+                \begin{equation}
+                    U =
+                    \begin{bmatrix}
+                        3       &       2       &   3       \\
+                        0       &       -1      &   -3      \\
+                        2       &       1       &   3  
+                    \end{bmatrix}
+                \end{equation}
+                Next, $r_{3}-2/3r_{1}$, therefore $l_{3,1} = \frac{2}{3}$
+                and 
+                \begin{equation}
+                    U = 
+                    \begin{bmatrix}
+                        3       &       2       &   3       \\
+                        0       &       -1      &   -3      \\
+                        0       &       -1/3    &   1  
+                    \end{bmatrix}
+                \end{equation}
+                Lastly, $r_{3}-\frac{1}{3}r_{3}$, therefore $l_{3,2} =
+                \frac{1}{3}$ and
+                \begin{equation}
+                    U = 
+                    \begin{bmatrix}
+                        3       &       2       &   3       \\
+                        0       &       -1      &   -3      \\
+                        0       &       0       &   -2  
+                    \end{bmatrix}
+                \end{equation}
+                Thus
+                \begin{empheq}[box=\widefbox]{equation}
+                    PA = LU = 
+                    \begin{bmatrix}
+                        1       &       0       &   0       \\
+                        1       &       1       &   0       \\
+                        2/3     &       1/3     &   1  
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        3       &       2       &   3       \\
+                        0       &       -1      &   -3      \\
+                        0       &       0       &   -2  
+                    \end{bmatrix}
+                \end{empheq}
+                and
+                \begin{empheq}[box=\widefbox]{equation}
+                    PA = LDU = 
+                    \begin{bmatrix}
+                        1       &       0       &   0       \\
+                        1       &       1       &   0       \\
+                        2/3     &       1/3     &   1  
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        3       &       0       &   0       \\
+                        0       &       -1      &   0       \\
+                        0       &       0       &   -2  
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        1       &       2       &   3       \\
+                        0       &       1      &   -3      \\
+                        0       &       0       &   1  
+                    \end{bmatrix}
+                \end{empheq}
+            \end{subequations}
+\end{enumerate}
