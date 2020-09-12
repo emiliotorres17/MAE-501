@@ -1,2 +1,149 @@
 \section{Exercise 7}
-\emph{\textbf{Still need to do}}
+The following  inverses were calculated using the augmented matrix
+approach.
+\begin{enumerate}[label=(\alph*)]
+
+    \item 
+        \begin{subequations}
+            \begin{equation}
+                A = 
+                \begin{bmatrix}[ccc|ccc]
+                    1   &       0   &   1   &   1   &   0   &   0   \\
+                    2   &       1   &   3   &   0   &   1   &   0   \\
+                    1   &       0   &   1   &   0   &   0   &   1
+                \end{bmatrix}
+            \end{equation}
+            First we can use $2r_{1} - r_{2}$ to cancel out
+            the entries in the first column, giving 
+            \begin{equation}
+                A = 
+                \begin{bmatrix}[ccc|ccc]
+                    1   &       0   &   1   &   1   &   0   &   0  \\
+                    0   &       -1  &   -1  &   2   &   -1  &   0  \\ 
+                    0   &       0   &   1   &   0   &   0   &   1
+                \end{bmatrix}
+            \end{equation}
+            Next we can zero out the entries in the third column using
+            $r_{3} + r_{2}$ and $r_{3} - r_{1}$ giving
+            \begin{equation}
+                A = 
+                \begin{bmatrix}[ccc|ccc]
+                    -1  &       0   &   0   &   -1  &   0   &   1 \\
+                    0   &       -1  &   0   &   2   &   -1  &   1 \\  
+                    0   &       0   &   1   &   0   &   0   &   1
+                \end{bmatrix}
+            \end{equation}
+            Thus, 
+            \begin{empheq}[box=\widefbox]{equation}
+                A^{-1} = 
+                \begin{bmatrix}
+                    1   &   0   &   -1      \\    
+                    -2  &   1   &   -1      \\ 
+                    0   &   0   &   1    
+                \end{bmatrix}
+            \end{empheq}
+        \end{subequations}
+    \item 
+        \begin{subequations}
+            \begin{equation}
+                B   =
+                \begin{bmatrix}[ccc|ccc]
+                    2   &       1   &   1   &   1   &   0   &   0   \\
+                    1   &       2   &   1   &   0   &   1   &   0   \\
+                    1   &       1   &   2   &   0   &   0   &   1
+                \end{bmatrix}
+            \end{equation}
+            First we can use $r_{2}-\frac{1}{2}r_{1}$ and
+            $r_{3}-\frac{1}{2}r_{1}$ to cancel out the first in the
+            first column, giving 
+            \begin{equation}
+                B   =
+                \begin{bmatrix}[ccc|ccc]
+                    2   &       1       &   1       &   1       &   0       &   0   \\
+                    0   &       3/2     &   1/2     &   -1/2    &   1       &   0   \\
+                    0   &       1/2     &   3/2     &   -1/2    &   0       &   1
+                \end{bmatrix}
+            \end{equation}
+            Next, we can use $r_{3}-\frac{1}{3}r_{2}$ to cancel out the
+            entries of the second column beneath the pivot, giving
+            \begin{equation}
+                B   =
+                \begin{bmatrix}[ccc|ccc]
+                    2   &       1       &   1       &   1       &   0       &   0   \\
+                    0   &       3/2     &   1/2     &   -1/2    &   1       &   0   \\
+                    0   &       0       &   4/3     &   -1/3    &   -1/3    &   1
+                \end{bmatrix}
+            \end{equation}
+            Next, we can use $r_{2}-\frac{3}{8}r_{3}$ and
+            $r_{1}-\frac{3}{4}r_{3}$ to cancel out the entries of the third
+            column above the pivot, giving
+            \begin{equation}
+                B   =
+                \begin{bmatrix}[ccc|ccc]
+                    2   &       1       &   0       &   5/4     &   1/4     &   -3/4    \\
+                    0   &       3/2     &   0       &   -3/8    &   9/8     &   -3/8    \\
+                    0   &       0       &   4/3     &   -1/3    &   -1/3    &   1
+                \end{bmatrix}
+            \end{equation}
+            Lastly, we use $r_{1} - \frac{2}{3}r_{2}$ to zero out the entries above 
+            the pivot in the second column, giving
+            \begin{equation}
+                B   =
+                \begin{bmatrix}[ccc|ccc]
+                    2   &       0       &   0       &   3/2     &   -1/2    &   -1/2    \\
+                    0   &       3/2     &   0       &   -3/8    &   9/8     &   -3/8    \\
+                    0   &       0       &   4/3     &   -1/3    &   -1/3    &   1
+                \end{bmatrix}
+            \end{equation}
+            Thus,
+            \begin{empheq}[box=\widefbox]{equation}
+                B^{-1} = 
+                \begin{bmatrix}[ccc|ccc]
+                    3/4     &   -1/4    &   -1/4    \\
+                    -1/4    &   3/4     &   -1/4    \\
+                    -1/4    &   -1/4    &   3/4
+                \end{bmatrix}
+            \end{empheq}
+        \end{subequations}
+    \item 
+        \begin{subequations}
+            \begin{equation}
+                C   =
+                \begin{bmatrix}[ccc|ccc]
+                    2   &       -1  &  -1   &   1   &   0   &   0   \\
+                    -1  &       2   &  -1   &   0   &   1   &   0   \\
+                    -1  &       -1  &   2   &   0   &   0   &   1
+                \end{bmatrix}
+            \end{equation}
+            Starting with $r_{2} + \frac{1}{2}r_{1}$ and $r_{3} + \frac{1}{2}r_{1}$
+            to cancel the entries beneath the pivot in the first column, giving
+            \begin{equation}
+                C =
+                \begin{bmatrix}[ccc|ccc]
+                    2   &       -1    &  -1   &   1   &   0   &   0   \\
+                    0   &       3/2   &  -3/2 &   1/2 &   1   &   0   \\
+                    0   &       -3/2  &   3/2 &   1/2 &   0   &   1
+                \end{bmatrix}
+            \end{equation}                                 
+            Next, we see that $r_{2} + r_{3}$ results in
+            \begin{equation}
+                C = 
+                \begin{bmatrix}
+                    2   &       -1      &  -1         \\ 
+                    0   &       3/2     &  -3/2       \\               
+                    0   &       0       &  0
+                \end{bmatrix}
+            \end{equation}
+        \end{subequations}
+        \begin{mdframed}[style=MyFrame]
+        Thus, $C$ is a singular matrix and has no inverse. Furthermore,
+            there are many different ways to show a matrix is singular,
+            therefore any solutions that rigorously proves that $C$ is not
+            invertible would be considered correct.  
+        \end{mdframed}
+
+\end{enumerate}
+
+
+
+                    

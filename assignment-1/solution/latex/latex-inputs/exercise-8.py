@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
 """========================================================================
 Purpose:
-    The purpose of this script is to build subroutines to perform the
+    The purpose pf this script is to build subroutines to perform the
     following:
-        1. LU factorization
-
-    **** Note:
-            This is pseudo code to help with Assignment 1
-
+        1. Matrix inverse
 Author:
     Emilio Torres
 ========================================================================"""
@@ -41,7 +37,7 @@ def print_matrix(
     out = ''                # initialize string
     for I in range(0, mat.shape[0]):
         for J in range(0, mat.shape[1]):
-            out += '%12.5f'          %(mat[I,J])
+            out += '%25.5f'          %(mat[I,J])
         out += '\n'
     print(var_str)
     print(out)
@@ -70,7 +66,7 @@ def plot_setting():
 # LU factorization                                                        #
 #-------------------------------------------------------------------------#
 def LU_factorization(
-        mat):               # input matrix
+        mat):               # inpuit matrix
 
     """ Calculating the LU factorization of the input vector """
     #---------------------------------------------------------------------#
@@ -95,7 +91,87 @@ def LU_factorization(
             U[J,K:]     = U[J,K:]-L[J,K]*U[K,K:]
             U[J,K]      = 0.0
 
-    return (L, U)
+    return L, U
+#-------------------------------------------------------------------------#
+# Diagonal inverse tool                                                   #
+#-------------------------------------------------------------------------#
+def diagonal_inverse(
+        mat):
+
+    """ Subroutine to calculate the inverse of a diagonal matrix """
+    #---------------------------------------------------------------------#
+    # Domain variables                                                    #
+    #---------------------------------------------------------------------#
+    M   = mat.shape[0]
+    out = idnetity(M)
+    #---------------------------------------------------------------------#
+    # Diagonal inverse                                                   #
+    #---------------------------------------------------------------------#
+    for i in range(0,M):
+        out[i,i]    = 1/mat[i,i]
+
+    return out
+#-------------------------------------------------------------------------#
+# Upper matrix inverse                                                    #
+#-------------------------------------------------------------------------#
+def upper_inverse(
+        mat):
+
+    """ Subroutine to calculate the inverse of an upper diagonal matrix """
+    #---------------------------------------------------------------------#
+    # Domain variables                                                    #
+    #---------------------------------------------------------------------#
+    M   = mat.shape[0]
+    out = identity(M)
+    #---------------------------------------------------------------------#
+    # Upper inverse                                                       #
+    #---------------------------------------------------------------------#
+    for j in range(M-1, -1, -1): 
+        for i in range(j-1, -1, -1):
+            c           = mat[i,j]/mat[j,j]
+            out[i,:]    =  out[i,:]-c*out[j,:]
+        out[j,:] = out[j,:]/mat[j,j]
+    return out
+#-------------------------------------------------------------------------#
+# Upper matrix inverse                                                    #
+#-------------------------------------------------------------------------#
+def lower_inverse(
+        mat):
+
+    """ Subroutine to calculate the inverse of a lower diagonal matrix """
+    #---------------------------------------------------------------------#
+    # Domain variables                                                    #
+    #---------------------------------------------------------------------#
+    M   = mat.shape[0]
+    out = identity(M)
+    #---------------------------------------------------------------------#
+    # Lower inverse                                                       #
+    #---------------------------------------------------------------------#
+    for j in range(0, M-1): 
+        for i in range(j,M-1):
+            c           = mat[i+1,j]
+            out[i+1,:]  = out[i+1,:]-c*out[j,:]
+
+    return out
+#-------------------------------------------------------------------------#
+# Inverse tool                                                            #
+#-------------------------------------------------------------------------#
+def mat_inverse(
+        mat):
+    """ Subroutine to determine a matrix inverse """
+    #---------------------------------------------------------------------#
+    # Calculating the inverse using LU factors                            #
+    #---------------------------------------------------------------------#
+    N       = mat.shape[0]
+    [L,U]   = LU_factorization(mat)
+    #---------------------------------------------------------------------#
+    # Calculating the inverse                                             #
+    #---------------------------------------------------------------------#
+    Linv    = lower_inverse(L)
+    Uinv    = upper_inverse(U)
+    inv     = Uinv@Linv
+    
+    return inv
 #=========================================================================#
 # Main                                                                    #
 #=========================================================================#
@@ -110,33 +186,36 @@ if __name__ == '__main__':
     #---------------------------------------------------------------------#
     # Testing LU                                                          #
     #---------------------------------------------------------------------#
-    A               = random.rand(5,5)
-    (Lower,Upper)   = LU_factorization(A)
-    print_matrix(Lower, 'L')
-    print_matrix(Upper, 'U')
-    print_matrix(A - (Lower@Upper), 'A-LU')
+    N                   = 5
+    A                   = random.rand(N,N)
+    Ainv                = mat_inverse(A) 
+    I                   = identity(N)
+    print_matrix(A, 'A')
+    print_matrix(Ainv, 'A^{-1}')
+    print_matrix(I-A@Ainv, 'I-AxA^{-1}')
     #---------------------------------------------------------------------#
     # Time study                                                          #
     #---------------------------------------------------------------------#
-    N       = [100, 200, 300, 400, 500, 1000, 2000]
+    N       = [10, 100, 200, 300, 400, 500, 1000, 2000]
     times   = zeros(len(N))
     times2  = zeros(len(N))
     for k, i in enumerate(N):
+        print(i)
         A               = random.rand(i,i)          # random matrix
         tic             = time.time()               # start time
-        (Lower,Upper)   = LU_factorization(A)       # LU
+        Ainv            = mat_inverse(A)            # inv(A)
         toc             = time.time()               # end time
         times[k]        = toc-tic                   # time elapsed
         tic             = time.time()
-        (p, l, u)       = la.lu(A)
+        ainv            = la.inv(A)
         toc             = time.time()
         times2[k]       = toc-tic
     #---------------------------------------------------------------------#
     # Plotting the solutions                                              #
     #---------------------------------------------------------------------#
     plot_setting()
-    plt.plot(times, N, 'ro--', lw=1.5, label='Custom LU')
-    plt.plot(times2, N, 'bo--', lw=1.5, label='Scipy LU')
+    plt.plot(times, N, 'ro--', lw=1.5, label='Custom $A^{-1}$')
+    plt.plot(times2, N, 'bo--', lw=1.5, label='Scipy $A^{-1}$')
     #---------------------------------------------------------------------#
     # Plot settings                                                       #
     #---------------------------------------------------------------------#
@@ -144,8 +223,7 @@ if __name__ == '__main__':
     plt.xlabel('time')
     plt.grid(True)
     plt.legend(loc=0)
-    plt.savefig(media_path + 'exercise-6.png')
-    plt.show()
+    plt.savefig(media_path + 'exercise-8.png')
     plt.close()
 
     print('**** Successful run ****')

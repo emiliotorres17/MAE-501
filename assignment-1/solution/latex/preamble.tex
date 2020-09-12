@@ -46,7 +46,10 @@
 \usepackage{hyperref}                   %highlights references
 \usepackage[all]{hypcap}                %for going to the top of an image when a figure ref is clicked
 \usepackage{empheq}
+\usepackage[framemethod=TikZ]{mdframed}
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
 %=========================================================================%
 %hyperlink setup                                                          %
 %=========================================================================%
@@ -307,3 +310,15 @@
   \let\@ifnextchar\new@ifnextchar
   \array{*\c@MaxMatrixCols c}}
 \makeatother
+%-------------------------------------------------------------------------%
+% Text block                                                              %
+%-------------------------------------------------------------------------%
+\mdfdefinestyle{MyFrame}{%
+    linecolor=red,
+    outerlinewidth=2pt,
+    roundcorner=0pt,
+    innertopmargin=\baselineskip,
+    innerbottommargin=\baselineskip,
+    innerrightmargin=20pt,
+    innerleftmargin=25pt,
+    backgroundcolor=white}

@@ -52,7 +52,8 @@ has no solution.
                     0   &   0   &   -3  &   1               &   0   &   -1   
                 \end{bmatrix}
             \end{equation}
-            Moving up the third column we zero out $a_{13}$ using $-1/3r_{3}-r1$
+            Moving up the third column we zero out $a_{13}$ using
+            $-\frac{1}{3}r_{3}-r_{1}$
             giving
             \begin{equation}
                 \begin{bmatrix}[ccc|ccc]
@@ -61,7 +62,7 @@ has no solution.
                     0   &   0   &   -3  &   1               &   0   &   -1   
                 \end{bmatrix}
             \end{equation}
-            Next we can zero $a_{12}$ with $1/4r_{2}-r_{1}$ giving
+            Next we can zero $a_{12}$ with $\frac{1}{4}r_{2}-r_{1}$ giving
             \begin{equation}
                 \begin{bmatrix}[ccc|ccc]
                     1   &   0   &   0   &   1/6     &   1/4     &   -1/6    \\
@@ -69,7 +70,7 @@ has no solution.
                     0   &   0   &   -3  &   1               &   0               &   -1   
                 \end{bmatrix}
             \end{equation}
-            Lastly we can multiply each trace entry by its reciprocal, i.e.,
+            Lastly we can multiply each pivot by its reciprocal, i.e.,
             $r_{2}=-\frac{r_{2}}{12}$ and $r_{3} = -\frac{r_{3}}{3}$, to
             finally get the inverse of matrix $\mathbf{A}$,
             \begin{equation}
@@ -100,30 +101,34 @@ has no solution.
                     \end{bmatrix}
             \end{empheq}
         \end{subequations}
-    \item From the system of equations
-        \begin{equation}
-            \begin{bmatrix}
-                1   & 4     &       2   \\
-                2   & 8     &       4   \\
-                1   & 5     &       4   
-            \end{bmatrix}
-            \begin{bmatrix}
-                x   \\
-                y   \\
-                z
-            \end{bmatrix}
-            \begin{bmatrix}
-                1   \\
-                2   \\
-                1
-            \end{bmatrix}
-        \end{equation}
-        it is obvious that the second row is a linear
-        combination of the first row, i.e. $r_{2}=2r_{1}$. Therefore the
-        second equation in the system adds no new information, that we do
-        not already have from the first row. Thus we have a system with
-        three unknowns, $x,y,z$, and only two equations and cannot
-        obtain an unique solution.    
+    
+    \item 
+        \begin{mdframed}[style=MyFrame]
+            From the system of equations
+            \begin{equation}
+                \begin{bmatrix}
+                    1   & 4     &       2   \\
+                    2   & 8     &       4   \\
+                    1   & 5     &       4   
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x   \\
+                    y   \\
+                    z
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1   \\
+                    2   \\
+                    1
+                \end{bmatrix}
+            \end{equation}
+            it is obvious that the second row is a linear
+            combination of the first row, i.e. $r_{2}=2r_{1}$. Therefore the
+            second equation in the system adds no new information, that we do
+            not already have from the first row. Thus, we have a system with
+            three unknowns, $x,y,z$, and only two equations, therefore the
+            system does not have an unique solution.    
+        \end{mdframed}
     
     \item The simplest way to solve the following system  
         \begin{subequations}
@@ -165,7 +170,7 @@ has no solution.
                     1   
                 \end{bmatrix}
             \end{equation}
-            and them backwards substituting. Thus
+            and them backwards substituting. Thus,
             \begin{empheq}[box=\widefbox]{equation}
                 \begin{bmatrix}
                     x   \\
@@ -232,7 +237,7 @@ has no solution.
             \end{equation}
         \end{subequations}
         Now the system of equations can be solved quite easily using
-        backwards substitution. Thus 
+        backwards substitution. Thus, 
             \begin{empheq}[box=\widefbox]{equation}
                 \begin{bmatrix}
                     x_{1}   \\
