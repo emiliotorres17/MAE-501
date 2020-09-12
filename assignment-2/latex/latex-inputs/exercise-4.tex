@@ -1,0 +1,38 @@
+\section{Exercise 4}
+As discussed in lecture tri-diagonal solvers are highly efficient
+solvers used to solve a particular system of equations, including
+diffusion transport type problems, which we will explore in the following
+exercises. 
+\begin{enumerate}[label=(\alph*)]
+    \item Start with a brief description of tri-diagonal solvers,
+        highlighting their advantages and disadvantages.
+        
+    \item Using the following three steps
+        \begin{enumerate}[label=(\arabic*)]
+            \item Store four 1D vectors 
+            \item Elimination
+                \begin{algorithmic}
+                    \FOR{i = 1 to N}
+                    \STATE b(i) = b(i) - c(i-1)*a(i)/b(i-1)
+                    \STATE d(i) = d(i) - d(i-1)*a(i)/b(i-1)
+                    \ENDFOR
+                \end{algorithmic}
+            \item Back substitution 
+                \begin{algorithmic}
+                    \STATE d(N) = d(N)/b(N)
+                    \FOR{i = N-1 to 0}
+                    \STATE d(i) = (d(i) - c(i)*d(i+1))/b(i))
+                    \ENDFOR
+                \end{algorithmic}
+        \end{enumerate}
+    \emph{\textbf{hand write}} pseudo code for a Python tri-diagonal solver
+        subroutine. Make sure to include a brief description of the
+        boundary treatment in your pseudo code. Upload your
+        \emph{\textbf{hand written subroutine}} as part of your submission
+        for this problem.
+    
+    \item Use your pseudo code from part(b) to code a tri-diagonal solver
+        that takes in four 1D-vectors and outputs a single 1D solutions
+        vector.  Upload a well annotated code with a single verification
+        cases as your submission to this problem.
+\end{enumerate}
