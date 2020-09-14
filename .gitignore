@@ -9,3 +9,6 @@ tags
 *.swp
 *.swo
 *.swq
+*.dvi
+*.ipynb
+*.pdf
