@@ -91,7 +91,7 @@
                 \end{bmatrix}
                 \begin{bmatrix}
                     1       &      3        &       2   \\
-                    0       &      1        &      -2   \\
+                    0       &      1        &      1/2   \\
                     0       &      0        &       1   \\
                 \end{bmatrix}
             \end{empheq}
@@ -107,7 +107,7 @@
                 \end{bmatrix}
             \end{equation}
             Using the same methodology as part(a), we use
-            $r_{2}-2r_{1}$  which gives $l_{21}=2$ and
+            $r_{2}-2r_{1}$  which gives $l_{2,1}=2$ and
             \begin{equation}
                 U = 
                 \begin{bmatrix}
@@ -116,22 +116,22 @@
                     3           &       4       &       5   
                 \end{bmatrix}
             \end{equation}
-            Next, we need $r_{3}-3r_{1}$, therefore $l_{31}=3$ and 
+            Next, we need $r_{3}-3r_{1}$, therefore $l_{3,1}=3$ and 
             \begin{equation}
                 U = 
                 \begin{bmatrix}
                     1           &       0       &       1   \\
                     0           &       2       &       0   \\
-                    0           &       4       &       -1   
+                    0           &       4       &       2   
                 \end{bmatrix}
             \end{equation}
-            Lastly, we need $r_{3}-2r_{2}$ giving $l_{32}=2$ and 
+            Lastly, we need $r_{3}-2r_{2}$ giving $l_{3,2}=2$ and 
             \begin{equation}
                 U = 
                 \begin{bmatrix}
                     1           &       0       &       1   \\
                     0           &       2       &       0   \\
-                    0           &       0       &       -1   
+                    0           &       0       &       2   
                 \end{bmatrix}
             \end{equation}
             Thus,
@@ -145,7 +145,7 @@
                 \begin{bmatrix}
                     1           &       0       &       1   \\
                     0           &       2       &       0   \\
-                    0           &       0       &       -1   
+                    0           &       0       &       2   
                 \end{bmatrix}
             \end{empheq}
             and
@@ -159,7 +159,7 @@
                 \begin{bmatrix}
                     1           &       0       &       0   \\
                     0           &       2       &       0   \\
-                    0           &       0       &       -1   
+                    0           &       0       &       2   
                 \end{bmatrix}
                 \begin{bmatrix}
                     1           &       0       &       1   \\
@@ -231,14 +231,14 @@
                         0       &       -1/3    &   1  
                     \end{bmatrix}
                 \end{equation}
-                Lastly, $r_{3}-\frac{1}{3}r_{3}$, therefore $l_{3,2} =
+                Lastly, $r_{3}-\frac{1}{3}r_{2}$, therefore $l_{3,2} =
                 \frac{1}{3}$ and
                 \begin{equation}
                     U = 
                     \begin{bmatrix}
                         3       &       2       &   3       \\
                         0       &       -1      &   -3      \\
-                        0       &       0       &   -2  
+                        0       &       0       &   2  
                     \end{bmatrix}
                 \end{equation}
                 Thus,
@@ -252,7 +252,7 @@
                     \begin{bmatrix}
                         3       &       2       &   3       \\
                         0       &       -1      &   -3      \\
-                        0       &       0       &   -2  
+                        0       &       0       &   2  
                     \end{bmatrix}
                 \end{empheq}
                 and
@@ -266,12 +266,12 @@
                     \begin{bmatrix}
                         3       &       0       &   0       \\
                         0       &       -1      &   0       \\
-                        0       &       0       &   -2  
+                        0       &       0       &   2  
                     \end{bmatrix}
                     \begin{bmatrix}
-                        1       &       2       &   3       \\
-                        0       &       1      &   -3      \\
-                        0       &       0       &   1  
+                        1       &       2/3    &   1       \\
+                        0       &       1      &   3      \\
+                        0       &       0      &   1  
                     \end{bmatrix}
                 \end{empheq}
             \end{subequations}
