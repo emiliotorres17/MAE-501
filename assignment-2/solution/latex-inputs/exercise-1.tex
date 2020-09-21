@@ -1,0 +1,180 @@
+\section{Exercise 1}
+\subsection{Part a.}
+Which of the following subsets of $\mathbb{R}^{3}$ are actually subspaces?
+If not, explain why.
+\begin{enumerate}[label=(\arabic*)]
+    %---------------------------------------------------------------------%
+    % 1.                                                                  %
+    %---------------------------------------------------------------------%
+    \item The plane of vectors $\mathbf{v} = (v_{1}, v_{2}, v_{3})$ with
+        first component $v_{1}=0$.
+        \newline
+        \begin{mdframed}[style=MyFrame]
+        Start with two vectors in the subset 
+        \begin{equation}
+            \mathbf{v}_{1} =  (0,1,2)
+        \end{equation}
+        \begin{equation}
+            \mathbf{v}_{2} =  (0,7,5)
+        \end{equation}
+        and verify that the addition of the vectors are in the space,
+        namely
+        \begin{equation}
+            \mathbf{v}_{1} + \mathbf{v}_{2} = (0,8,7)
+            \label{eq:ex-a-1-1}
+        \end{equation}
+        Next, we can verify that $c\mathbf{v}$ is also in the subspace of
+        the vectors,
+        \begin{equation}
+            c\mathbf{v}_{1} =  (0,c,2c)
+            \label{eq:ex-a-1-2}
+        \end{equation}
+            Since the results shown in Eqs.~(\ref{eq:ex-a-1-1}) \&
+            (\ref{eq:ex-a-1-2}) are clearly in the subspace then the plane
+            of vectors is a subspace.
+        \end{mdframed}
+    %---------------------------------------------------------------------%
+    % 2.                                                                  %
+    %---------------------------------------------------------------------%
+    \item The plane of vectors $\mathbf{v}$ with second component $v_{2}=2$.
+        \newline
+        \begin{mdframed}[style=MyFrame]
+            Using the same procedure as above, we start by defining two
+            vectors in the subspace,
+            \begin{equation}
+                \mathbf{v}_{1} = (0,2,0)
+            \end{equation}
+            \begin{equation}
+                \mathbf{v}_{2} = (1,2,0)
+            \end{equation}
+            and checking that the addition of $\mathbf{v}_{1}$ and
+            $\mathbf{v}_{2}$ are also in the subspace, namely
+            \begin{equation}
+                \mathbf{v}_{1} + \mathbf{v}_{2} = (1,4,0)
+                \label{eq:ex-a-2-1}
+            \end{equation}
+            Clearly, $\mathbf{v}_{1} + \mathbf{v}_{2}$ is not in the
+            plane and therefore the plane is not a subspace.
+        \end{mdframed}
+    %---------------------------------------------------------------------%
+    % 3.                                                                  %
+    %---------------------------------------------------------------------%
+    \item The vectors $\mathbf{v}$ with $v_{1} = v_{2} = 0$.
+        \newline
+        \begin{mdframed}[style=MyFrame]
+            Again we start by defining two vectors and verify that they
+            are closed by addition and multiplication, namely
+            \begin{equation}
+                \mathbf{v}_{1} = (0,0,1)
+            \end{equation}
+            \begin{equation}
+                \mathbf{v}_{2} = (0,0,2)
+            \end{equation}
+            This gives,
+            \begin{equation}
+                \mathbf{v}_{1} + \mathbf{v}_{2} = (0,0,3)
+            \end{equation}
+            \begin{equation}
+                c\mathbf{v}_{1} = (0,0,3c)
+            \end{equation}
+            which are clearly in the subspace. Thus the vectors are a
+            subspace.
+        \end{mdframed}
+    \item 
+        The solitary vector $\mathbf{v}=(0,0,0)$
+        \newline
+        \begin{mdframed}[style=MyFrame]
+            Clearly since $0+0=0$ and $0\cdot0=0$ the vector is a subspace.
+            Furthermore, this subspace is more commonly referred to as the
+            trivial subspace.
+        \end{mdframed}
+    \item 
+        All combinations of the vector $\mathbf{x} =(1,0,0)$ and
+        $\mathbf{y}=(2,0,1)$.
+        \begin{mdframed}[style=MyFrame]
+            We start by defining a vector with all the combinations of
+            $\mathbf{x}$ and $\mathbf{y}$,
+            \begin{equation}
+                \mathbf{v} = \alpha \mathbf{x} + \beta \mathbf{y}
+            \end{equation}
+            and use this to define two more vectors in the subspace, namely
+            \begin{equation}
+                \mathbf{v}_{1} = \alpha_{1} \mathbf{x} + \beta_{1} \mathbf{y}
+            \end{equation}
+            \begin{equation}
+                \mathbf{v}_{2} = \alpha_{2} \mathbf{x} + \beta_{2} \mathbf{y}
+            \end{equation}
+            Next we show that the subspace is closed by addition, namely
+            \begin{equation}
+                \mathbf{v}_{1} + \mathbf{v}_{2} = 
+                        \underbrace{(\alpha_{1} + \alpha_{2})}_{\equiv \alpha_{3}} \mathbf{x} +
+                        \underbrace{(\beta_{1} + \beta_{2})}_{\equiv \beta_{3}} \mathbf{y}
+            \end{equation}
+            Therefore since  
+            $\mathbf{v}_{1} + \mathbf{v}_{2} = \alpha_{3}\mathbf{x} + \beta_{3} \mathbf{y}$ 
+            produces another combination of vectors $\mathbf{x}$ and
+            $\mathbf{y}$ the subspace is closed by addition.
+            Lastly we can show that scalar multiplication is closed by
+            multiplying $c\mathbf{v}_{1}$, giving
+            \begin{equation}
+                c\mathbf{v}_{1} = c\alpha_{1} \mathbf{x} + c\beta_{1} \mathbf{y}
+            \end{equation}
+            which again is just another combination of $\mathbf{x}$ and
+            $\mathbf{y}$. Thus the vectors are a subspace.
+        \end{mdframed}
+    \item The vectors $\mathbf{v} =(v_{1}, v_{2}, v_{3})$ that satisfy 
+        $v_{3}-v_{2}+3v_{1}=0$.
+        \begin{mdframed}[style=MyFrame]
+            Again we use the above procedure and start by defining two
+            vectors
+            \begin{equation}
+                \mathbf{v}_{1} = (1,1,-2)
+            \end{equation}
+            \begin{equation}
+                \mathbf{v}_{2} = (2,0,-6)
+            \end{equation}
+            and verify that they are closed by addition and scalar
+            multiplication. This gives,
+            \begin{equation}
+                \mathbf{v}_{1} + \mathbf{v}_{2} = (3,1,-8)
+            \end{equation}
+            \begin{equation}
+                3\mathbf{v}_{1} = (3,3,-6)
+            \end{equation}
+            which are both clearly in the subspace. Thus the vectors do form
+            a subspace.
+        \end{mdframed}
+\end{enumerate}
+
+\subsection{Part b.}
+
+No ``final solutions'' are provided for these types of questions, since the
+whole point of them is to encourage you to express \emph{briefly} but
+\emph{clearly} and \emph{in your own words} what you understand. As
+explained in the directions, definitions taken from text books or the
+internet do not reflect a good understanding of these terms, nor do
+extremely long explanations. Equations do not express the meaning of these,
+nor do literal word translations of equations show that you know what they
+mean. Instead, we are looking for clear evidence that you understand what
+each term means. Possible definitions for each term is provided below: 
+\begin{mdframed}[style=MyFrame]
+    \begin{enumerate}[label=(\alph*)]
+        \item Subspace: A subspace of $\mathbb{R}^{n}$ is a subset of
+            vectors in $\mathbb{R}^{n}$ that is closed under addition and
+            scalar multiplication.
+            
+        \item Column space: The column space of a matrix is the subspace of
+            $\mathbb{R}^{m}$ spanned by the columns of the matrix.
+
+        \item Row space: The row space of a matrix is the subspace of
+            $\mathbb{R}^{n}$ spanned by the rows of the matrix.
+            
+        \item Null space: The null space is the subspace of
+            $\mathbb{R}^{n}$ consisting of all the solutions of the
+            homogeneous equation, and is perpendicular to the row space.
+
+        \item Left null space: The left null space is a subspace in
+            $\mathbb{R}^{m}$ which is the null space of the transpose of a
+            matrix, and is perpendicular to the column space. 
+    \end{enumerate}
+\end{mdframed}

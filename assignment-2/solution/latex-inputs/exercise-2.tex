@@ -1,0 +1,282 @@
+\section{Exercise 2}
+For each of the three matrices perform the following:
+\begin{enumerate}[label=(\alph*)]
+    \item $LU$ factorization using augmented matrix form.
+    \item Find the reduced row echelon form $R$.
+    \item Identify the pivots and free variables, as well as find the rank.
+    \item Give basis of vectors for the column space, nullspace, row space,
+        and left null space, and their respective dimensions.
+\end{enumerate}
+\subsection{Part a.}
+\begin{equation}
+    A =
+    \begin{bmatrix}
+        1       &   -1  &   0    \\
+        -1      &   2   &   -1   \\
+        1       &   -1  &   2
+    \end{bmatrix}
+\end{equation}
+Starting with the augmented $A^{\ast}$ matrix
+\begin{equation}
+    A^{\ast} =
+    \begin{bmatrix}[ccc|ccc]
+        1       &   -1  &   0   &   1   &   0   &   0   \\
+        -1      &   2   &   -1  &   0   &   1   &   0   \\
+        1       &   -1  &   2   &   0   &   0   &   1
+    \end{bmatrix}
+\end{equation}
+and performing both $r_{2}\rightarrow r_{1} + r_{2}$ and $r_{3}\rightarrow
+r_{3}-r_{1}$ to find the $LU$ factors,   
+\begin{equation}
+    A^{\ast} =
+    \begin{bmatrix}[ccc|ccc]
+        1       &   -1  &   0   &   1   &   0   &   0   \\
+        0       &   1   &   -1  &   1   &   1   &   0   \\
+        0       &   0   &   2   &   -1   &   0   &   1
+    \end{bmatrix}
+\end{equation}
+Thus,
+\begin{mdframed}[style=MyFrame]
+    \begin{equation}
+        L =
+        \begin{bmatrix}
+            1       &   0   &   0    \\
+            -1      &   1   &   0   \\
+            1       &   0  &   1
+        \end{bmatrix}
+    \end{equation}
+    and
+    \begin{equation}
+        U =
+        \begin{bmatrix}
+            1       &   -1  &   0    \\
+            0       &   1   &   0   \\
+            0       &   0   &   2
+        \end{bmatrix}
+    \end{equation}
+\end{mdframed}
+Furthermore, we can complete the elimination using $r_{2}\rightarrow
+\frac{1}{2}r_{3} + r_{2}$ and $r_{1} \rightarrow r_{1} + r_{2}$, giving 
+\begin{equation}
+    A^{\ast} =
+    \begin{bmatrix}[ccc|ccc]
+        1       &   0  &   0    &   3/2     &   1   &   1/2   \\
+        0       &   1   &  0    &   1/2     &   1   &   1/2   \\
+        0       &   0   &   2   &   -1      &   0   &   1
+    \end{bmatrix}
+\end{equation}
+Thus,
+\begin{mdframed}[style=MyFrame]
+    \begin{equation}
+        \text{rref}(A) =
+        \begin{bmatrix}
+            1       &      0    &   0   \\
+            0       &      1    &   0   \\
+            0       &      0    &   1
+        \end{bmatrix}
+    \end{equation}
+\end{mdframed}
+\begin{mdframed}[style=MyFrame]
+    Furthermore, from the $\text{rref}(A)$ we see that there are no free
+    variables, and the matrix is full rank. Thus, $N(A) = \vec{0}$ and
+    \begin{equation}
+        C(A) =
+        \left\{
+            \begin{bmatrix}
+                1   \\
+                -1  \\
+                1   
+            \end{bmatrix}, 
+            \begin{bmatrix}
+                -1   \\
+                2    \\
+                -1   
+            \end{bmatrix},
+            \begin{bmatrix}
+                0   \\
+                -1  \\
+                2   
+            \end{bmatrix}
+           \right\}
+    \end{equation}
+    and 
+    \begin{equation}
+        C\left(A^{T}\right) =
+        \left\{
+            \begin{bmatrix}
+                1   \\
+                -1  \\
+                0   
+            \end{bmatrix},
+            \begin{bmatrix}
+                -1   \\
+                2    \\
+                -1   
+            \end{bmatrix},
+            \begin{bmatrix}
+                1   \\
+                -1  \\
+                2   
+            \end{bmatrix}
+           \right\}
+    \end{equation}
+\end{mdframed}
+
+%-------------------------------------------------------------------------%
+% Part b.                                                                 %
+%-------------------------------------------------------------------------%
+\subsection{Part b.}
+\begin{equation}
+    B =
+    \begin{bmatrix}
+        1           &           2       &       5   \\
+        3           &           6       &       15  \\
+        0           &           1       &       0   \\
+        5           &           16      &       25  
+    \end{bmatrix}
+\end{equation}
+Starting by switching rows $r_{3}$ and $r_{2}$ using the permutation matrix 
+$P$,
+\begin{equation}
+    P =
+    \begin{bmatrix}
+        1       &   0   &   0   &   0   \\
+        0       &   0   &   1   &   0   \\
+        0       &   1   &   0   &   0   \\
+        0       &   0   &   0   &   1 
+    \end{bmatrix}
+\end{equation}
+and augmenting $PB$ with $I$,
+\begin{equation}
+    B^{\ast} =
+    \begin{bmatrix}[ccc|cccc]
+        1           &           2       &       5       &       1   &   0   &   0   &   0   \\       
+        0           &           1       &       0       &       0   &   1   &   0   &   0   \\        
+        3           &           6       &       15      &       0   &   0   &   1   &   0   \\        
+        5           &           16      &       25      &       0   &   0   &   0   &   1        
+    \end{bmatrix}
+\end{equation}
+We can perform the forward elimination using the following operations:
+\begin{enumerate}[label=(\arabic*)]
+    \item $r_{3} \rightarrow r_{3} - 3r_{1} $
+    \item $r_{4} \rightarrow r_{4} - 5r_{1} $
+    \item $r_{4} \rightarrow r_{4} - 6r_{2} $
+\end{enumerate}
+Which gives
+\begin{equation}
+    B^{\ast} =
+    \begin{bmatrix}[ccc|cccc]
+        1           &           2       &       5       &       1   &   0   &   0   &   0   \\       
+        0           &           0       &       0       &       0   &   1   &   0   &   0   \\        
+        0           &           1       &       0       &       -3  &   0   &   1   &   0   \\        
+        0           &           0       &       0       &       -5  &   -6  &   0   &   1        
+    \end{bmatrix}
+\end{equation}
+Thus
+\begin{mdframed}[style=MyFrame]
+    \begin{equation}
+        L =
+        \begin{bmatrix}
+            1       &   0   &   0   &   0   \\
+            0       &   1   &   0   &   0   \\
+            3       &   0   &   1   &   0   \\
+            5       &   6   &   0   &   1
+        \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+        U =
+        \begin{bmatrix}
+            1       &   2   &   5       \\
+            0       &   1   &   0       \\
+            0       &   0   &   0       \\
+            0       &   0   &   0
+        \end{bmatrix}
+    \end{equation}
+\end{mdframed}
+We can finish the elimination using $r_{1} \rightarrow r_{1} - 2r_{2}$ giving 
+\begin{equation}
+    B^{\ast} =
+    \begin{bmatrix}[ccc|cccc]
+        1           &           0       &       5       &       1   &   0   &   0   &   0   \\       
+        0           &           1       &       0       &       0   &   1   &   0   &   0   \\        
+        0           &           0       &       0       &       -3  &   0   &   1   &   0   \\        
+        0           &           0       &       0       &       -5  &   -6  &   0   &   1        
+    \end{bmatrix}
+\end{equation}
+This gives the row reduced echelon form as
+\begin{mdframed}[style=MyFrame]
+    \begin{equation}
+        \text{rref}(B) = 
+        \begin{bmatrix}
+            {\color{red}1}              &           0           &       {\color{green}5}     \\
+             0                          &     {\color{red}1}    &       0      \\
+             0                          &           0           &       0      \\
+             0                          &           0           &       0      
+        \end{bmatrix}
+    \end{equation}
+    Therefore $\text{rank}(B)=2$ and the pivots and free are labelled in red and green, respectively.
+\end{mdframed}
+Moreover, we can express basis of the column and row space as 
+\begin{mdframed}[style=MyFrame]
+    \begin{equation}
+        C(B) =
+        \left\{
+        \begin{bmatrix}
+            1       \\
+            3       \\
+            0       \\
+            5
+        \end{bmatrix},
+        \begin{bmatrix}
+            2       \\
+            6       \\
+            1       \\
+            16
+        \end{bmatrix}
+        \right\}
+    \end{equation}
+    and
+    \begin{equation}
+        C(B^{T}) =
+        \left\{
+        \begin{bmatrix}
+            1       \\
+            2       \\
+            5
+        \end{bmatrix},
+        \begin{bmatrix}
+            0       \\
+            1       \\
+            0
+        \end{bmatrix}
+        \right\}
+    \end{equation}
+\end{mdframed}
+Lastly, we can express the basis of the nullspace and the left nullspace as
+\begin{mdframed}[style=MyFrame]
+    \begin{equation}
+        N(B) = 
+        \begin{bmatrix}
+            -5      \\
+            0       \\
+            1
+        \end{bmatrix}
+    \end{equation}
+    and 
+    \begin{equation}
+        N(B^{T}) = 
+        \begin{bmatrix}
+            -5      \\
+            0       \\
+            -6      \\
+            1
+        \end{bmatrix},
+        \begin{bmatrix}
+            -3      \\
+            1       \\
+            0       \\
+            0
+        \end{bmatrix}
+    \end{equation}
+\end{mdframed}
+

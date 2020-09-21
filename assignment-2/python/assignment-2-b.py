@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """========================================================================
 Purpose:
-    Solve a 1-D heat transfer problem.
+    Solve a 1-D state heat transfer problem using a tri-diagonal solver to
+    resolve the laplacian. 
 
 Author:
     Emilio Torres
@@ -68,6 +69,7 @@ def tri_solver(
     Bin = copy(B) 
     Cin = copy(C) 
     Din = copy(D)
+    sol = zeros(N)
     #---------------------------------------------------------------------#
     # Looping over the domain                                             # 
     #---------------------------------------------------------------------#
@@ -78,14 +80,14 @@ def tri_solver(
     #---------------------------------------------------------------------#
     # Preallocation solutions                                             # 
     #---------------------------------------------------------------------#
-    D[-1]     = Din[-1]/Bin[-1]
+    sol[-1]     = Din[-1]/Bin[-1]
     #---------------------------------------------------------------------#
     # Interior solutions                                                  # 
     #---------------------------------------------------------------------#
     for I in range(N-2, -1, -1):
-        D[I] = (Din[I]-Cin[I]*d[I+1])/Bin[I]
+        sol[I] = (Din[I]-Cin[I]*sol[I+1])/Bin[I]
 
-    return D
+    return sol
 #=========================================================================#
 # Main                                                                    # 
 #=========================================================================#
@@ -96,91 +98,87 @@ if __name__ == '__main__':
     call(['clear'])
     sep         = os.sep
     pwd         = os.getcwd()
-    media_path  = pwd + '%c..%cmedia%c'             %(sep, sep, sep)
+    media_path  = pwd + '%c..%cmedia%c'                 %(sep, sep, sep)
+    #---------------------------------------------------------------------#
+    # Exact solution                                                      #
+    #---------------------------------------------------------------------#
+    xc      = linspace(0.0, 1.0, 1000)
+    #---------------------------------------------------------------------#
+    # Plotting settings and variables                                     #
+    #---------------------------------------------------------------------#
+    plot_setting()
+    sym = ['r', 'g', 'b', 'c', 'm']
     #---------------------------------------------------------------------#
     # Domain variables                                                    #
     #---------------------------------------------------------------------#
-    num     = [10, 100, 1000, 2000, 5000, 10000]
+    num     = [4,8,16,32,64]
     time1   = zeros(len(num))
     time2   = zeros(len(num))
+    error   = zeros(len(num))
+    dx      = zeros(len(num))
+    #---------------------------------------------------------------------#
+    # Looping over the grid sizes                                         #
+    #---------------------------------------------------------------------#
     for n in range(0, len(num)):
+        #-----------------------------------------------------------------#
+        # Step size variables                                             #
+        #-----------------------------------------------------------------#
         print(num[n])
         M       = num[n]
         L       = 1.0
-        dx      = L/float(M)
+        dx[n]   = L/float(M)
         alpha   = 1.0
         x       = linspace(0.0, 1.0, M+1)
-        xc      = linspace(0.0, 1.0, 1000)
-        Te      = 50.0/(4.0*pi**2.0)*sin(2.*pi*xc) +3.*xc
         #-----------------------------------------------------------------#
-        # Preallocating variables                                         #
+        # Generating 4D vectors                                           #
         #-----------------------------------------------------------------#
         T       = zeros(len(x))
         a       = ones(len(x)-3)
         b       = -2.0*ones(len(x)-2)
         c       = ones(len(x)-3)
         d       = -50.*sin(2.*pi*x[1:M])
-        d       = dx**2.0*d
-        d[-1]   = d[-1]-3.0
+        d       = dx[n]**2.0*d
+        d[-1]   = d[-1]-50
+        d[0]    = d[0]-10
         #-----------------------------------------------------------------#
-        # Solving system                                                  #
+        # Approximate solution                                            #
         #-----------------------------------------------------------------#
-        tic     = time.time()
         T[1:M]  = tri_solver(a,b,c,d)
-        T[0]    = 0.0
-        T[M]    = 3.0 
-        toc     = time.time()
+        T[0]    = 10.
+        T[-1]   = 50.
         #-----------------------------------------------------------------#
-        # Time elapsed                                                    #
+        # Exact solution                                                  #
         #-----------------------------------------------------------------#
-        time1[n]= toc-tic
+        Te      = 50.0/(4.0*pi**2.0)*sin(2.*pi*x) + 40.*x + 10.
         #-----------------------------------------------------------------#
-        # Full matrix approach                                            #
+        # Calculating the error                                           #
         #-----------------------------------------------------------------#
-        A               = zeros((M-1,M-1))
-        Tmat            = zeros(M+1)
-        rhs             = zeros(M-1)
-        A[0,0]          = -2.
-        A[0,1]          = 1.
-        A[M-2,M-2]      = -2.
-        A[M-2,M-3]      = 1.
-        for i in range(1,M-2):
-            A[i,i]      = -2.
-            A[i,i-1]    = 1.
-            A[i,i+1]    = 1.
-        rhs             = -50.*sin(2.*pi*x[1:M])
-        rhs             = dx**2.0*rhs
-        rhs[-1]         = rhs[-1]-3.
-        tic             = time.time()    
-        Tmat[1:M]       = linalg.inv(A)@rhs
-        Tmat[0]         = 0.
-        Tmat[-1]        = 3.
-        toc             = time.time()    
-        time2[n]        = toc-tic
+        error[n]    = amax(abs(Te-T))
+        #-----------------------------------------------------------------#
+        # Plotting the solution                                           # 
+        #-----------------------------------------------------------------#
+        plt.plot(x,T, sym[n], lw=1.5, label='$N=%i$'    %(M))
     #---------------------------------------------------------------------#
-    # Plotting solution                                                   #
+    # Plot settings                                                       # 
     #---------------------------------------------------------------------#
-    plot_setting()
-    plt.plot(time1, num, 'ro--', lw=1.5, label='Tri-diagonal')
-    plt.plot(time2, num, 'bo--', lw=1.5, label='Inverse matrix')
+    plt.plot(x, Te, 'b--', lw=3.0, label='Analytical')
     plt.grid(True)
+    plt.xlabel('$0 \leq x \leq 1$')
+    plt.ylabel('Temperature [non-dimensional]')
     plt.legend(loc=0)
-    plt.savefig(media_path + 'time-comparison.png')
+    plt.savefig(media_path + 'temperature-profile.png')
     plt.close()
     #---------------------------------------------------------------------#
-    # Plotting time for tri-solver                                        #
+    # Plotting the error                                                  # 
     #---------------------------------------------------------------------#
-    plt.plot(time1, num, 'ro--', lw=1.5, label='Tri-diagonal')
-    plt.grid(True)
+    plt.loglog(dx, error, 'r', lw=1.5, label='Approximation error') 
+    plt.loglog(dx, 1.75*dx**2.0 , 'k', lw=1.5, label="$\sim c_{1} x^{2}$")
+    plt.grid(True, which='both', ls='-')
     plt.legend(loc=0)
-    plt.savefig(media_path + 'tri-solve.png')
+    plt.xlabel('$\Delta x $')
+    plt.ylabel('Error')
+    plt.savefig(media_path + 'error-profile.png')
     plt.close()
-    #---------------------------------------------------------------------#
-    # Plotting time ratio                                                 #
-    #---------------------------------------------------------------------#
-    plt.plot(time2/time1, num, 'ro--', lw=1.5)
-    plt.grid(True)
-    plt.legend(loc=0)
-    plt.savefig(media_path + 'time-ratio-solve.png')
-    plt.show()
-    plt.close()
+
+    print('**** Successful Run ****')
+    sys.exit(0)
