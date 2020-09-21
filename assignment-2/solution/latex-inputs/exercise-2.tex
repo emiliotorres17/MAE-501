@@ -279,4 +279,135 @@ Lastly, we can express the basis of the nullspace and the left nullspace as
         \end{bmatrix}
     \end{equation}
 \end{mdframed}
+\subsection{Part c.}
+\begin{equation}
+    C = 
+    \begin{bmatrix}
+        1   &   1   &   1   \\
+        1   &   -1  &   0   \\
+        2   &   0   &   4
+    \end{bmatrix}
+\end{equation}
+Starting with the augmented matrix $C^{\ast}$,
+\begin{equation}
+    C^{\ast} =
+    \begin{bmatrix}[ccc|ccc]
+        1   &   1   &   1   &   1   &  0   &   0   \\
+        1   &   -1  &   0   &   0   &  1   &   0   \\
+        2   &   0   &   4   &   0   &  0   &   1
+    \end{bmatrix}
+\end{equation}
+and eliminating the first entries along the first column by performing
+$r_{2} \rightarrow r_{2} - r_{1}$ and $r_{3}\rightarrow r_{3} -2 r_{1}$
+giving
+\begin{equation}
+    C^{\ast} =
+    \begin{bmatrix}[ccc|ccc]
+        1   &   1   &   1   &   1   &  0   &   0   \\
+        0   &   -2  &   -1  &   -1  &  1   &   0   \\
+        0   &   -2   &   2  &   -2  &  0   &   1
+    \end{bmatrix}
+\end{equation}
+Next we eliminate the entries under the second pivot $r_{3} \rightarrow r_{3}
+- r_{2}$, giving
+\begin{equation}
+    C^{\ast} =
+    \begin{bmatrix}[ccc|ccc]
+        1   &   1   &   1   &   1   &  0   &   0   \\
+        0   &   -2  &   -1  &   -1  &  1   &   0   \\
+        0   &   0   &   3   &   -1  &  -1  &   1
+    \end{bmatrix}
+\end{equation}
+Thus, 
+\begin{mdframed}[style=MyFrame]
+    \begin{equation}
+        L =
+        \begin{bmatrix}
+            1       &   0   &   0   \\
+            1       &   1   &   0   \\
+            2       &   1   &   0
+        \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+        U =
+        \begin{bmatrix}
+            1       &   1   &   1   \\
+            0       &   -2  &   1   \\
+            0       &   0   &   3
+        \end{bmatrix}
+    \end{equation}
+\end{mdframed}
+Next we can complete the elimination using the following row operations:
+\begin{enumerate}
+    \item $r_{2} \rightarrow r_{2} + \frac{1}{3}r_{3}$
+    \item $r_{1} \rightarrow r_{1} - \frac{1}{3}r_{3}$
+    \item $r_{1} \rightarrow r_{1} - \frac{1}{2}r_{2}$
+\end{enumerate}
+This give
+\begin{equation}
+    C^{\ast} =
+    \begin{bmatrix}[ccc|ccc]
+        1   &   0   &   0   &   2/3     &  2/3  &   -1/6    \\
+        0   &   -2  &   0   &   -4/3    &  2/3  &   1/3     \\
+        0   &   0   &   3   &   -1      &  -1   &   1
+    \end{bmatrix}
+\end{equation}
+Thus,
+\begin{mdframed}[style=MyFrame]
+    \begin{equation}
+        \text{rref}(C) =
+        \begin{bmatrix}
+            1       &       0       &   0   \\
+            0       &       1       &   0   \\
+            0       &       0       &   1 
+        \end{bmatrix}
+    \end{equation}
+    Clearly from the reduced row echelon we can see that $C$ is of full
+    rank and there are no free variables.
+\end{mdframed}
+\begin{mdframed}[style=MyFrame]
+    Furthermore, since $\text{rank}(C)=3$ we can conclude that
+    $N(C)=\vec{0}$ and 
+        \begin{equation}
+            C(C) =
+            \left\{
+            \begin{bmatrix}
+                1   \\
+                1   \\
+                2
+            \end{bmatrix},
+            \begin{bmatrix}
+                1   \\
+                -1  \\
+                0
+            \end{bmatrix},
+            \begin{bmatrix}
+                1   \\
+                0  \\
+                4
+            \end{bmatrix}
+            \right\}
+        \end{equation}
+        and 
+        \begin{equation}
+            C(C^{T}) =
+            \left\{
+            \begin{bmatrix}
+                1   \\
+                1   \\
+                1
+            \end{bmatrix},
+            \begin{bmatrix}
+                1   \\
+                -1  \\
+                0
+            \end{bmatrix},
+            \begin{bmatrix}
+                2   \\
+                0  \\
+                4
+            \end{bmatrix}
+            \right\}
+    \end{equation}
+\end{mdframed}
 
