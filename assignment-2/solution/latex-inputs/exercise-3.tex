@@ -1,0 +1,139 @@
+\section{Exercise 3}
+\subsection{Part a.}
+How can you verify if a large matrix has an inverse without actually trying
+to compute it?
+\begin{mdframed}[style=MyFrame]
+    The easiest way to verify that a large matrix has an inverse without
+    actually computing is to verify that is of full rank.
+\end{mdframed}
+\subsection{Part b.}
+For which numbers of $c$ and $d$ do the following matrix have rank 2?
+\begin{equation}
+    A =
+    \begin{bmatrix}
+        1   &   2   &   5   &   0   &   5   \\
+        0   &   0   &   c   &   2   &   2   \\
+        0   &   0   &   0   &   d   &   2
+    \end{bmatrix}
+\end{equation}
+
+\begin{mdframed}[style=MyFrame]
+    By examination we can see that the simple solution is let $c=0$ and
+    $d=2$, which gives the following row reduced echelon form
+    \begin{equation}
+        \text{rref}(A) =
+        \begin{bmatrix}
+            1   &   2   &   5   &   0   &   5   \\
+            0   &   0   &   0   &   1   &   1   \\
+            0   &   0   &   0   &   0   &   0
+        \end{bmatrix}
+    \end{equation}
+    
+    Where we can clear see that the matrix has a rank of $2$.
+\end{mdframed}
+
+\subsection{Part c.}
+What can be said about the four fundamental subspaces when $Ax=b$ has an
+unique solution, no solution, and infinitely many solutions?
+\begin{mdframed}[style=MyFrame]
+    \begin{enumerate}[label=(\alph*)]
+        \item If a system has an unique solution then the matrix is of full
+            rank. Therefore, both the row and column space have dimensions
+            of $n$, and both the null space and left null space have
+            dimensions of $0$.
+            
+        \item If the system $Ax=b$ has no solution then the rows vectors do
+            not intersect. Therefore, the dimensions of the column and row
+            space would be the number of pivots $r$, the null space
+            would have dimensions $n-r$, and the left null space would have
+            dimensions of $m-r$. 
+            
+        \item Similarly, if a system has infinite solutions then the
+            dimensions of the column and row space would be equal to the
+            number of pivots $r$, and the dimensions of the null space
+            and left null space would be $n-r$ and $m-r$, respectively.
+    \end{enumerate}
+\end{mdframed}
+
+\subsection{Part d.}
+What are the dimensions of the four fundamental subspaces for $A$, $B$, and
+$C$, if $I$ is the $3\times3$ identity matrix and $0$ is the $3\times2$
+zero matrix?
+\begin{enumerate}[label=(\alph*)]
+    \item 
+        \begin{equation}
+            A = 
+            \begin{bmatrix}
+                1   &   0   &   0   &   0   &   0   \\
+                0   &   1   &   0   &   0   &   0   \\
+                0   &   0   &   1   &   0   &   0
+            \end{bmatrix}
+        \end{equation}
+        \begin{mdframed}[style=MyFrame]
+            From examination
+                \begin{equation}
+                    \text{dim}(C(A)) = r =3
+                \end{equation}
+                \begin{equation}
+                    \text{dim}(C(A^{T})) = r = 3
+                \end{equation}
+                \begin{equation}
+                    \text{dim}(N(A)) = n-r = 2 
+                \end{equation}
+                \begin{equation}
+                    \text{dim}(N(A^{T})) = m-r = 0 
+                \end{equation}
+        \end{mdframed}
+    \item 
+        \begin{equation}
+            B = 
+            \begin{bmatrix}
+                1   &   0   &   0   & 1 &   0   &   0  \\
+                0   &   1   &   0   & 0 &   1   &   0  \\
+                0   &   0   &   1   & 0 &   0   &   1  \\
+                0   &   0   &   0   & 0 &   0   &   0  \\
+                0   &   0   &   0   & 0 &   0   &   0
+                
+            \end{bmatrix}
+        \end{equation}
+            From examination
+            \begin{mdframed}[style=MyFrame]
+                \begin{equation}
+                    \text{dim}(C(A)) = r = 3
+                \end{equation}
+                \begin{equation}
+                    \text{dim}(C(A^{T})) = r = 3
+                \end{equation}
+                \begin{equation}
+                    \text{dim}(N(A)) = n-r = 3 
+                \end{equation}
+                \begin{equation}
+                    \text{dim}(N(A^{T})) = m-r = 2 
+                \end{equation}
+            \end{mdframed}
+    \item 
+        \begin{equation}
+            C = 
+            \begin{bmatrix}
+                0   &   0   \\
+                0   &   0   \\
+                0   &   0
+                
+            \end{bmatrix}
+        \end{equation}
+        \begin{mdframed}[style=MyFrame]
+            From examination
+                \begin{equation}
+                    \text{dim}(C(A)) = r = 0
+                \end{equation}
+                \begin{equation}
+                    \text{dim}(C(A^{T})) = r = 0
+                \end{equation}
+                \begin{equation}
+                    \text{dim}(N(A)) = n-r = 2 
+                \end{equation}
+                \begin{equation}
+                    \text{dim}(N(A^{T})) = m-r = 4 
+                \end{equation}
+        \end{mdframed}
+\end{enumerate}
