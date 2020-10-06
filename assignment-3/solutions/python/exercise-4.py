@@ -42,28 +42,28 @@ if __name__ == '__main__':
     #---------------------------------------------------------------------#
     # Linear fit                                                          #
     #---------------------------------------------------------------------#
-    N       = len(time)
-    A       = zeros((N,2))
-    A[:,0]  = time 
-    A[:,1]  = 1.0 
-    coefsL  = linalg.inv(transpose(A)@A)@(transpose(A)@u)
-    ulinear = time*coefsL[0] + coefsL[1]
-    err     = u - A@coefsL
-    E       = sqrt(sum(err**2.0))
+    N           = len(time)
+    A           = zeros((N,2))
+    A[:,0]      = time 
+    A[:,1]      = 1.0 
+    coefsL      = linalg.inv(transpose(A)@A)@(transpose(A)@u)
+    ulinear     = time*coefsL[0] + coefsL[1]
+    err         = u - A@coefsL
+    E           = sqrt(sum(err**2.0))
     print(E)
     print(err)
     #---------------------------------------------------------------------#
     # Parabola fit                                                        #
     #---------------------------------------------------------------------#
-    N       = len(time)
-    A       = zeros((N,3))
-    A[:,0]  = time**2.0 
-    A[:,1]  = time 
-    A[:,2]  = 1.0 
-    coefs   = linalg.inv(transpose(A)@A)@(transpose(A)@u)
-    upar    = time**2.0*coefs[0] + time*coefs[1]+ coefs[2]
-    err     = u - A@coefs
-    E       = sqrt(sum(err**2.0))
+    N           = len(time)
+    A           = zeros((N,3))
+    A[:,0]      = time**2.0 
+    A[:,1]      = time 
+    A[:,2]      = 1.0 
+    coefs       = linalg.inv(transpose(A)@A)@(transpose(A)@u)
+    upar        = time**2.0*coefs[0] + time*coefs[1]+ coefs[2]
+    err         = u - A@coefs
+    E           = sqrt(sum(err**2.0))
     print(E)
     print(err)
     #---------------------------------------------------------------------#
