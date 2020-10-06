@@ -37,21 +37,27 @@ What can be said about the four fundamental subspaces when $Ax=b$ has an
 unique solution, no solution, and infinitely many solutions?
 \begin{mdframed}[style=MyFrame]
     \begin{enumerate}[label=(\alph*)]
-        \item If a system has an unique solution then the matrix is of full
-            rank. Therefore, both the row and column space have dimensions
-            of $n$, and both the null space and left null space have
-            dimensions of $0$.
+        \item If a system has an unique solution if, 
+            \begin{enumerate}[label=(\arabic*)]
+                \item $\text{dim}(N(A)) = 0$
+                \item $\text{rank} = \text{dim}(C(A))=n-\text{dim}(N(A)) =
+                    n$
+                \item $\text{dim}(C(A^{T})) = \text{dim}(C(A)) = n $
+                \item $\text{dim}(N(A^{T})) + \text{dim}(C(A^T)) = m$
+                \item $\text{dim}(N(A^{T}))=m-n$
+            \end{enumerate}
             
         \item If the system $Ax=b$ has no solution then the rows vectors do
             not intersect. Therefore, the dimensions of the column and row
-            space would be the number of pivots $r$, the null space
-            would have dimensions $n-r$, and the left null space would have
-            dimensions of $m-r$. 
+            space would be the number of pivots $r$, where $r<n$.
+            Additionally,  the null space would have dimensions $n-r>1$,
+            and lastly the left null space would have dimensions of
+            $m-r>m-n$. 
             
         \item Similarly, if a system has infinite solutions then the
-            dimensions of the column and row space would be equal to the
-            number of pivots $r$, and the dimensions of the null space
-            and left null space would be $n-r$ and $m-r$, respectively.
+            dimensions of the nullspace is larger than 1,
+            $\text{rank}(C(A))=\text{dim}(C(A))=\text{dim}(C(A^{T}))<n$,
+            etc.
     \end{enumerate}
 \end{mdframed}
 
@@ -99,16 +105,16 @@ zero matrix?
             From examination
             \begin{mdframed}[style=MyFrame]
                 \begin{equation}
-                    \text{dim}(C(A)) = r = 3
+                    \text{dim}(C(B)) = r = 3
                 \end{equation}
                 \begin{equation}
-                    \text{dim}(C(A^{T})) = r = 3
+                    \text{dim}(C(B^{T})) = r = 3
                 \end{equation}
                 \begin{equation}
-                    \text{dim}(N(A)) = n-r = 3 
+                    \text{dim}(N(B)) = n-r = 3 
                 \end{equation}
                 \begin{equation}
-                    \text{dim}(N(A^{T})) = m-r = 2 
+                    \text{dim}(N(B^{T})) = m-r = 2 
                 \end{equation}
             \end{mdframed}
     \item 
@@ -124,16 +130,16 @@ zero matrix?
         \begin{mdframed}[style=MyFrame]
             From examination
                 \begin{equation}
-                    \text{dim}(C(A)) = r = 0
+                    \text{dim}(C(C)) = r = 0
                 \end{equation}
                 \begin{equation}
-                    \text{dim}(C(A^{T})) = r = 0
+                    \text{dim}(C(C^{T})) = r = 0
                 \end{equation}
                 \begin{equation}
-                    \text{dim}(N(A)) = n-r = 2 
+                    \text{dim}(N(C)) = n-r = 2 
                 \end{equation}
                 \begin{equation}
-                    \text{dim}(N(A^{T})) = m-r = 4 
+                    \text{dim}(N(C^{T})) = m-r = 3 
                 \end{equation}
         \end{mdframed}
 \end{enumerate}

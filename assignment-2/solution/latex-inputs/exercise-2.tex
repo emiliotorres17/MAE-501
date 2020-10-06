@@ -49,8 +49,8 @@ Thus,
     \begin{equation}
         U =
         \begin{bmatrix}
-            1       &   -1  &   0    \\
-            0       &   1   &   0   \\
+            1       &   -1  &   0       \\
+            0       &   1   &   -1      \\
             0       &   0   &   2
         \end{bmatrix}
     \end{equation}
@@ -121,7 +121,6 @@ Thus,
            \right\}
     \end{equation}
 \end{mdframed}
-
 %-------------------------------------------------------------------------%
 % Part b.                                                                 %
 %-------------------------------------------------------------------------%
@@ -135,65 +134,82 @@ Thus,
         5           &           16      &       25  
     \end{bmatrix}
 \end{equation}
-Starting by switching rows $r_{3}$ and $r_{2}$ using the permutation matrix 
-$P$,
-\begin{equation}
-    P =
-    \begin{bmatrix}
-        1       &   0   &   0   &   0   \\
-        0       &   0   &   1   &   0   \\
-        0       &   1   &   0   &   0   \\
-        0       &   0   &   0   &   1 
-    \end{bmatrix}
-\end{equation}
-and augmenting $PB$ with $I$,
+Starting with the augmented matrix
 \begin{equation}
     B^{\ast} =
     \begin{bmatrix}[ccc|cccc]
-        1           &           2       &       5       &       1   &   0   &   0   &   0   \\       
-        0           &           1       &       0       &       0   &   1   &   0   &   0   \\        
-        3           &           6       &       15      &       0   &   0   &   1   &   0   \\        
-        5           &           16      &       25      &       0   &   0   &   0   &   1        
+        1           &           2       &       5   &   1   &   0   &   0   &   0   \\
+        3           &           6       &       15  &   0   &   1   &   0   &   0   \\   
+        0           &           1       &       0   &   0   &   0   &   1   &   0   \\
+        5           &           16      &       25  &   0   &   0   &   0   &   1
     \end{bmatrix}
 \end{equation}
-We can perform the forward elimination using the following operations:
+Furthermore, performing the following row operations
 \begin{enumerate}[label=(\arabic*)]
-    \item $r_{3} \rightarrow r_{3} - 3r_{1} $
+    \item $r_{2} \rightarrow r_{2} - 3r_{1} $
     \item $r_{4} \rightarrow r_{4} - 5r_{1} $
-    \item $r_{4} \rightarrow r_{4} - 6r_{2} $
+    \item Switching $r_{2}$ and $r_{3}$
+    \item $r_{4} \rightarrow r_{4} - 6r_{1}$
 \end{enumerate}
-Which gives
+gives,
 \begin{equation}
     B^{\ast} =
     \begin{bmatrix}[ccc|cccc]
-        1           &           2       &       5       &       1   &   0   &   0   &   0   \\       
-        0           &           0       &       0       &       0   &   1   &   0   &   0   \\        
-        0           &           1       &       0       &       -3  &   0   &   1   &   0   \\        
-        0           &           0       &       0       &       -5  &   -6  &   0   &   1        
+        1           &           2       &       5   &   1   &   0   &   0   &   0   \\
+        0           &           1       &       0   &   0   &   0   &   1   &   0   \\   
+        0           &           0       &       0   &   -3  &   1   &   0   &   0   \\
+        0           &           0       &       0   &   -5  &   -6  &   0   &   1
     \end{bmatrix}
 \end{equation}
-Thus
+which transforms our original $B$ matrix to an upper diagonal matrix.
+moreover, to find the $L$ factor we have to use the matrix operations
+performed to transform $B$ into an upper diagonal matrix, namely
+\begin{equation}
+    L^{-1}PB = U
+\end{equation}
+where
+\begin{equation}
+    L^{-1}P = E_{42} P_{23} E_{41} E_{21}
+\end{equation}
+Therefore we can solve for $L$ by taking the inverse of $P$ using $P^{-1} =
+P^{T}$ and then taking the inverse, giving
+\begin{equation}
+    L^{-1} \underbrace{P P^{T}}_{I} = E_{42} P_{23} E_{41} E_{21} P_{23}^{T} 
+\end{equation}
+\begin{equation}
+    L = P^{-1}_{23} E^{-1}_{21} E^{-1}_{41} P^{-1}_{23} E^{-1}_{42}
+\end{equation}
+Thus,
 \begin{mdframed}[style=MyFrame]
     \begin{equation}
-        L =
-        \begin{bmatrix}
-            1       &   0   &   0   &   0   \\
-            0       &   1   &   0   &   0   \\
-            3       &   0   &   1   &   0   \\
-            5       &   6   &   0   &   1
-        \end{bmatrix}
+        PB = LU
     \end{equation}
+\end{mdframed}
+where
+\begin{mdframed}[style=MyFrame]
     \begin{equation}
-        U =
+        L = 
         \begin{bmatrix}
-            1       &   2   &   5       \\
-            0       &   1   &   0       \\
-            0       &   0   &   0       \\
-            0       &   0   &   0
+            1   &   0   &   0   &   0   \\
+            0   &   1   &   0   &   0   \\
+            3   &   0   &   1   &   0   \\
+            5   &   6   &   0   &   1
         \end{bmatrix}
     \end{equation}
 \end{mdframed}
-We can finish the elimination using $r_{1} \rightarrow r_{1} - 2r_{2}$ giving 
+and 
+ \begin{mdframed}[style=MyFrame]
+    \begin{equation}
+        U = 
+        \begin{bmatrix}
+            1   &   2   &   5       \\
+            0   &   1   &   0       \\
+            0   &   0   &   0       \\
+            0   &   0   &   0
+        \end{bmatrix}
+    \end{equation}
+ \end{mdframed}
+Furthermore, we can complete the elimination process using $r_{1} \rightarrow r_{1} - 2r_{2}$ giving 
 \begin{equation}
     B^{\ast} =
     \begin{bmatrix}[ccc|cccc]
@@ -214,8 +230,12 @@ This gives the row reduced echelon form as
              0                          &           0           &       0      
         \end{bmatrix}
     \end{equation}
-    Therefore $\text{rank}(B)=2$ and the pivots and free are labelled in red and green, respectively.
+Therefore $\text{rank}(B)=2$ and the pivots and free are labelled in red and green, respectively.
 \end{mdframed}
+
+
+
+
 Moreover, we can express basis of the column and row space as 
 \begin{mdframed}[style=MyFrame]
     \begin{equation}
@@ -329,14 +349,14 @@ Thus,
         \begin{bmatrix}
             1       &   0   &   0   \\
             1       &   1   &   0   \\
-            2       &   1   &   0
+            2       &   1   &   1
         \end{bmatrix}
     \end{equation}
     \begin{equation}
         U =
         \begin{bmatrix}
             1       &   1   &   1   \\
-            0       &   -2  &   1   \\
+            0       &   -2  &   -1  \\
             0       &   0   &   3
         \end{bmatrix}
     \end{equation}
