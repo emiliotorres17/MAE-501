@@ -1,0 +1,349 @@
+\section{Exercise 3}
+%-------------------------------------------------------------------------%
+% Part a.                                                                 %
+%-------------------------------------------------------------------------%
+\subsection{Part a.}
+Find the matrix that transforms a vector $(x_{1}, x_{2}, x_{3})$ into 
+$(x_{2}, x_{3}, x_{1})$ in 3D. Verify that this is a rotation matrix and
+give its axis and angle of rotation.
+%-------------------------------------------------------------------------%
+% Part b.                                                                 %
+%-------------------------------------------------------------------------%
+\subsection{Part b.}
+Find the orthonormal vector $\mathbf{q}_{1}$, $\mathbf{q}_{2}$, and 
+$\mathbf{q}_{3}$ such that $\mathbf{q}_{1}$ and $\mathbf{q}_{2}$ span the
+column space of $\mathbf{A}$.
+\begin{equation}
+    \mathbf{A} =
+    \begin{bmatrix}
+        1       &       1       \\
+        2       &       -1      \\
+        -2      &       4       
+    \end{bmatrix}
+\end{equation}
+\begin{enumerate}[label=(\arabic*)]
+    \item Which of the four fundamental subspaces contain $\mathbf{q}_{1}$?
+    \item Solve $\mathbf{A}\mathbf{x} = (4,2,2)$ by least squares?
+\end{enumerate}
+%-------------------------------------------------------------------------%
+% Part c.                                                                 %
+%-------------------------------------------------------------------------%
+\subsection{Part c.}
+Find an orthonormal basis for the column space of $\mathbf{A}$ and compute
+the projection of $\mathbf{b}$ onto that column space:
+\begin{equation}
+    \mathbf{A} =
+    \begin{bmatrix}
+        1       &       -2  \\
+        1       &       0   \\
+        1       &       1   \\
+        4       &       2   \\
+    \end{bmatrix}
+\end{equation}
+\begin{mdframed}
+    We start by finding $C(A)$ using $\text{rref}(A)$,
+    \begin{equation}
+        \text{rref}(A) = 
+        \begin{bmatrix}
+            1       &       0   \\
+            0       &       1   \\
+            0       &       0   \\
+            0       &       0   \\
+        \end{bmatrix}
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        C(A) =
+        \begin{bmatrix}
+        1       &       -2  \\
+        1       &       0   \\
+        1       &       1   \\
+        4       &       2   \\
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+            c_{1}   &   c_{2}
+        \end{bmatrix}
+    \end{equation}
+    Next, we can perform the Gram-Schmidt process to find an orthogonal
+    basis, namely
+    \begin{equation}
+        v_{1} = c_{1} =   
+        \begin{bmatrix}
+            1       \\
+            1       \\
+            1       \\
+            4
+        \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+        v_{2}   = c_{2} - \frac{v_{1}^{T}c_{2}}{v_{1}^{T}v_{1}} v_{1}
+                = 
+                \begin{bmatrix}
+                    -3      \\
+                    -1      \\
+                    0       \\
+                    2
+                \end{bmatrix}
+    \end{equation}
+    Lastly, we can divide through by the magnitudes to normalize the
+    vectors
+    \begin{equation}
+        \mathbf{q}_{1}  = \frac{v_{1}}{\norm{v_{1}}
+                        = \frac{}
+
+%-------------------------------------------------------------------------%
+% Part d.                                                                 %
+%-------------------------------------------------------------------------%
+\subsection{Part d.}
+Find orthogonal vectors $\mathbf{A}$, $\mathbf{B}$, and $\mathbf{C}$ by
+Gram-Schmidt from
+\begin{equation}
+    a = 
+    \begin{bmatrix}
+        1       \\
+        1       \\
+        2
+    \end{bmatrix}
+    \text{ and }
+    b = 
+    \begin{bmatrix}
+        1       \\
+        -1      \\
+        0
+    \end{bmatrix}
+    \text{ and }
+    c = 
+    \begin{bmatrix}
+        1       \\
+        0       \\
+        4
+    \end{bmatrix}
+\end{equation}
+\begin{mdframed}[style=MyFrame]
+    Begin by choosing $\mathbf{A}=\mathbf{a}$. Next, start with
+    $\mathbf{b}$ and subtract its projection along $\mathbf{A}$ using 
+    \begin{equation}
+        \mathbf{B} =  \mathbf{b} 
+                        - \frac{\mathbf{A}^{T} \mathbf{b} }
+                                {\mathbf{A}^{T} \mathbf{A}}
+                                \mathbf{A}
+    \end{equation}
+    which gives
+    \begin{equation}
+        \mathbf{B} = 
+        \begin{bmatrix}
+            1       \\
+            -1      \\
+            0
+        \end{bmatrix}
+        -
+        \frac{0}{6}
+        \begin{bmatrix}
+            1       \\
+            1       \\
+            2
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            1       \\
+            -1      \\
+            0
+        \end{bmatrix}
+    \end{equation}
+    Continuing we can perform the next Gram-Schmidt step by subtracting off
+    the projections of $\mathbf{c}$ from $\mathbf{A}$ and $\mathbf{B}$,
+    using
+    \begin{equation}
+        \mathbf{C} =  \mathbf{c} 
+                        - \frac{\mathbf{A}^{T} \mathbf{c} }
+                                {\mathbf{A}^{T} \mathbf{A}}
+                                \mathbf{A}
+                        - \frac{\mathbf{B}^{T} \mathbf{c} }
+                                {\mathbf{B}^{T} \mathbf{B}}
+                                \mathbf{B}
+    \end{equation}
+    giving
+    \begin{equation}
+        \mathbf{C} = 
+        \begin{bmatrix}
+            1       \\
+            0       \\
+            4
+        \end{bmatrix}
+        -
+        \frac{9}{6}
+        \begin{bmatrix}
+            1       \\
+            1       \\
+            2
+        \end{bmatrix}
+        -
+        \frac{1}{2}
+        \begin{bmatrix}
+            1       \\
+            -1      \\
+            0
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            -1      \\
+            -1      \\
+            1
+        \end{bmatrix}
+    \end{equation}
+    Lastly we can normalize the vectors by dividing by their magnitudes,
+    \begin{equation}
+        \frac{\mathbf{A}}{\norm{\mathbf{A}}} =
+            \frac{1}{\sqrt{6}}
+            \begin{bmatrix}
+                1       \\
+                1       \\
+                2
+            \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+        \frac{\mathbf{B}}{\norm{\mathbf{B}}} =
+            \frac{1}{\sqrt{2}}
+            \begin{bmatrix}
+                1       \\
+                -1      \\
+                0
+            \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+        \frac{\mathbf{C}}{\norm{\mathbf{C}}} =
+            \frac{1}{\sqrt{3}}
+            \begin{bmatrix}
+                -1      \\
+                -1      \\
+                1
+            \end{bmatrix}
+    \end{equation}
+\end{mdframed}
+%-------------------------------------------------------------------------%
+% Part e.                                                                 %
+%-------------------------------------------------------------------------%
+\subsection{Part e.}
+Find $\mathbf{q}_{1}$, $\mathbf{q}_{2}$, and $\mathbf{q}_{3}$ (orthonormal)
+as combination of $\mathbf{a}$, $\mathbf{b}$, and $\mathbf{c}$ (independent
+columns). Then write $\mathbf{A}$ as $\mathbf{QR}$.
+\begin{equation}
+    \mathbf{A} =
+    \begin{bmatrix}
+        1       &       2       &   4   \\
+        0       &       0       &   5   \\
+        0       &       3       &   6
+    \end{bmatrix}
+\end{equation}
+
+\begin{mdframed}[style=MyFrame]
+    We start by finding $\mathbf{q}_{1}$, $\mathbf{q}_{2}$, and
+    $\mathbf{q}_{3}$ using
+    \begin{equation}
+        \mathbf{q}_{1} = \frac{A}{\norm{A}}
+    \end{equation}
+    \begin{equation}
+        \mathbf{q}_{2} = \frac{B}{\norm{B}}
+    \end{equation}
+    \begin{equation}
+        \mathbf{q}_{3} = \frac{C}{\norm{C}}
+    \end{equation}
+    where $\mathbf{A}$, $\mathbf{B}$, and $\mathbf{C}$ are found from the
+    Gram-Schmidt process, namely
+    \begin{equation}
+        \mathbf{A} = \mathbf{a} = 
+        \begin{bmatrix}
+            1   \\
+            0   \\
+            0   \\
+        \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+        \mathbf{B} = 
+        \mathbf{\mathbf{b}} 
+        - \frac{ \mathbf{A}^{T} \mathbf{b} }{ \mathbf{A}^{T}\mathbf{A} }\mathbf{A}
+        =
+        \begin{bmatrix}
+            0   \\
+            0   \\
+            3   \\
+        \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+        \mathbf{C} = 
+        \mathbf{c} 
+        - \frac{ \mathbf{A}^{T} \mathbf{c} }{ \mathbf{A}^{T}\mathbf{A} }\mathbf{A}
+        - \frac{ \mathbf{B}^{T} \mathbf{c} }{ \mathbf{B}^{T}\mathbf{B} }\mathbf{B}
+        =
+        \begin{bmatrix}
+            0   \\
+            5   \\
+            0   \\
+        \end{bmatrix}
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        \mathbf{q}_{1} =  
+        \begin{bmatrix}
+            1   \\
+            0   \\
+            0
+        \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+        \mathbf{q}_{2} =  
+        \begin{bmatrix}
+            0   \\
+            0   \\
+            1
+        \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+        \mathbf{q}_{3} =  
+        \begin{bmatrix}
+            0   \\
+            1   \\
+            0
+        \end{bmatrix}
+    \end{equation}
+    Lastly we can find $\mathbf{R}$ using,
+    \begin{equation}
+        \mathbf{R} =
+        \begin{bmatrix}
+            \mathbf{q}_{1}^{T}\mathbf{a}    &   \mathbf{q}_{1}^{T}\mathbf{b}    &   \mathbf{q}_{1}^{T}  \mathbf{c}  \\
+            0                               &   \mathbf{q}_{2}^{T}\mathbf{b}    &   \mathbf{q}_{2}^{T}  \mathbf{c}  \\
+            0                               &   0                               &   \mathbf{q}_{3}^{T}  \mathbf{c}  \\
+        \end{bmatrix}
+    \end{equation}
+    Thus,
+    \begin{equation}
+        \begin{bmatrix}
+            \mathbf{a}      &       \mathbf{b}      &   \mathbf{c}  
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+            \mathbf{q}_{1}  &       \mathbf{q}_{2}  &   \mathbf{q}_{3}  
+        \end{bmatrix}
+        \begin{bmatrix}
+            \mathbf{q}_{1}^{T}\mathbf{a}    &   \mathbf{q}_{1}^{T}\mathbf{b}    &   \mathbf{q}_{1}^{T}  \mathbf{c}  \\
+            0                               &   \mathbf{q}_{2}^{T}\mathbf{b}    &   \mathbf{q}_{2}^{T}  \mathbf{c}  \\
+            0                               &   0                               &   \mathbf{q}_{3}^{T}  \mathbf{c}  \\
+        \end{bmatrix}
+        =
+        \underbrace{
+            \begin{bmatrix}
+                1   &   0   &   0   \\
+                0   &   0   &   1   \\
+                0   &   1   &   0   \\
+            \end{bmatrix}
+        }_{=Q}
+        \underbrace{
+            \begin{bmatrix}
+                1   &   2   &   4   \\
+                0   &   3   &   6   \\
+                0   &   0   &   5   \\
+            \end{bmatrix}
+        }_{=R}
+    \end{equation}
+\end{mdframed}
