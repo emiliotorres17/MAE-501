@@ -22,9 +22,115 @@ column space of $\mathbf{A}$.
     \end{bmatrix}
 \end{equation}
 \begin{enumerate}[label=(\arabic*)]
-    \item Which of the four fundamental subspaces contain $\mathbf{q}_{1}$?
-    \item Solve $\mathbf{A}\mathbf{x} = (4,2,2)$ by least squares?
+    \item Which of the four fundamental subspaces contain $\mathbf{q}_{3}$?
+    \item Solve $\mathbf{A}\mathbf{x} = (4,5,2)$ by least squares?
 \end{enumerate}
+\begin{mdframed}[style=MyFrame]
+    We can start by finding two orthonormal vectors $\mathbf{q}_{1}$ and
+    $\mathbf{q}_{2}$ that span the column space,
+    \begin{equation}
+        \mathbf{q}_{1} =  \frac{\mathbf{v}_{1}}{\norm{\mathbf{v}_{1}}}
+        \label{eq:part-b-q1}
+    \end{equation}
+    \begin{equation}
+        \mathbf{q}_{2} =  \frac{\mathbf{v}_{2}}{\norm{\mathbf{v}_{2}}}
+        \label{eq:part-b-q2}
+    \end{equation}
+    where,
+    \begin{equation}
+        \mathbf{v}_{1} = \mathbf{a}_{1} =  
+        \begin{bmatrix}
+            1   \\
+            2   \\
+            -2
+        \end{bmatrix}
+    \end{equation}
+    and 
+    \begin{equation}
+        \mathbf{v}_{2} = 
+        \mathbf{a}_{2} 
+        - \frac{\mathbf{v}_{1}^{T} - \mathbf{a}_{2}}
+            {\mathbf{v}_{1}^{T}\mathbf{v}_{1}}\mathbf{v}_{1}=  
+        \begin{bmatrix}
+            2   \\
+            1   \\
+            2
+        \end{bmatrix}
+    \end{equation}
+    Substituting $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$ into
+    Eqs.~(\ref{eq:part-b-q1} \& \ref{eq:part-b-q2}), respectively, gives
+    \begin{equation}
+        \mathbf{q}_{1} = 
+        \frac{1}{3}
+        \begin{bmatrix}
+            1       \\
+            2       \\
+            -2
+        \end{bmatrix}
+    \end{equation}
+    and 
+    \begin{equation}
+        \mathbf{q}_{2} =
+        \frac{1}{3}
+        \begin{bmatrix}
+            2       \\
+            1       \\
+            2
+        \end{bmatrix}
+    \end{equation}
+    \newcommand{\qvec}[1]{\mathbf{q}_{#1}}
+    Next, we can define $\qvec{3}$ as
+    \begin{equation}
+        \qvec{3} =
+        \begin{bmatrix}
+            a       \\
+            b       \\
+            c
+        \end{bmatrix}
+    \end{equation}
+    and use the following relationships to determine $a$, $b$, and $c$,
+    \begin{equation}
+        \qvec{1}^{T}\qvec{3} = 0 \rightarrow
+                \frac{1}{3} (a + 2b -2c) = 0
+    \end{equation}
+    \begin{equation}
+        \qvec{2}^{T}\qvec{3} = 0 \rightarrow
+                \frac{1}{3} (2a + b + 2c) = 0
+    \end{equation}
+    \begin{equation}
+        \norm{\qvec{3}} = 1 \rightarrow a^{2} + b^{2} + c^{2} = 1
+    \end{equation}
+    Solving the first two equations in terms of $c$ we get
+    \begin{equation}
+        a = -2c
+    \end{equation}
+    and 
+    \begin{equation}
+        b = 2c
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        4c^{2} + 4c^{2} + c^{2} = 1
+    \end{equation}
+    Thus, 
+    \begin{equation}
+        c = \pm \frac{1}{3}
+    \end{equation}
+    and 
+    \begin{equation}
+        \qvec{3} =
+        \pm
+        \frac{1}{3}
+        \begin{bmatrix}
+            -2      \\
+            2       \\
+            1
+        \end{bmatrix}
+    \end{equation}
+    Lastly, since $\qvec{1}$ and $\qvec{2}$ span the column space and
+    $\qvec{3}$ is perpendicular to them implies that $\qvec{3}$ is the left
+    null space.
+\end{mdframed}
 %-------------------------------------------------------------------------%
 % Part c.                                                                 %
 %-------------------------------------------------------------------------%
@@ -40,57 +146,82 @@ the projection of $\mathbf{b}$ onto that column space:
         4       &       2   \\
     \end{bmatrix}
 \end{equation}
-\begin{mdframed}
-    We start by finding $C(A)$ using $\text{rref}(A)$,
+\begin{mdframed}[style=MyFrame]
+    We start with by first finding orthonormal vectors that span the column
+    space $\mathbf{q}_{1}$ and $\mathbf{q}_{2}$ using
     \begin{equation}
-        \text{rref}(A) = 
-        \begin{bmatrix}
-            1       &       0   \\
-            0       &       1   \\
-            0       &       0   \\
-            0       &       0   \\
-        \end{bmatrix}
+        \mathbf{q}_{1} =
+            \frac{\mathbf{v}_{1}}{\norm{\mathbf{v}_{1}}}
     \end{equation}
-    Therefore,
+    and 
     \begin{equation}
-        C(A) =
-        \begin{bmatrix}
-        1       &       -2  \\
-        1       &       0   \\
-        1       &       1   \\
-        4       &       2   \\
-        \end{bmatrix}
-        = 
-        \begin{bmatrix}
-            c_{1}   &   c_{2}
-        \end{bmatrix}
+        \mathbf{q}_{2} =
+            \frac{\mathbf{v}_{2}}{\norm{\mathbf{v}_{2}}}
     \end{equation}
-    Next, we can perform the Gram-Schmidt process to find an orthogonal
-    basis, namely
+    Where the direction vectors are found from the Gram-Schmidt process, namely
     \begin{equation}
-        v_{1} = c_{1} =   
+        \mathbf{v}_{1} = \mathbf{x}_{1} = 
         \begin{bmatrix}
             1       \\
             1       \\
             1       \\
-            4
+            1
         \end{bmatrix}
     \end{equation}
     \begin{equation}
-        v_{2}   = c_{2} - \frac{v_{1}^{T}c_{2}}{v_{1}^{T}v_{1}} v_{1}
-                = 
+        \mathbf{v}_{2} = 
+                \mathbf{x}_{2} 
+                - \frac{\mathbf{x}_{1}^{T}\mathbf{x}_{2}}
+                {\mathbf{x}_{1}^{T} \mathbf{x}_{1}}
+                \mathbf{x}_{1}
+                =
                 \begin{bmatrix}
-                    -3      \\
-                    -1      \\
-                    0       \\
-                    2
+                    -5/2        \\
+                    -1/2        \\
+                    1/2         \\
+                    5/2
                 \end{bmatrix}
     \end{equation}
-    Lastly, we can divide through by the magnitudes to normalize the
-    vectors
-    \begin{equation}
-        \mathbf{q}_{1}  = \frac{v_{1}}{\norm{v_{1}}
-                        = \frac{}
+    Therefore,
+        \begin{equation}
+            \mathbf{q}_{1} = 
+            \frac{1}{2}
+            \begin{bmatrix}
+                1       \\
+                1       \\
+                1       \\
+                1       
+            \end{bmatrix}
+        \end{equation}
+        and 
+        \begin{equation}
+            \mathbf{q}_{2} = 
+            \frac{1}{\sqrt{13}}
+            \begin{bmatrix}
+                -5/2    \\
+                -1/2    \\
+                1/2     \\
+                5/2       
+            \end{bmatrix}
+        \end{equation}
+    Next we can find the perpendicular direction of basis using,
+        \begin{equation}
+            \mathbf{p}  = \left( \mathbf{q}_{1}^{T} \mathbf{b} \right) \mathbf{q}_{1}
+                            + \left( \mathbf{q}_{2}^{T} \mathbf{b} \right) \mathbf{q}_{2}
+        \end{equation} 
+        Last, we can subtract the projection of $\mathbf{b}$ along the basis leaving
+        the perpendicular part. Thus
+        \begin{equation}
+            \mathbf{b} - \mathbf{p} = 
+                \frac{1}{2}
+                \begin{bmatrix}
+                    -1      \\
+                    -3      \\
+                    7       \\
+                    -3
+                \end{bmatrix}
+        \end{equation}
+\end{mdframed}
 
 %-------------------------------------------------------------------------%
 % Part d.                                                                 %

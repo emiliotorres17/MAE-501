@@ -1,0 +1,283 @@
+\newcommand{\matA}{\mathbf{A}}
+\newcommand{\matB}{\mathbf{B}}
+\section{Exercise 2}
+\subsection{Part a.}
+Suppose $\mathbf{A}$ is $3 \times 4$ and $\mathbf{B}$ is $4 \times 5$ and
+$\matA \matB =0$. So $N(\matA)$ contains $C(\matB)$. Prove from the
+dimensions of $N(\matA)$ and $C(\matB)$ that $\text{rank}(\matA) +
+\text{rank}(\matB) \leq 4$. 
+
+\begin{mdframed}[style=MyFrame]
+    since the $N(A)$ contains the $C(B)$ means the dimensions of $C(B) \leq
+    \text{ dimension } N(A)$. Thus $\text{rank}(B) \leq 4 - \text{
+        rank}(A)$.
+\end{mdframed}
+
+\subsection{Part b.}
+For four non-zero vectors $\mathbf{r}$, $\mathbf{n}$, $\mathbf{c}$,
+$\mathbf{l}$, in $\mathbb{R}^{2}$
+\begin{enumerate}[label=(\alph*)]
+    \item What are the conditions for those to be bases for the four
+        fundamental subspaces for a $2 \times 2$ matrix?
+    \item What is one possible matrix $\matA$?
+\end{enumerate}
+
+\subsection{Part c.}
+Project the vector $\mathbf{b}$ onto the line through $\mathbf{a}$. Verify
+that the residual $\mathbf{e}$ is perpendicular to $\mathbf{a}$.
+\begin{equation}
+    \mathbf{b} = 
+    \begin{bmatrix}
+        1       \\
+        2       \\
+        2
+    \end{bmatrix}
+    \hspace{2.0cm} 
+    \mathbf{a} =
+    \begin{bmatrix}
+        1       \\
+        1       \\
+        1
+    \end{bmatrix}
+\end{equation}
+and 
+\begin{equation}
+    \mathbf{b} = 
+    \begin{bmatrix}
+        1       \\
+        3       \\
+        1
+    \end{bmatrix}
+    \hspace{2.0cm} 
+    \mathbf{a} =
+    \begin{bmatrix}
+        -1       \\
+        -3       \\
+        -1
+    \end{bmatrix}
+\end{equation}
+
+\begin{mdframed}[style=MyFrame]
+    We start by finding the projection of $\mathbf{b}$ onto $\mathbf{a}$,
+    \begin{equation}
+        P_{b}   =  \frac{\mathbf{a}^{T}\mathbf{b}}
+                        {\mathbf{a}^{T}\mathbf{a}}
+                        \mathbf{a}
+                = \frac{5}{3}
+                    \begin{bmatrix}
+                        1   \\
+                        1   \\
+                        1
+                    \end{bmatrix}
+    \end{equation}
+    Next we can verify that the residual $\mathbf{e}$ is perpendicular to
+    $\mathbf{a}$  by verifying that $\mathbf{a}^{T}\mathbf{e}=0$, namely
+    \begin{equation}
+        \mathbf{e}  =
+                    \mathbf{b} - P_{b} 
+                    =
+                    \begin{bmatrix}
+                        -2/3    \\
+                        1/3     \\
+                        1/3
+                    \end{bmatrix}
+    \end{equation}
+    thus, 
+    \begin{equation}
+        \mathbf{a}^{T}\mathbf{e} = 0
+    \end{equation}
+
+    We can use the same procedure as above the following problem. Starting
+    with finding the projection of $\mathbf{b}$ onto $\mathbf{a}$,
+    \begin{equation}
+        P_{b} =
+                \frac{\mathbf{a}^{T}\mathbf{b}}
+                        {\mathbf{a}^{T}\mathbf{a}}
+                        \mathbf{a}
+                =
+                -\frac{11}{11}
+                \begin{bmatrix}
+                    -1      \\
+                    -3      \\
+                    -1
+                \end{bmatrix}
+    \end{equation}
+    Next we can verify that the residual is perpendicular to $\mathbf{a}$
+    using the dot product, namely
+    \begin{equation}
+        \mathbf{e}  = \mathbf{b} - P_{b}
+                        \begin{bmatrix}
+                            0       \\
+                            0       \\
+                            0
+                        \end{bmatrix}
+    \end{equation}
+    Thus,
+    \begin{equation}
+        \mathbf{a}^{T}\mathbf{e} = 0
+    \end{equation}
+\end{mdframed}
+                    
+\subsection{Part d.}
+Project $\mathbf{b}$ onto the following subspaces
+\begin{equation}
+    \mathbf{b} =
+    \begin{bmatrix}
+        2       \\
+        3       \\
+        4  
+    \end{bmatrix}
+    \text{ onto span}
+    \Bigg\{
+        \begin{bmatrix}
+            1       \\
+            0       \\
+            0
+        \end{bmatrix}
+        ,
+        \begin{bmatrix}
+            1       \\
+            1       \\
+            0
+        \end{bmatrix}
+        \Bigg\}
+\end{equation}
+and 
+\begin{equation}
+    \mathbf{b} =
+    \begin{bmatrix}
+        4       \\
+        4       \\
+        6  
+    \end{bmatrix}
+    \text{ onto span}
+    \Bigg\{
+        \begin{bmatrix}
+            1       \\
+            0       \\
+            0
+        \end{bmatrix}
+        ,
+        \begin{bmatrix}
+            1       \\
+            1       \\
+            0
+        \end{bmatrix},
+        \begin{bmatrix}
+            1       \\
+            1       \\
+            1
+        \end{bmatrix}
+        \Bigg\}
+\end{equation}
+\begin{mdframed}[style=MyFrame]
+    We can start by defining the projection onto the span as,
+    \begin{equation}
+        P_{b} =  
+            \frac{\mathbf{v}_{1}^{T} \mathbf{b}}
+            {\mathbf{v}_{1} \mathbf{v}_{1}}
+            \mathbf{v}_{1}
+            +
+            \frac{\mathbf{v}_{2}^{T} \mathbf{b}}
+            {\mathbf{v}_{2} \mathbf{v}_{2}}
+            \mathbf{v}_{2}
+    \end{equation}
+    where $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$ are the column vectors of
+    the span. Substituting in the column vectors of the span gives,
+    \begin{equation}
+        P_{b} = 
+            \frac{2}{1}
+            \begin{bmatrix}
+                1       \\
+                0       \\
+                0
+            \end{bmatrix}
+            +
+            \frac{5}{2}
+            \begin{bmatrix}
+                1       \\
+                1       \\
+                0
+            \end{bmatrix}
+    \end{equation}
+    Thus,
+    \begin{equation}
+        P_{b} =
+        \begin{bmatrix}
+            9/2     \\
+            5/2     \\
+            0
+        \end{bmatrix}
+    \end{equation}
+    Next we can repeat the process for part two of the question,
+    \begin{equation}
+        P_{b} = 
+            \frac{\mathbf{v}_{1}^{T} \mathbf{b}}
+            {\mathbf{v}_{1} \mathbf{v}_{1}}
+            \mathbf{v}_{1}
+            +
+            \frac{\mathbf{v}_{2}^{T} \mathbf{b}}
+            {\mathbf{v}_{2} \mathbf{v}_{2}}
+            \mathbf{v}_{2}
+            +
+            \frac{\mathbf{v}_{3}^{T} \mathbf{b}}
+            {\mathbf{v}_{3} \mathbf{v}_{3}}
+            \mathbf{v}_{3}
+    \end{equation}
+    which gives,
+    \begin{equation}
+        P_{b} = 
+            \frac{4}{1}
+            \begin{bmatrix}
+                1       \\
+                0       \\
+                0
+            \end{bmatrix}
+            +
+            \frac{8}{2}
+            \begin{bmatrix}
+                1       \\
+                1       \\
+                0
+            \end{bmatrix}
+            +
+            \frac{14}{3}
+            \begin{bmatrix}
+                1       \\
+                1       \\
+                1
+            \end{bmatrix}
+    \end{equation}
+    Thus,
+    \begin{equation}
+        P_{b} =
+        \begin{bmatrix}
+            38/3    \\
+            26/3    \\
+            14/3
+        \end{bmatrix}
+    \end{equation}
+\end{mdframed}
+\subsection{Part e.}
+We seek to project $\mathbf{b}$ onto a subspace as given below. Explain why
+the usual approach based on solving $\matA^{T} \matA \widehat{\mathbf{x}} =
+\matA^{T} \mathbf{b}$ does not work, and propose a solution.
+\begin{equation}
+    \mathbf{b} =
+    \begin{bmatrix}
+        1   \\
+        2
+    \end{bmatrix}
+    \text{ onto span}
+    \Bigg\{
+        \begin{bmatrix}
+            3   \\
+            4
+        \end{bmatrix}
+        ,
+        \begin{bmatrix}
+            9   \\
+            12
+        \end{bmatrix}
+        \Bigg\}
+\end{equation}
