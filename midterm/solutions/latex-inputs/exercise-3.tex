@@ -18,11 +18,70 @@ solutions is
 \end{equation}
 \begin{enumerate}[label=(\alph*)]
     \item (3pts) What is the rank of the matrix $A$?
+        \begin{mdframed}[style=MyFrame]
+            From the problem statement we know that $\text{dim}(N(A))=1$,
+            therefore, $\text{dim}(C(A^{T})) +
+            \text{dim}(N(A)) = 3$.  Thus, we can conclude that 
+            $\text{rank}(A) = \text{dim}(C(A^{T})) = 2$.
+        \end{mdframed}
     \item (2pts) How many columns and rows does $A$ have? Give all
         possibilities.
+        \begin{mdframed}[style=MyFrame]
+            Again, from the problem statement we know since $x \in
+            \mathbb{R}^{3}$, therefore $A$ has 3 columns.  Furthermore, we know
+            that $m = \text{dim}(C(A^{T})) + \text{dim}(N(A)) = 2 +
+            \text{dim}(N(A))$, thus $ m \geq 2 $.
+        \end{mdframed}
     \item (2pts) Explain why the particular solution
         $\begin{bmatrix} 1  \\  0   \\  -4 \end{bmatrix}$ is not in the row
             space.
+            \begin{mdframed}[style=MyFrame]
+                From the scalar product between the particular solution,
+                $x_{p}$, and the special solution $x_{s}$, we see that 
+                \begin{equation}
+                    \begin{bmatrix}
+                        1   &   0   &   4
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        3   \\
+                        2   \\
+                        0
+                    \end{bmatrix}
+                    = 
+                    -1
+                    \neq 0
+                \end{equation}
+                Therefore since $x_{p}$ and $x_{s}$ are not orthogonal we
+                know that $x_{p}$ is also not orthogonal to the nullspace
+                and hence not in the row space of $A$.
+            \end{mdframed}
     \item (3pts) Find a particular solution which is in the row space.
+        \begin{mdframed}[style=MyFrame]
+            In order to find a particular solution in the row space of $A$,
+            which we can call $x_{p}^{\prime}$, we first need to remove
+            $x_{p}$'s projection onto the nullspace,
+            \begin{equation}
+                \begin{aligned}
+                    x_{p}^{\prime}  & =
+                            \left(I - \frac{x_{s}^{T}x_{s}}{x_{s}^{T}x_{s}}\right)x_{p} \\
+                                & = x_{p} - \frac{x_{s}^{T}x_{p}}{x_{s}^{T}x_{s}} x_{s} \\
+                                & = 
+                                \begin{bmatrix}
+                                    16/13   \\
+                                    12/13   \\
+                                    -4
+                                \end{bmatrix}
+                \end{aligned}
+            \end{equation}
+            Lastly, we can verify $x_{p}^{\prime}$ is a solution to $A$ using the following,
+            \begin{equation}
+                A x_{p}^{\prime} = A x_{p} -
+                                    \frac{x_{s}^{T} x_{p}}{x_{s}^{T}x_{s}} 
+                                    \cancelto{0}{A x_{s}}
+            \end{equation}
+            Thus,
+            \begin{equation}
+                Ax_{p}^{\prime} = A x_{p} = b
+            \end{equation}
+        \end{mdframed}
 \end{enumerate}
-
