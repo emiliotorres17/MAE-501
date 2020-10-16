@@ -1,0 +1,125 @@
+\section{Exercise 1}
+Given the matrix 
+\begin{equation}
+    A = 
+    \begin{bmatrix}
+        0       &       0       &       6       \\
+        1       &       2       &       3       \\
+        0       &       4       &       5
+    \end{bmatrix}
+\end{equation}
+
+\begin{enumerate}[label=(\alph*)]
+    \item (4pts) Find the permutation $P$ that makes $PA$ upper triangular.
+        (Explain you process)
+
+        \begin{mdframed}[style=MyFrame]
+            We start by swapping $r_{1}$ and $r_{2}$ using,
+            \begin{equation}
+                P_{21} =
+                \begin{bmatrix}
+                    0       &       1       &       0       \\
+                    1       &       0       &       1       \\
+                    0       &       0       &       1
+                \end{bmatrix}
+            \end{equation}
+            which gives
+            \begin{equation}
+                P_{21}A = 
+                \begin{bmatrix}
+                    1       &       2       &       3       \\
+                    0       &       0       &       6       \\
+                    0       &       4       &       5
+                \end{bmatrix}
+            \end{equation}
+            Next we can use
+            \begin{equation}
+                P_{23} =
+                \begin{bmatrix}
+                    1       &       0       &       0       \\
+                    0       &       0       &       1       \\
+                    0       &       1       &       0
+                \end{bmatrix}
+            \end{equation}
+            to switch $r_{2}$ and $r_{3}$ giving, 
+            \begin{equation}
+                P_{23} P_{21} A = 
+                \begin{bmatrix}
+                    1       &       2       &       3       \\
+                    0       &       4       &       5       \\
+                    0       &       0       &       6  
+                \end{bmatrix}
+            \end{equation}
+            Thus,
+            \begin{equation}
+                P = P_{23}P_{21} = 
+                \begin{bmatrix}
+                    0       &       1       &       0       \\
+                    0       &       0       &       1       \\
+                    1       &       0       &       0       
+                \end{bmatrix}
+            \end{equation}
+        \end{mdframed}
+    \item (2pts) Is $PA$ invertible? Explain why.
+        \begin{mdframed}[style=MyFrame]
+            Yes, since $PA$ is an upper triangular matrix with non-zero
+            diagonal entries means that it is of full rank.
+        \end{mdframed}
+    \item (2pts) Using properties of permutation matrices, find the inverse
+        of $P$.
+        \begin{mdframed}[style=MyFrame]
+            Using $P^{-1}=P^{T}$ we can easily obtain the inverse of $P$,
+            namely 
+            \begin{equation}
+                P^{-1} = P^{T} = 
+                \begin{bmatrix}
+                    0       &       0       &       1       \\
+                    1       &       0       &       0       \\
+                    0       &       1       &       0       \\
+                \end{bmatrix}
+            \end{equation}
+        \end{mdframed}
+    \item (2pts) Calculate $A^{-1}$.
+        \begin{mdframed}[style=MyFrame]
+            We can easily find the inverse of $A$ using 
+            \begin{equation}
+                \left(PA\right)^{-1} = A^{-1} P^{-1}
+            \end{equation}
+            Solving $A^{-1}$ we get 
+            \begin{equation}
+                A^{-1} = \left(PA\right)^{-1}P
+            \end{equation}
+            Next we can use an augmented matrix approach to determine
+            $(PA)^{-1}$, namely
+            \begin{equation}
+                \begin{bmatrix}[c|c]
+                    PA  &   I
+                \end{bmatrix}
+                = 
+                \begin{bmatrix}[ccc|ccc]
+                    1   &   2   &   3   &   1   &   0   &   0   \\
+                    0   &   4   &   5   &   0   &   1   &   0   \\
+                    0   &   0   &   6   &   0   &   0   &   1
+                \end{bmatrix}
+            \end{equation}
+            Furthermore, after performing all the backwards eliminations 
+            and dividing through by the trace values we get the following
+            \begin{equation}
+                (PA)^{-1}   =
+                    \begin{bmatrix}
+                        1       &       -1/2        &       -1/12       \\
+                        0       &       1/4         &       -5/24       \\
+                        0       &       0           &       1/6
+                    \end{bmatrix}
+            \end{equation}
+            Thus,
+            \begin{equation}
+                A^{-1} = (PA)^{-1}P =
+                \begin{bmatrix}
+                    -1/12       &       1       &       -1/2        \\
+                    -5/24       &       0       &       1/4         \\
+                    1/6         &       0       &       0           
+                \end{bmatrix}
+            \end{equation}
+        \end{mdframed}
+\end{enumerate}

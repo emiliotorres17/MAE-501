@@ -6,6 +6,131 @@
 Find the matrix that transforms a vector $(x_{1}, x_{2}, x_{3})$ into 
 $(x_{2}, x_{3}, x_{1})$ in 3D. Verify that this is a rotation matrix and
 give its axis and angle of rotation.
+\begin{mdframed}[style=MyFrame]
+    First we start by rotating the axes shown in Fig.~(\ref{fig:rotation}),
+    which we can express in  matrix form as
+    \begin{equation}
+        R = 
+        {\color{red}
+        \begin{bmatrix}
+            \cos 90^{\circ}     &   -\sin 90^{\circ}    &   0   \\
+            \sin 90^{\circ}     &   \cos 90^{\circ}     &   0   \\
+            0                   &   0                   &   1
+        \end{bmatrix}
+        }
+        {\color{green}
+        \begin{bmatrix}
+            1                   &   0                   &   0                   \\
+            0                   &   \cos 90^{\circ}     &   -\sin 90^{\circ}    \\
+            0                   &   \sin 90^{\circ}     &   \cos 90^{\circ}     \\
+        \end{bmatrix}
+        }
+    \end{equation}
+    \begin{figure}[H]
+        \includegraphics[height=0.35\textheight]{media/rotation.png}
+        \caption{axes rotation}
+        \label{fig:rotation}
+    \end{figure}
+    Therefore,
+    \begin{equation}
+        R =
+        \begin{bmatrix}
+            0       &       0       &       1       \\
+            1       &       0       &       0       \\
+            0       &       1       &       0
+        \end{bmatrix}
+    \end{equation}
+    Next we can verify that $R$ is a rotational matrix with 
+    \begin{equation}
+        R
+        \begin{bmatrix}
+            x_{2}   \\
+            x_{3}   \\
+            x_{1}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            x_{1}   \\
+            x_{2}   \\
+            x_{3}
+        \end{bmatrix}
+    \end{equation}
+    and
+    \begin{equation}
+        \begin{bmatrix}
+            x_{2}   \\
+            x_{3}   \\
+            x_{1}
+        \end{bmatrix}
+        =
+        R^{T}
+        \begin{bmatrix}
+            x_{1}   \\
+            x_{2}   \\
+            x_{3}
+        \end{bmatrix}
+    \end{equation}
+    Therefore since $R$ is orthogonal and $R^{T}=R^{-1}$ verifies that $R$
+    is a rotational matrix. Next we can find the axis of rotation $a$ using 
+    $Ra=a \rightarrow (R-I)a = 0$, therefore the axis of rotation is the
+    basis of the nullspace of $R-I$. We can find the basis of the nullspace
+    from the row reduced echelon form
+    \begin{equation}
+        \text{rref}(R-I) =
+        \begin{bmatrix}
+            1   &   0   &   -1  \\
+            0   &   1   &   -1  \\
+            0   &   0   &   0
+        \end{bmatrix}
+    \end{equation}
+    Thus,
+    \begin{equation}
+        a =
+        \begin{bmatrix}
+            1   \\
+            1   \\
+            1
+        \end{bmatrix}
+    \end{equation}
+    Lastly, the angle of rotation can be found from the scalar product,
+    namely
+    \begin{equation}
+        \mathbf{x}^{T}R\mathbf{x} = \norm{\mathbf{x}} \norm{R\mathbf{x}}\cos \theta
+    \end{equation}
+    \begin{equation}
+        \cos \theta =
+                        \frac{\mathbf{x}^{T}R\mathbf{x}}
+                                {\norm{x}\norm{x}}
+    \end{equation}
+    where $\mathbf{x}$ is any vector that satisfies $\mathbf{x}^{T}a=0$.
+    Setting
+    \begin{equation}
+        \mathbf{x} =
+        \begin{bmatrix}
+            1   \\
+            -2   \\
+            1
+        \end{bmatrix}
+    \end{equation}
+    and solving for $\theta$ we can determine the axis of rotation,
+    \begin{equation}
+        \theta  =
+                \cos^{-1}
+                    \left(\frac{\mathbf{x}^{T}R\mathbf{x}}{\norm{\mathbf{x}}\norm{\mathbf{x}}}\right)
+                    =
+                    \cos^{-1}\left( -\frac{3}{6}\right)
+    \end{equation}
+    Thus,
+    \begin{equation}
+        \theta = 120^{\circ}
+    \end{equation}
+    \begin{figure}[H]
+        \includegraphics[height=0.35\textheight]{media/angle.png}
+        \caption{Angle of rotation}
+        \label{fig:angle}
+    \end{figure}
+
+\end{mdframed}
 %-------------------------------------------------------------------------%
 % Part b.                                                                 %
 %-------------------------------------------------------------------------%

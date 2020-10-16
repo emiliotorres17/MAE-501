@@ -2,19 +2,22 @@
     \begin{algorithm}[H]
         \DontPrintSemicolon
         \SetAlgoLined
-        \KwResult{Calculating $d$}
+        \KwResult{$QR$ Factorization}
         \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-        \Input{$a$, $b$, $c$, $d$}
-        \Output{$d$}
+        \Input{$A$}
+        \Output{$Q$, $R$}
         \BlankLine
-            \For{ i in range(1,N)}{
-                $m = a[i]/b[i]$\;
-                $b[i] = b[i]-m*c[i]$\;
-                $d[i] = d[i]-m*d[i]$\;
+            \For{ j in range(0,N)}{
+                $q = A(:,j)$\;
+                
+                \For{ i in range(0,j)}{
+                    $q = \text{ Gram-Schmidt Process} $
+                }
+                $Q(:,j) = q$
             }
-            $d[-1] = d[-1]/b[-1]$\;
-            \For{ i in range(N-2,-1, -1)}{
-                $d[i] = (d[i]-c[i]*d[i+1])/b[i]$\;
+            \For{ i in range(0,N)}{
+                $Q = \text{ normalize vectors }$
             }
-        \caption{Tri-diagonal solver subroutine}
+            $R = Q^{T}A$
+        \caption{$QR$ Factorization subroutine}
     \end{algorithm}

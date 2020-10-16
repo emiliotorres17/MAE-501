@@ -1,0 +1,164 @@
+\section{Exercise 2}
+Let $A$ be matrix
+\begin{equation}
+    A =
+    \begin{bmatrix}
+        1   &   2   &   3   &   1   \\
+        1   &   4   &   3   &   2   \\
+        -1   &   0   &   1   &   2
+    \end{bmatrix}
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+    \item (4pts) Calculate the $LU$ factorization of $A$.
+        \begin{mdframed}[style=MyFrame]
+            The $LU$ factorization can be obtained by first augmenting $A$
+            with a $3 \times 3$ identity matrix and performing row
+            operations to produce an upper triangular matrix,
+            \begin{equation}
+                \begin{bmatrix}[c|c]
+                    A   &   I
+                \end{bmatrix}
+                =
+                \begin{bmatrix}[cccc|ccc]
+                    1   &   2   &   3   &   1   &   1   &   0   &   0   \\
+                    1   &   4   &   3   &   2   &   0   &   1   &   0   \\
+                    -1  &   0   &   1   &   2   &   0   &   0   &   1   
+                \end{bmatrix}
+            \end{equation}
+            Performing $r_{2} = r_{2}-r_{1}$ and $r_{3} = r_{3} + r_{1}$
+            gives,
+            \begin{equation}
+                \begin{bmatrix}[cccc|ccc]
+                    1   &   2   &   3   &   1   &   1   &   0   &   0   \\
+                    0   &   2   &   0   &   1   &   -1  &   1   &   0   \\
+                    0   &   2   &   4   &   3   &   1   &   0   &   1   
+                \end{bmatrix}
+            \end{equation}
+            Next $r_{3} = r_{3}-r_{2}$
+            \begin{equation}
+                \begin{bmatrix}[cccc|ccc]
+                    1   &   2   &   3   &   1   &   1   &   0   &   0   \\
+                    0   &   2   &   0   &   1   &   -1  &   1   &   0   \\
+                    0   &   0   &   4   &   2   &   1   &   -1  &   1   
+                \end{bmatrix}
+            \end{equation}
+            Furthermore, $L$ can be obtained using the operations, namely
+            \begin{equation}
+                L^{-1} = E_{32}E_{31}E_{21}
+            \end{equation}
+            Therefore,
+            \begin{equation}
+                L = E_{21}^{-1} E_{31}^{-1} E_{32}^{-1}
+            \end{equation}
+            Thus,
+            \begin{equation}
+                U = 
+                \begin{bmatrix}
+                    1   &   2   &   3   &   1   \\
+                    0   &   2   &   0   &   1   \\
+                    0   &   0   &   4   &   2
+                \end{bmatrix}
+            \end{equation}
+            and 
+            \begin{equation}
+                L =
+                \begin{bmatrix}
+                    1   &   0   &   0   \\
+                    1   &   1   &   0   \\
+                    -1  &   1   &   1
+                \end{bmatrix}
+            \end{equation}
+        \end{mdframed}
+    \item (1pt) What is the rank of $A$?
+        \begin{mdframed}
+            Since $A$ has 3 pivots $\text{rank}(A)=3$.
+        \end{mdframed}
+    \item (2pts) What are the dimensions of the four fundamental subspaces
+        of $A$?
+        \begin{mdframed}[style=MyFrame]
+            \begin{equation}
+                \text{dim}(C(A^{T})) = 3
+            \end{equation}
+            \begin{equation}
+                \text{dim}(N(A)) = 4-3 = 1
+            \end{equation}
+            \begin{equation}
+                \text{dim}(C(A)) = 3
+            \end{equation}
+            \begin{equation}
+                \text{dim}(N(A^{T})) = 3-3 = 0
+            \end{equation}
+        \end{mdframed}
+
+    \item (3pts) Give the complete solution to $Ax=b$ with
+        \begin{equation}
+            b = 
+            A 
+            \begin{bmatrix}
+                1   \\
+                2   \\
+                3   \\
+                4
+            \end{bmatrix}
+        \end{equation}
+        \begin{mdframed}[style=MyFrame]
+            In order to find the complete solutions to the system we need
+            to find both the particular and special solutions. Clearly,
+            from the problem statement we can express the particular
+            solution as
+            \begin{equation}
+                x_{p} =
+                \begin{bmatrix}
+                    1       \\
+                    2       \\
+                    3       \\
+                    4
+                \end{bmatrix}
+            \end{equation}
+            Next we can find the \emph{\textbf{one}} special solution using
+            the nullspace of $A$ which we can find from the row reduced
+            echelon form, 
+            \begin{equation}
+                \text{rref}(A) =
+                \begin{bmatrix}
+                    1       &   0   &   0   &   -3/2    \\
+                    0       &   1   &   0   &   1/2     \\
+                    0       &   0   &   1   &   1/2
+                \end{bmatrix}
+            \end{equation}
+            Therefore,
+            \begin{equation}
+                N(A) =
+                \begin{bmatrix}
+                    -3      \\
+                    1       \\
+                    1       \\
+                    -2
+                \end{bmatrix}
+            \end{equation}
+            Thus, the complete solution is
+            \begin{equation}
+                \begin{bmatrix}
+                    1       \\
+                    2       \\
+                    3       \\
+                    4
+                \end{bmatrix}
+                +
+                \alpha
+                \begin{bmatrix}
+                    -3      \\
+                    1       \\
+                    1       \\
+                    -2
+                \end{bmatrix}
+            \end{equation}
+        \end{mdframed}
+\end{enumerate}
+
+
+
+
+
+
+                    

@@ -8,9 +8,21 @@ dimensions of $N(\matA)$ and $C(\matB)$ that $\text{rank}(\matA) +
 \text{rank}(\matB) \leq 4$. 
 
 \begin{mdframed}[style=MyFrame]
-    since the $N(A)$ contains the $C(B)$ means the dimensions of $C(B) \leq
+    Since the $N(A)$ contains the $C(B)$ means the dimensions of $C(B) \leq
     \text{ dimension } N(A)$. Thus $\text{rank}(B) \leq 4 - \text{
-        rank}(A)$.
+        rank}(A)$. Furthermore, since 
+    \begin{equation}
+        \text{dim}(N(A)) + \text{dim}(C(A^{T})) = 
+                \text{ number of columns } = 4
+    \end{equation}
+    and 
+    \begin{equation}
+        \text{dim}(C(A^{T})) = \text{rank}(A)
+    \end{equation}
+    we conclude
+    \begin{equation}
+        \text{rank}(B) \leq 4-\text{rank}(A)
+    \end{equation}
 \end{mdframed}
 
 \subsection{Part b.}
@@ -21,6 +33,27 @@ $\mathbf{l}$, in $\mathbb{R}^{2}$
         fundamental subspaces for a $2 \times 2$ matrix?
     \item What is one possible matrix $\matA$?
 \end{enumerate}
+\begin{mdframed}[style=MyFrame]
+    \begin{enumerate}[label=(\alph*)]
+        \item We suppose that $\mathbf{r}$ is a basis vector of the row space, $\mathbf{n}$
+            is a basis vector of the nullspace. The condition 
+            $\text{dim}(C(A^{T})) +\text{dim}(N(A)) =2 $ 
+            combined with the statement above
+            requires that 
+            $\text{dim}(C(A^{T}))=\text{dim}(N(A))=1$. 
+            Therefore, the bases of these two subspaces, contain exactly
+            one vector, $\mathbf{r}$ and $\mathbf{n}$ respectively. Since the nullspace and
+            row space are orthogonal complements, we have the condition
+            that all basis vectors of the row space must be perpendicular
+            to all basis vectors of the nullspace. Therefore $\mathbf{r}^{T}\mathbf{n}=0$.
+            Using the same argument we find the condition
+            $\mathbf{c}^{T}\mathbf{l}=0$.
+
+        \item Because this a rank 1 matrix, all possible examples have the
+            form $a\mathbf{c}\mathbf{r}^{T}$ with $a \ne 0$.
+    \end{enumerate}
+\end{mdframed}
+
 
 \subsection{Part c.}
 Project the vector $\mathbf{b}$ onto the line through $\mathbf{a}$. Verify
@@ -171,91 +204,28 @@ and
         \Bigg\}
 \end{equation}
 \begin{mdframed}[style=MyFrame]
-    We can start by defining the projection onto the span as,
+    The projection of $\mathbf{b}$ onto the span can be found using the
+    $\mathbf{p} =
+    \mathbf{A}(\mathbf{A}^{T}\mathbf{A})^{-1}\mathbf{A}^{T}\mathbf{b}$,
+    namely 
     \begin{equation}
-        P_{b} =  
-            \frac{\mathbf{v}_{1}^{T} \mathbf{b}}
-            {\mathbf{v}_{1} \mathbf{v}_{1}}
-            \mathbf{v}_{1}
-            +
-            \frac{\mathbf{v}_{2}^{T} \mathbf{b}}
-            {\mathbf{v}_{2} \mathbf{v}_{2}}
-            \mathbf{v}_{2}
+        \mathbf{p}  =
+                    \mathbf{A}(\mathbf{A}^{T}\mathbf{A})^{-1}\mathbf{A}^{T}\mathbf{b}               
+                    =
+                    \begin{bmatrix}
+                        2   \\
+                        3   \\
+                        0
+                    \end{bmatrix}
     \end{equation}
-    where $\mathbf{v}_{1}$ and $\mathbf{v}_{2}$ are the column vectors of
-    the span. Substituting in the column vectors of the span gives,
+    and
     \begin{equation}
-        P_{b} = 
-            \frac{2}{1}
-            \begin{bmatrix}
-                1       \\
-                0       \\
-                0
-            \end{bmatrix}
-            +
-            \frac{5}{2}
-            \begin{bmatrix}
-                1       \\
-                1       \\
-                0
-            \end{bmatrix}
-    \end{equation}
-    Thus,
-    \begin{equation}
-        P_{b} =
-        \begin{bmatrix}
-            9/2     \\
-            5/2     \\
-            0
-        \end{bmatrix}
-    \end{equation}
-    Next we can repeat the process for part two of the question,
-    \begin{equation}
-        P_{b} = 
-            \frac{\mathbf{v}_{1}^{T} \mathbf{b}}
-            {\mathbf{v}_{1} \mathbf{v}_{1}}
-            \mathbf{v}_{1}
-            +
-            \frac{\mathbf{v}_{2}^{T} \mathbf{b}}
-            {\mathbf{v}_{2} \mathbf{v}_{2}}
-            \mathbf{v}_{2}
-            +
-            \frac{\mathbf{v}_{3}^{T} \mathbf{b}}
-            {\mathbf{v}_{3} \mathbf{v}_{3}}
-            \mathbf{v}_{3}
-    \end{equation}
-    which gives,
-    \begin{equation}
-        P_{b} = 
-            \frac{4}{1}
-            \begin{bmatrix}
-                1       \\
-                0       \\
-                0
-            \end{bmatrix}
-            +
-            \frac{8}{2}
-            \begin{bmatrix}
-                1       \\
-                1       \\
-                0
-            \end{bmatrix}
-            +
-            \frac{14}{3}
-            \begin{bmatrix}
-                1       \\
-                1       \\
-                1
-            \end{bmatrix}
-    \end{equation}
-    Thus,
-    \begin{equation}
-        P_{b} =
-        \begin{bmatrix}
-            38/3    \\
-            26/3    \\
-            14/3
-        \end{bmatrix}
+        \mathbf{p}  =
+                    \begin{bmatrix}
+                        4   \\
+                        4   \\
+                        6
+                    \end{bmatrix}
     \end{equation}
 \end{mdframed}
 \subsection{Part e.}
@@ -281,3 +251,69 @@ the usual approach based on solving $\matA^{T} \matA \widehat{\mathbf{x}} =
         \end{bmatrix}
         \Bigg\}
 \end{equation}
+\begin{mdframed}[style=MyFrame]
+    We start by recognizing that the two column vectors are linearly
+    dependent therefore,
+    \begin{equation}
+        \text{span}
+        \Bigg\{
+            \begin{bmatrix}
+                3   \\
+                4
+            \end{bmatrix}
+            ,
+            \begin{bmatrix}
+                9   \\
+                12
+            \end{bmatrix}
+            \Bigg\}
+        =
+        \Bigg\{
+            \begin{bmatrix}
+                3   \\
+                4
+            \end{bmatrix}
+            \Bigg\}
+    \end{equation}         
+    \begin{equation}
+        \mathbf{s}
+        =
+        \text{span}
+        \Bigg\{
+            \begin{bmatrix}
+                3   \\
+                4
+            \end{bmatrix}
+            \Bigg\}
+    \end{equation}
+    using
+    \begin{equation}
+        \mathbf{p}  = 
+                    \frac{\mathbf{s}^{T}\mathbf{b}}
+                            {\mathbf{s}^{T}\mathbf{s}}
+                            \mathbf{s}
+                    =
+                    \frac{11}{25}
+                    \begin{bmatrix}
+                        3   \\
+                        4
+                    \end{bmatrix}
+    \end{equation}
+    Here solving 
+    $\mathbf{A}^{T}\mathbf{A}\widehat{\mathbf{x}} =
+    \mathbf{A}^{T}\mathbf{b}$, will not work since 
+    $\mathbf{A}^{T}\mathbf{A}$ is not invertible because $\mathbf{A}$ has
+    linearly dependent columns. The solution, is to find a basis of the
+    subspace and use the basis vector to compute a least squares solution
+    (i.e., projection) $\mathbf{B}^T\mathbf{B}
+    \widehat{\mathbf{x}}=\mathbf{B}^{T}\mathbf{b}$, where $\mathbf{B}$ is
+    the matrix with the basis vectors as columns.  Therefore we need to
+    find the projection of $\mathbf{b}$ onto 
+
+
+\end{mdframed}
+
+
+        
+    
+    
