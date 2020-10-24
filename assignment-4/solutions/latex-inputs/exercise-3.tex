@@ -1,0 +1,76 @@
+\section{Exercise 3}
+\begin{enumerate}
+    \item Solve these linear equations by Cramer's Rule.
+    \begin{equation}
+        2x_{1} + 5x_{2} = 1
+    \end{equation}
+    \begin{equation}
+        x_{1} + 4x_{2} = 2
+    \end{equation}
+    and 
+    \begin{equation}
+        2x_{1} +x_{2} =1
+    \end{equation}
+    \begin{equation}
+        x_{1} + 2x_{2} + x_{3} = 0
+    \end{equation}
+    \begin{equation}
+        x_{2} + 2x_{3} = 0
+    \end{equation}
+
+    \item Cramer's Rule breaks down when $\text{det}A=0$. Example (a) has
+        no solution while (b) has infinitely many. What are the ratios
+        $x_{j} = \text{det}B/\text{det}A$ in these two cases?
+        \begin{enumerate}[label=\alph*.]
+            \item Parallel lines 
+                \begin{equation}
+                    2x_{1} + 3x_{2} = 1
+                \end{equation}
+                \begin{equation}
+                    4x_{1} + 6x_{2} = 1
+                \end{equation}
+                
+            \item Same line
+                \begin{equation}
+                    2x_{1} + 3x_{2} = 1
+                \end{equation}
+                \begin{equation}
+                    4x_{1} + 6x_{2} =2 
+                \end{equation}
+        \end{enumerate}
+
+    \item Find $A^{-1}$ from the cofactor formula $C^{T}/\text{det}A$.
+        \begin{enumerate}[label=\alph*.]
+            \item 
+                \begin{equation}
+                    A =
+                    \begin{bmatrix}
+                        1 & 2 & 0 \\
+                        0 & 3 & 0 \\
+                        0 & 7 & 1
+                    \end{bmatrix}
+                \end{equation}
+
+            \item 
+                \begin{equation}
+                    A =
+                    \begin{bmatrix}
+                        2 & -1 & 0 \\
+                        -1 & 2 & -1 \\
+                        0 & -1 & 2
+                    \end{bmatrix}
+                \end{equation}
+        \end{enumerate}
+        
+    \item If all entries of $A$ and $A^{-1}$ are integers, prove that
+        $\text{det}A=1$ or $-1$.
+
+    \item Find the following:
+        \begin{enumerate}[label=\alph*.]
+            \item Find the area of the parallelogram with edges $v=(3,2)$
+                and $w=(1,4)$
+            \item Find the area of the triangle with sides $v$, $w$, and
+                $v+w$. 
+            \item Find the area of the triangle with sides $v$, $w$, and $w-v$.
+        \end{enumerate}
+\end{enumerate}

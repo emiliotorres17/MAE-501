@@ -1,0 +1,90 @@
+\section{Exercise 1}
+\subsection{Part a}
+
+No ``final solutions'' are provided for these types of questions, since the
+whole point of them is to encourage you to express \emph{briefly} but
+\emph{clearly} and \emph{in your own words} what you understand. As
+explained in the directions, definitions taken from text books or the
+internet do not reflect a good understanding of these terms, nor do
+extremely long explanations. Equations do not express the meaning of these,
+nor do literal word translations of equations show that you know what they
+mean. Instead, we are looking for clear evidence that you understand what
+each term means. Possible definitions for each term is provided below: 
+
+\begin{mdframed}[style=MyFrame]
+    \begin{enumerate}[label=\arabic*.]
+        \item Determinants
+        \item Cramer's rule
+        \item Meaning and significance of $\text{det}A=0$
+        \item Relationship between the determinant and volume
+    \end{enumerate}
+\end{mdframed}
+
+\newcommand{\deter}[1]{\text{det}(#1)}
+\subsection{Part b}
+Use the determinant rules to compute the specific determinants.
+\begin{enumerate}[label=\arabic*.]
+    \item Reduce $\mathbf{A}$ to $\mathbf{U}$ and show $\deter{A} = \text{
+            products of the pivots}$.
+        \begin{equation}
+            \mathbf{A} = 
+            \begin{bmatrix}
+                1       &       1       &       1   \\
+                1       &       2       &       2   \\
+                1       &       2       &       3
+            \end{bmatrix}
+        \end{equation}
+        and
+        \begin{equation}
+            \mathbf{A} =
+            \begin{bmatrix}
+                1       &       2       &       3   \\
+                2       &       2       &       3   \\
+                3       &       3       &       3
+            \end{bmatrix}
+        \end{equation}
+
+    \item Apply row operations to produce an upper triangular matrix
+        $\mathbf{U}$ and compute the following
+        \begin{equation}
+            \text{det}
+            \begin{bmatrix}
+                1   &   2   &   3   &   0   \\
+                2   &   6   &   6   &   1   \\
+                -1  &   0   &   0   &   3   \\
+                0   &   2   &   0   &   7
+            \end{bmatrix}
+        \end{equation}
+        and
+        \begin{equation}
+            \text{det}
+            \begin{bmatrix}
+                2   &   -1  &   0   &   0   \\
+                -1  &   2   &   -1  &   0   \\
+                0   &   -1  &   2   &   -1  \\
+                0   &   0   &   -1  &   2
+            \end{bmatrix}
+        \end{equation}
+
+    \item Find the determinants of a rank one matrix and a skew matrix:
+        \begin{equation}
+            A = 
+            \begin{bmatrix}
+                1   \\
+                2   \\
+                3
+            \end{bmatrix}
+            \begin{bmatrix}
+                1       &   -4   &   5
+            \end{bmatrix}
+        \end{equation}
+        and 
+        \begin{equation}
+            K = 
+            \begin{bmatrix}
+                0       &       1       &       3   \\
+                -1      &       0       &       4   \\
+               -3       &       -4      &       0
+            \end{bmatrix}
+        \end{equation}
+\end{enumerate}
