@@ -4,6 +4,37 @@
         $\text{det} A$ will be zero? If $a_{11} = a_{22} = a_{33} = a_{44}
         = 0 $, how many of the 24 products $a_{1j}a_{2k}a_{3l}a_{4m}$ are
         zero?
+        \begin{mdframed}[style=MyFrame]
+            Starting with the determinant formula for a $3 \times 3$
+            matrix, namely
+            \begin{equation}
+                \text{det}A =
+                    a_{11}(a_{22}a_{33} - a_{23}a_{32})
+                    -a_{12}(a_{21} a_{33} - a_{23}a_{31})
+                    + a_{13}(a_{21}a_{32} -a_{22}a_{31})
+            \end{equation}
+            Multiply everything out gives,
+            \begin{equation}
+                \text{det}A = 
+                    a_{11}a_{22}a_{33} 
+                    -a_{11}a_{22}a_{23}  
+                    -a_{12}a_{21}a_{33}  
+                    +a_{12}a_{23}a_{31}  
+                    +a_{13}a_{21}a_{32}  
+                    -a_{13}a_{22}a_{31}  
+            \end{equation}
+            Substituting in $a_{11} = a_{22} = a_{33} =0 $ we get,
+            \begin{equation}
+                \text{det}A = 
+                    -a_{12}a_{23}a_{32} + a_{13}a_{21}a_{31}
+            \end{equation}
+            Thus we see that 4 out of the 6 terms are zero. Furthermore the
+            same analysis can be done to show that there are 15 zero terms
+            in for the second part of the question. 
+        \end{mdframed}
+
+
+                
     \item Show that 4 is the largest determinant for a $3 \times 3$ matrix
         of $1's$ and $-1's$.
 
