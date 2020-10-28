@@ -324,13 +324,72 @@
         
     \item If all entries of $A$ and $A^{-1}$ are integers, prove that
         $\text{det}A=1$ or $-1$.
+        \begin{mdframed}[style=MyFrame]
+            If $A$ and $A^{-1}$ are both comprimsed of integers then
+            $\text{det}A$ and $\text{det}A^{-1}$  will be integers.
+            Furthermore, since $\text{det}A^{-1} = \frac{1}{\text{det}A}$
+            implies that $\text{det}A$ can only be $1$ or $-1$.
+        \end{mdframed}
 
     \item Find the following:
         \begin{enumerate}[label=\alph*.]
             \item Find the area of the parallelogram with edges $v=(3,2)$
                 and $w=(1,4)$
+                \begin{mdframed}[style=MyFrame]
+                    We can find the area of the parallelogram using the
+                    following,
+                    \begin{equation}
+                        A = 
+                        \text{det}
+                        \begin{bmatrix}
+                            3   &   2   \\
+                            1   &   4
+                        \end{bmatrix}
+                    \end{equation}
+                    Thus,
+                    \begin{equation}
+                        A = 10
+                    \end{equation}
+                \end{mdframed}
             \item Find the area of the triangle with sides $v$, $w$, and
                 $v+w$. 
+                    \begin{mdframed}[style=MyFrame]
+                        The are of the trianlge can be found using the
+                        following equation,
+                        \begin{equation}
+                            A = \frac{1}{2} 
+                            \text{det}
+                            \begin {bmatrix}
+                            x_{1}       & y_{1}     &   1   \\
+                            x_{2}       & y_{2}     &   1   \\
+                            x_{3}       & y_{3}     &   1   \\
+                            \end{bmatrix}
+                        \end{equation}
+                        Thus,
+                        \begin{equation}
+                            A = \frac{1}{2} 
+                            \text{det}
+                            \begin {bmatrix}
+                            3           & 2         &   1   \\
+                            1           & 4         &   1   \\
+                            4           & 6         &   1   \\
+                            \end{bmatrix}
+                            = 5 
+                        \end{equation}
+                    \end{mdframed}
             \item Find the area of the triangle with sides $v$, $w$, and $w-v$.
+                \begin{mdframed}[style=MyFrame]
+                    Using the  approach from above gives,
+                    \begin{equation}
+                        A = \frac{1}{2}
+                            \text{det}
+                            \begin {bmatrix}
+                                3           & 2         &   1   \\
+                                1           & 4         &   1   \\
+                                -2          & 2         &   1   \\
+                            \end{bmatrix}
+                            = 5 
+                        \end{equation}
+                    \end{mdframed}
         \end{enumerate}
 \end{enumerate}
