@@ -32,8 +32,6 @@
             same analysis can be done to show that there are 15 zero terms
             in for the second part of the question. 
         \end{mdframed}
-
-
                 
     \item Show that 4 is the largest determinant for a $3 \times 3$ matrix
         of $1's$ and $-1's$.
@@ -68,6 +66,56 @@
                 7 & 0 & 0
             \end{bmatrix}
         \end{equation}
+        \begin{mdframed}[style=MyFrame]
+            We start by finding the minors of $A$ using the determinant
+            approach,
+            \begin{equation}
+                M_{11} = d
+            \end{equation}
+            \begin{equation}
+                M_{12} = -c
+            \end{equation}
+            \begin{equation}
+                M_{21} =  -b
+            \end{equation}
+            \begin{equation}
+                M_{22} = a
+            \end{equation}
+            Next we can apply the correct sign using a plus minus checker
+            board approach to get,
+            \begin{equation}
+                C = 
+                \begin{bmatrix}
+                    d       &       -c  \\
+                    -b      &       a
+                \end{bmatrix}
+            \end{equation}
+            We can apply the same methodology to matrix $B$, this gives the
+            following minor matrix
+            \begin{equation}
+                M = 
+                \begin{bmatrix}
+                    0   &   -42     &       -35     \\
+                    0   &   -21     &       -14     \\
+                    -3  &   -6      &       -3
+                \end{bmatrix}
+            \end{equation}
+            Applying the sign we get
+            \begin{equation}
+                D = 
+                \begin{bmatrix}
+                    0   &   42      &       -35     \\
+                    0   &   -21     &       14      \\
+                    -3  &   6       &       -3
+                \end{bmatrix}
+            \end{equation}
+            Furthermore we can find the determinant of $B$ using 
+            \begin{equation}
+                \text{det}B = 
+                    b_{11}D_{11} + b_{12}D_{12} + b_{13}D_{13}
+                    = -21
+            \end{equation}
+        \end{mdframed}
 
     \item Find the cofactors matrix $C$ and multiply $A$ times $C^{T}$.
         Compare $AC^{T}$ with $A^{-1}$:
@@ -79,4 +127,32 @@
                 0 & -1 & 2
              \end{bmatrix}
         \end{equation}
+        \begin{mdframed}[style=MyFrame]
+            We start by finding the cofactor matrix using the approach from
+            the above problem, this gives
+            \begin{equation}
+                C = 
+                \begin{bmatrix}
+                    3   &   2   &   1   \\
+                    2   &   4   &   2   \\
+                    1   &   2   &   3
+                \end{bmatrix}
+            \end{equation}
+            Next we see that
+            \begin{equation}
+                AC^{T} = 
+                \begin{bmatrix}
+                    4   &   0   &   0   \\
+                    0   &   4   &   0   \\
+                    0   &   0   &   4
+                \end{bmatrix}
+            \end{equation}
+            this implies that $A^{-1} = \frac{1}{4}C^{T}$. Furthermore, we
+            can calculate the determinant using,
+            \begin{equation}
+                \text{det}A = 
+                    a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}  = 4
+            \end{equation}
+            Thus $A^{-1} = \frac{C^{T}}{\text{det}A}$.
+        \end{mdframed}
 \end{enumerate}
