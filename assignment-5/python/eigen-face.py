@@ -37,12 +37,11 @@ if __name__ == '__main__':
     call(['clear'])
     sep         = os.sep
     pwd         = os.getcwd()
-    data_path   = pwd + '%c..%cdata%c'              %(sep, sep, sep)
     media_path  = pwd +'%c..%cmedia%c'              %(sep, sep, sep)
     #---------------------------------------------------------------------#
     # Loading face data                                                   #
     #---------------------------------------------------------------------#
-    face_data   = scipy.io.loadmat(data_path + 'Faces.mat')
+    face_data   = scipy.io.loadmat('Faces.mat')
     faces       = face_data['faces']
     m           = int(face_data['m'])
     n           = int(face_data['n'])
@@ -89,100 +88,100 @@ if __name__ == '__main__':
         plt.axis('off')
         plt.savefig(media_path + 'face-%i.png'                   %(person))
         plt.close()
-        print('face --> %i'                         %(person))
-#    #---------------------------------------------------------------------#
-#    # Training points using the first 36 faces                            #
-#    #---------------------------------------------------------------------#
-#    trainingFaces   = faces[:,:sum(nfaces[:36])]
-#    avgFace         = mean(trainingFaces, axis=1)
-#    print('finished line avgFace')
-#    #---------------------------------------------------------------------#
-#    # Computing the SVD                                                   #
-#    #---------------------------------------------------------------------#
-#    X           = trainingFaces - tile(avgFace,(trainingFaces.shape[1],1)).T
-#    U, S, VT    = linalg.svd(X,full_matrices=0)
-#    print('finished SVD')
-#    #---------------------------------------------------------------------#
-#    # Plotting the average face                                           #
-#    #---------------------------------------------------------------------#
-#    fig1    = plt.figure()
-#    img_avg = plt.imshow(reshape(avgFace,(m,n)).T)
-#    img_avg.set_cmap('gray')
-#    plt.axis('off')
-#    plt.savefig(media_path + 'average-face.png')
-#    plt.show()
-#    plt.close()
-#    #---------------------------------------------------------------------#
-#    # Plotting the average face                                           #
-#    #---------------------------------------------------------------------#
-#    img_u1  = plt.imshow(reshape(U[:,0],(m,n)).T)
-#    img_u1.set_cmap('gray')
-#    plt.axis('off')
-#    plt.savefig(media_path + 'mode-1.png')
-#    plt.show()
-#    plt.close()
-#    #---------------------------------------------------------------------#
-#    # Plotting the average face                                           #
-#    #---------------------------------------------------------------------#
-#    img_u1  = plt.imshow(reshape(U[:,24],(m,n)).T)
-#    img_u1.set_cmap('gray')
-#    plt.axis('off')
-#    plt.savefig(media_path + 'mode-24.png')
-#    plt.show()
-#    plt.close()
-#    #---------------------------------------------------------------------#
-#    # Test face                                                           #
-#    #---------------------------------------------------------------------#
-#    testFace = faces[:,sum(nfaces[:36])]
-#    print(type(testFace))
-#    print(testFace.shape)
-#    plt.imshow(reshape(testFace,(m,n)).T)
-#    plt.set_cmap('gray')
-#    plt.title('Original Image')
-#    plt.axis('off')
-#    plt.savefig(media_path + 'original-image-1.png') 
-#    plt.close()
-#    #---------------------------------------------------------------------#
-#    # Test face                                                           #
-#    #---------------------------------------------------------------------#
-#    testFaceMS  = testFace - avgFace
-#    r_list      = [25, 50, 100, 200, 400, 800, 1600]
-#    #---------------------------------------------------------------------#
-#    # Different modes                                                     #
-#    #---------------------------------------------------------------------#
-#    for r in r_list:
-#        reconFace   = avgFace + U[:,:r]  @ (U[:,:r].T @ testFaceMS)
-#        img         = plt.imshow(reshape(reconFace,(m,n)).T)
-#        img.set_cmap('gray')
-#        plt.title('r = ' + str(r))
-#        plt.axis('off')
-#        plt.savefig(media_path + 'r-%i-1.png'              %(r))
-#        plt.close()
-#    #---------------------------------------------------------------------#
-#    # Test face                                                           #
-#    #---------------------------------------------------------------------#
-#    testFace = faces[:,sum(nfaces[:37])]
-#    print(type(testFace))
-#    print(testFace.shape)
-#    plt.imshow(reshape(testFace,(m,n)).T)
-#    plt.set_cmap('gray')
-#    plt.title('Original Image')
-#    plt.axis('off')
-#    plt.savefig(media_path + 'original-image-2.png') 
-#    plt.close()
-#    #---------------------------------------------------------------------#
-#    # Test face                                                           #
-#    #---------------------------------------------------------------------#
-#    testFaceMS  = testFace - avgFace
-#    r_list      = [25, 50, 100, 200, 400, 800, 1600]
-#    #---------------------------------------------------------------------#
-#    # Different modes                                                     #
-#    #---------------------------------------------------------------------#
-#    for r in r_list:
-#        reconFace   = avgFace + U[:,:r]  @ (U[:,:r].T @ testFaceMS)
-#        img         = plt.imshow(reshape(reconFace,(m,n)).T)
-#        img.set_cmap('gray')
-#        plt.title('r = ' + str(r))
-#        plt.axis('off')
-#        plt.savefig(media_path + 'r-%i-2.png'              %(r))
-#        plt.close()
+        print('face --> %i'                                     %(person))
+    #---------------------------------------------------------------------#
+    # Training points using the first 36 faces                            #
+    #---------------------------------------------------------------------#
+    trainingFaces   = faces[:,:sum(nfaces[:36])]
+    avgFace         = mean(trainingFaces, axis=1)
+    print('finished line avgFace')
+    #---------------------------------------------------------------------#
+    # Computing the SVD                                                   #
+    #---------------------------------------------------------------------#
+    X           = trainingFaces - tile(avgFace,(trainingFaces.shape[1],1)).T
+    U, S, VT    = linalg.svd(X,full_matrices=0)
+    print('finished SVD')
+    #---------------------------------------------------------------------#
+    # Plotting the average face                                           #
+    #---------------------------------------------------------------------#
+    fig1    = plt.figure()
+    img_avg = plt.imshow(reshape(avgFace,(m,n)).T)
+    img_avg.set_cmap('gray')
+    plt.axis('off')
+    plt.savefig(media_path + 'average-face.png')
+    plt.show()
+    plt.close()
+    #---------------------------------------------------------------------#
+    # Plotting the average face                                           #
+    #---------------------------------------------------------------------#
+    img_u1  = plt.imshow(reshape(U[:,0],(m,n)).T)
+    img_u1.set_cmap('gray')
+    plt.axis('off')
+    plt.savefig(media_path + 'mode-1.png')
+    plt.show()
+    plt.close()
+    #---------------------------------------------------------------------#
+    # Plotting the average face                                           #
+    #---------------------------------------------------------------------#
+    img_u1  = plt.imshow(reshape(U[:,24],(m,n)).T)
+    img_u1.set_cmap('gray')
+    plt.axis('off')
+    plt.savefig(media_path + 'mode-24.png')
+    plt.show()
+    plt.close()
+    #---------------------------------------------------------------------#
+    # Test face                                                           #
+    #---------------------------------------------------------------------#
+    testFace = faces[:,sum(nfaces[:36])]
+    print(type(testFace))
+    print(testFace.shape)
+    plt.imshow(reshape(testFace,(m,n)).T)
+    plt.set_cmap('gray')
+    plt.title('Original Image')
+    plt.axis('off')
+    plt.savefig(media_path + 'original-image-1.png') 
+    plt.close()
+    #---------------------------------------------------------------------#
+    # Test face                                                           #
+    #---------------------------------------------------------------------#
+    testFaceMS  = testFace - avgFace
+    r_list      = [25, 50, 100, 200, 400, 800, 1600]
+    #---------------------------------------------------------------------#
+    # Different modes                                                     #
+    #---------------------------------------------------------------------#
+    for r in r_list:
+        reconFace   = avgFace + U[:,:r]  @ (U[:,:r].T @ testFaceMS)
+        img         = plt.imshow(reshape(reconFace,(m,n)).T)
+        img.set_cmap('gray')
+        plt.title('r = ' + str(r))
+        plt.axis('off')
+        plt.savefig(media_path + 'r-%i-1.png'              %(r))
+        plt.close()
+    #---------------------------------------------------------------------#
+    # Test face                                                           #
+    #---------------------------------------------------------------------#
+    testFace = faces[:,sum(nfaces[:37])]
+    print(type(testFace))
+    print(testFace.shape)
+    plt.imshow(reshape(testFace,(m,n)).T)
+    plt.set_cmap('gray')
+    plt.title('Original Image')
+    plt.axis('off')
+    plt.savefig(media_path + 'original-image-2.png') 
+    plt.close()
+    #---------------------------------------------------------------------#
+    # Test face                                                           #
+    #---------------------------------------------------------------------#
+    testFaceMS  = testFace - avgFace
+    r_list      = [25, 50, 100, 200, 400, 800, 1600]
+    #---------------------------------------------------------------------#
+    # Different modes                                                     #
+    #---------------------------------------------------------------------#
+    for r in r_list:
+        reconFace   = avgFace + U[:,:r]  @ (U[:,:r].T @ testFaceMS)
+        img         = plt.imshow(reshape(reconFace,(m,n)).T)
+        img.set_cmap('gray')
+        plt.title('r = ' + str(r))
+        plt.axis('off')
+        plt.savefig(media_path + 'r-%i-2.png'              %(r))
+        plt.close()
