@@ -1,0 +1,238 @@
+\section{Exercise 3}
+\begin{enumerate}[label=\arabic*.]
+    \item Find the eigenvalues and unit eigenvectors $\mathbf{v}_{1}$,
+        $\mathbf{v}_{2}$ of $A^{T}A$. Then find $\mathbf{u}_{1} =
+        A\mathbf{v}_{1}/\mathbf{\sigma}_{1}$:
+        \begin{equation}
+            A=
+            \begin{bmatrix}
+            1 & 2\\
+            3 & 6
+            \end{bmatrix}
+        \end{equation}
+        Verify that $\mathbf{u}_{1}$ is a unit eigenvector of $AA^{T}$.
+        Complete the matrices $U$, $\Sigma$, $V$.
+        \begin{mdframed}[style=MyFrame]
+            We start by first finding $A^{T}A$,
+            \begin{equation}
+                A^{T}A  = 
+                \begin{bmatrix}
+                    10      &       20      \\
+                    20      &       40 
+                \end{bmatrix}
+            \end{equation}
+            which has eigenvalues $\lambda_{1} = 50$ and $\lambda_{2} = 0$.
+            The using $\deter\left(A^{T}A-\lambda I\right)x=0$ to obtain
+            the following eigenvectors,
+            \begin{equation}
+                v_{1} = 
+                \frac{1}{\sqrt{5}}
+                \begin{bmatrix}
+                    1       \\
+                    2
+                \end{bmatrix}
+            \end{equation}
+            and
+            \begin{equation}
+                v_{2} = 
+                \frac{1}{\sqrt{5}}
+                \begin{bmatrix}
+                    -2      \\
+                    1
+                \end{bmatrix}
+            \end{equation}
+            Moreover we can use $\sigma_{i}^{2}=\lambda_{i}$ to calculate
+            the singular values, namely 
+            \begin{equation}
+                \sigma_{1} =  \sqrt{50}
+            \end{equation}
+            and
+            \begin{equation}
+                \sigma_{2}  = 0 
+            \end{equation}
+            Next we can use the eigenvectors of $AA^{T}$ to determine
+            $\mathbf{U}$, giving
+            \begin{equation}
+                u_{1} = 
+                \frac{1}{\sqrt{10}}
+                \begin{bmatrix}
+                    1       \\
+                    3
+                \end{bmatrix}
+            \end{equation}
+            and
+            \begin{equation}
+                u_{2} =
+                \frac{1}{\sqrt{10}}
+                \begin{bmatrix}
+                    3       \\
+                    -1
+                \end{bmatrix}
+            \end{equation}
+            This gives the factors of $A$ as,
+            \begin{equation}
+                A = 
+                \underbrace{
+                    \frac{1}{\sqrt{10}}
+                    \begin{bmatrix}
+                        1       &       3       \\
+                        3       &       -1
+                    \end{bmatrix}
+                }_{\equiv U}
+                \underbrace{
+                    \begin{bmatrix}
+                        \sqrt{50}       &       0       \\
+                        0               &       0
+                    \end{bmatrix}
+                }_{\equiv \Sigma}
+                \underbrace{
+                    \frac{1}{\sqrt{5}}
+                    \begin{bmatrix}
+                        1               &       2       \\
+                        2               &       -1
+                    \end{bmatrix}
+                }_{\equiv V^{T}}
+            \end{equation}
+        \end{mdframed}
+        
+    \item Compute $A^{T}A$ and $AA^{T}$ and their eigenvalues and unit
+        eigenvectors for the rectangular matrix A:
+        \begin{equation}
+            A = 
+            \begin{bmatrix}
+                1 & 1 & 0 \\
+                0 & 1 & 1
+            \end{bmatrix}
+        \end{equation}
+        Multiply the matrices $U \Sigma V^{T}$ to recover $A$. 
+        \begin{mdframed}[style=MyFrame]
+            Starting with $A^{T}A$
+            \begin{equation}
+                A^{T}A = 
+                \begin{bmatrix}
+                    1       &       1   &       0       \\
+                    1       &       2   &       1       \\
+                    0       &       1   &       1
+                \end{bmatrix}
+            \end{equation}
+            and finding the eigenvalues with
+            $\deter\left(A^{T}T-\lambda I\right)$ which gives $\lambda_{1} =
+            3$, $\lambda_{2} = 1$, and $\lambda_{3} = 0$. Next, we can use
+            $\deter\left(A^{T}A - \lambda I\right)x = 0$ (also need to
+            normalize) to find the unit eigenvectors giving 
+            \begin{equation}
+                x_{1} = 
+                \frac{1}{\sqrt{6}}
+                \begin{bmatrix}
+                    1       \\
+                    2       \\
+                    1
+                \end{bmatrix}
+            \end{equation}
+            \begin{equation}
+                x_{2} =
+               \frac{1}{\sqrt{2}}
+                \begin{bmatrix}
+                    -1      \\
+                    0       \\
+                    1
+                \end{bmatrix}
+            \end{equation}
+            and
+            \begin{equation}
+                x_{3} =
+                \frac{1}{\sqrt{3}}
+                \begin{bmatrix}
+                    1       \\
+                    -1      \\
+                    1
+                \end{bmatrix}
+            \end{equation}
+            Moreover we can use $\norm{Av_{i}}$ to find the two singular
+            values, namely
+            \begin{equation}
+                \sigma_{1} = \norm{Av_{1}} = \sqrt{3}
+            \end{equation}
+            \begin{equation}
+                \sigma_{2} = \norm{Av_{2}} = 1
+            \end{equation}
+            Additionally we can perform the same for $AA^{T}$,
+            \begin{equation}
+                AA^{T} =
+                \begin{bmatrix}
+                    2       &       1       \\
+                    1       &       2
+                \end{bmatrix}
+            \end{equation}
+            which has the eigenvalues $\lambda_{1} = 3$ and $\lambda_{2} =
+            1$. Again we can use $\deter\left(AA^{T} - \lambda I\right)x =
+            0$ (also need to normalize) to find unit eigenvectors giving
+            \begin{equation}
+                u_{1} = 
+                \frac{1}{\sqrt{2}}
+                \begin{bmatrix}
+                    1       \\
+                    1
+                \end{bmatrix}
+            \end{equation}
+            \begin{equation}
+                u_{2} =
+                \frac{1}{\sqrt{2}}
+                \begin{bmatrix}
+                    -1      \\
+                    1
+                \end{bmatrix}
+            \end{equation}
+            Thus we can factor $A$ into 
+            \begin{equation}
+                A = 
+                \underbrace{
+                    \begin{bmatrix}
+                        1       &       -1      \\
+                        1       &       1       
+                    \end{bmatrix}
+                }_{\equiv U}
+                \underbrace{
+                    \begin{bmatrix}
+                        \sqrt{3}        &       0       &       0       \\
+                        0               &       1       &       0       
+                    \end{bmatrix}
+                }_{\equiv \Sigma}
+                \underbrace{
+                    \begin{bmatrix}
+                        1/\sqrt{6}      &       2/\sqrt{6}      &   1/\sqrt{6}          \\
+                        -1/\sqrt{2}     &       0               &   1/\sqrt{2}          \\
+                        1/\sqrt{3}      &       -1/\sqrt{3}     &   1/\sqrt{3}
+                    \end{bmatrix}
+                }_{\equiv V^{T}}
+            \end{equation}
+        \end{mdframed}
+    \item Suppose $A$ is a 2 by 2 symmetric matrix with unit eigenvectors
+        $\mathbf{u}_{1}$ and $\mathbf{u}_{2}$. If its eigenvalues are
+        $\lambda_{1} = 3$ and $\lambda_{2} = -2$ what are the matrices $U$,
+        $\Sigma$, and $V^{T}$ in its SVD?
+        \begin{mdframed}[style=MyFrame]
+            Since $A$ is a symmetric matrix then $A^{T}=A$ then
+            $\sigma_{1}^{2} = \lambda_{1}^{2}$ and $\sigma_{2}^{2} =
+            \lambda_{2}^{2}$. However because of the squaring term the
+            negative sign is lost therefore we get $\sigma_{1}=3$ and
+            $\sigma_{2}=2$. Furthermore the unit eigenvectors for $AA^{T}$
+            which are $u_{1}$ and $u_{2}$ are the same for $A^{T}A$ except
+            for the sign change due to squaring term, thus we get $v_{1} =
+            u_{1}$ and $v_{2}=-u_{2}$.   
+        \end{mdframed}
+    \item If $A=QR$ with an orthogonal matrix $Q$, the SVD of $A$ is almost
+        the same as the SVD of $R$. Which of the three matrices $U$,
+        $\Sigma$, $V$ is changed because of $Q$?
+        \begin{mdframed}[style=MyFrame]
+            If we assume that the SVD of $A$ is $R$ then $R=U \Sigma V^{T}$.
+            Therefore to recover $A$ we still have to multiply $R$ by $Q$,
+            giving
+            \begin{equation}
+                A = QR = \left(QU\right) \Sigma V^{T}
+            \end{equation}
+            Thus the $U$ matrix would be changed because of $Q$, however
+            because $Q$ is orthogonal and $U$ is orthogonal then $QU$ would
+            also be orthogonal.
+        \end{mdframed}
+\end{enumerate}

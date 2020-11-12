@@ -1,0 +1,401 @@
+\section{Exercise 2}
+\begin{enumerate}[label=\arabic*.]
+    \item Factor $A$ into $S \Lambda S^{-1}$:
+        \begin{equation}
+            A = 
+            \begin{bmatrix}
+                1 & 2 \\
+                0 & 3
+            \end{bmatrix}
+        \end{equation}
+    If $A=S \Lambda S^{-1}$ then $A^{3} = (\;\;\;)(\;\;\;)(\;\;\;)$ and
+        $A^{-1} = (\;\;\;)(\;\;\;)(\;\;\;)$?
+        \begin{mdframed}[style=MyFrame]
+            We start by finding the eigenvalues of $A$ which are
+            $\lambda_{1} =  3$ and $\lambda_{2}=1$. Next, we can find the
+            eigenvectors by solving
+            \begin{equation}
+                A - \lambda I = 0 
+            \end{equation}
+            which gives the eigenvectors,
+            \begin{equation}
+                v_{1} = 
+                \begin{bmatrix}
+                    1   \\
+                    1
+                \end{bmatrix}
+            \end{equation}
+            and
+            \begin{equation}
+                v_{2}  =
+                \begin{bmatrix}
+                    1   \\
+                    0
+                \end{bmatrix}
+            \end{equation}
+            This gives the following factors of $A$,
+            \begin{equation}
+                A = 
+                \underbrace{
+                \begin{bmatrix}
+                    1       &   1   \\
+                    0       &   1   \\
+                \end{bmatrix}
+                }_{S}
+                \underbrace{
+                \begin{bmatrix}
+                    1       &   0   \\
+                    0       &   3   \\
+                \end{bmatrix}
+                }_{\Lambda}
+                \underbrace{
+                \begin{bmatrix}
+                    1       &   -1  \\
+                    0       &   1   \\
+                \end{bmatrix}
+            }_{S^{-1}}
+            \end{equation}
+            Therefore we can find $A^{3}$ using the following 
+            \begin{equation}
+                A^{3} = 
+                \begin{bmatrix}
+                    1       &   1   \\
+                    0       &   1   \\
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1^{3}   &   0       \\
+                    0       &   3^{3}   \\
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1       &   -1  \\
+                    0       &   1   \\
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    1           &       26  \\
+                    0           &       27
+                \end{bmatrix}
+            \end{equation}
+            Lastly, we cand find $A^{-1}$ using the same methodology as
+            above,
+            \begin{equation}
+                A^{-1} = 
+                \begin{bmatrix}
+                    1       &   1   \\
+                    0       &   1   \\
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1^{-1}   &   0       \\
+                    0        &   3^{-1}  \\
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1       &   -1  \\
+                    0       &   1   \\
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    1           &      -2/3  \\
+                    0           &       1/3
+                \end{bmatrix}
+            \end{equation}
+        \end{mdframed}
+
+    \item Diagonalize $A$ and compute $S \Lambda^{k} S^{-1}$ to prove the
+        following formula for $A^{k}$:
+        \begin{equation}
+            A =
+            \begin{bmatrix}
+                2 & -1\\
+                -1 & 2
+            \end{bmatrix}
+        \end{equation}
+        and 
+        \begin{equation}
+            A^{k} =
+            \frac{1}{2}
+            \begin{bmatrix}
+                1 + 3^{k} & 1-3^{k} \\
+                1-3^{k} & 1+3^{k}
+            \end{bmatrix}
+        \end{equation}
+        \begin{mdframed}[style=MyFrame]
+            Similarly to above we start by finding the eigenvalues of $A$
+            which are $\lambda_{1}=3$ and $\lambda_{2} = 1$. Next we can
+            use the eigenvalues to find the eigenvectors by solving
+            \begin{equation}
+                \left( A - \lambda I\right)\mathbf{v} = 0
+            \end{equation}
+            giving
+            \begin{equation}
+                v_{1} = 
+                \begin{bmatrix}
+                    1       \\
+                    -1      
+                \end{bmatrix}
+            \end{equation}
+            and 
+            \begin{equation}
+                v_{2} = 
+                \begin{bmatrix}
+                    1       \\
+                    1      
+                \end{bmatrix}
+            \end{equation}
+            Therefore we can factor $A$ into the following
+            \begin{equation}
+                A = 
+                \underbrace{
+                    \begin{bmatrix}
+                        1       &   1       \\
+                        -1      &   1
+                    \end{bmatrix}
+                }_{S}
+                \underbrace{
+                    \begin{bmatrix}
+                        3       &   0       \\
+                        0       &   1
+                    \end{bmatrix}
+                }_{\Lambda}
+                \underbrace{
+                    \begin{bmatrix}
+                        1/2     &   -1/2      \\
+                        1/2     &   1/2
+                    \end{bmatrix}
+                }_{S^{-1}}
+            \end{equation}
+            Lastly we can verify the formula by computing $A^{5}$ using the
+            factors,
+            \begin{equation}
+                A^{5} = 
+                    \begin{bmatrix}
+                        1       &   1       \\
+                        -1      &   1
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        3^{5}       &   0       \\
+                        0           &   1^{5}
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        1/2     &   -1/2      \\
+                        1/2     &   1/2
+                    \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                        122         &       -121        \\
+                        -121        &       122
+                    \end{bmatrix}
+            \end{equation}
+            From the formula we get 
+            \begin{equation}
+                A^{5} = 
+                \frac{1}{2}
+                \begin{bmatrix}
+                    244     &       -242        \\
+                    -242    &       244
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    122         &       -121        \\
+                    -121        &       122
+                \end{bmatrix}
+            \end{equation}
+            Clearly the two solutions match and we can verify that formula
+            for $A^{k}$ is correct.
+        \end{mdframed}
+
+    \item Find the eigenvalues and eigenvectors of $A$ and write
+        $\mathbf{u}(0)=(0, 2\sqrt{2}, 0)$ as a combination of the
+        eigenvectors. Solve both equations $\mathbf{u}^{\prime} = A
+        \mathbf{u}$ and $\mathbf{u}^{\prime \prime} = A u$:
+    \begin{equation}
+        \frac{d\mathbf{u}}{dt} = 
+        \begin{bmatrix}
+            -2 & 1 & 0 \\
+            1 & -2 & 1 \\
+            0 &1 & -2
+        \end{bmatrix}
+        \mathbf{u}
+    \end{equation}
+    and 
+    \begin{equation}
+        \frac{d^{2}\mathbf{u}}{dt^{2}} = 
+        \begin{bmatrix}
+            -2 & 1 & 0 \\
+            1 & -2 & 1 \\
+            0 &1 & -2
+        \end{bmatrix}
+        \mathbf{u}
+    \end{equation}
+    with
+    \begin{equation}
+        \frac{d\mathbf{u}}{dt}(0) = 0
+    \end{equation}
+    \begin{mdframed}[style=MyFrame]
+        We start by finding the eigenvalues and eigenvectors from
+        $\deter(A-\lambda I)$, namely
+        \begin{equation}
+            \deter\left(A-\lambda I\right) =
+            \deter
+            \begin{bmatrix}
+                -2-\lambda      &   1           &   0           \\
+                1               &   -2-\lambda  &   1           \\
+                0               &   1           &   -2-\lambda 
+            \end{bmatrix}
+            =
+            0
+        \end{equation}
+        This gives the characteristic polynomial,
+        \begin{equation}
+            \left(-2-\lambda\right)\left[\left(-2-\lambda\right)-2\right] =
+            0
+        \end{equation}
+        Thus $\lambda_{1}=-2$, $\lambda_{2}=-2-\sqrt{2}$, and
+        $\lambda_{3}=-2+\sqrt{2}$. Next, we can find the eigenvectors using
+        \begin{equation}
+            \left( A-\lambda I\right) \mathbf{x} = 0
+        \end{equation}
+        which gives,
+        \begin{equation}
+            x_{1} = 
+            \begin{bmatrix}
+                1       \\
+                0       \\
+                -1
+            \end{bmatrix}
+        \end{equation}
+        \begin{equation}
+            x_{2} = 
+            \begin{bmatrix}
+                1           \\
+                -\sqrt{2}   \\
+                1
+            \end{bmatrix}
+        \end{equation}
+        and
+        \begin{equation}
+            x_{3} = 
+            \begin{bmatrix}
+                1           \\
+                \sqrt{2}   \\
+                1
+            \end{bmatrix}
+        \end{equation}
+        Since the eigenvectors for symmetric matrix are always orthogonal
+        and because all three eigenvalues are negative means that $A$ is
+        negative definite and $e^{At}$ decays to zero. Lastly we can see
+        that the initial conditions is satisfied with $x_{3}-x_{2}$ and
+        therefore the solution is $u(t)=e^{\lambda_{3}t}x_{3} -
+        e^{\lambda_{2}t}x_{2}$.
+
+    \end{mdframed}
+
+    \item The rabbit population shows fast growth ($6r$) but loss to wolves
+        ($-2w$). The wolf population always grows in this model:
+    \begin{equation}
+        \frac{dr}{dt}=6r-2w
+    \end{equation}
+    and
+    \begin{equation}
+        \frac{dw}{dt}=2r+w
+    \end{equation}
+    Find the eigenvalues and eigenvectors. If $r(0)=w(0)=30$ what are the
+    populations at time $t$? What is the ratio of rabbits to wolves?
+    \begin{mdframed}[style=MyFrame]
+        WE start by expressing the system of ordinary differential
+        equations in matrix form 
+        \begin{equation}
+            u^{\prime} =
+            \underbrace{
+            \begin{bmatrix}
+                6       &       -2  \\
+                2       &       1
+            \end{bmatrix}
+        }_{\equiv A}
+            u
+        \end{equation}
+        where
+        \begin{equation}
+            u = 
+            \begin{bmatrix}
+                r   \\
+                w
+            \end{bmatrix}
+        \end{equation}
+        Next, we can find the eigenvalues of of matrix $A$,
+        \begin{equation}
+            \deter\left(A-\lambda I\right) =
+            \deter
+            \begin{bmatrix}
+                6-\lambda       &       -2              \\
+                2               &       1-\lambda
+            \end{bmatrix}
+        \end{equation}
+        This gives the following characteristic polynomial
+        \begin{equation}
+            \lambda^{2} - 7\lambda + 10 = 0
+        \end{equation}
+        Thus $\lambda_{1} = 5$ and $\lambda_{2} = 2$. Next we can use
+        $(A-\lambda)x$ to obtain the eigenvectors,
+        \begin{equation}
+            x_{1} = 
+            \begin{bmatrix}
+                2   \\
+                1
+            \end{bmatrix}
+        \end{equation}
+        and 
+        \begin{equation}
+            x_{2} = 
+            \begin{bmatrix}
+                1   \\
+                2
+            \end{bmatrix}
+        \end{equation}
+        This gives the general solution as
+        \begin{equation}
+            u(t) = c_{1}e^{5t}
+            \begin{bmatrix}
+                2   \\
+                1
+            \end{bmatrix}
+            + c_{2}e^{2t}
+            \begin{bmatrix}
+                1   \\
+                2
+            \end{bmatrix}
+        \end{equation}
+        Moreover we can apply the initial conditions to find the two
+        constants,
+        \begin{equation}
+            u(0) = 
+            \begin{bmatrix}
+                30  \\
+                30
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                2c_{1} + c_{2}  \\
+                c_{1} + 2c_{2}
+            \end{bmatrix}
+        \end{equation}
+        Solving for the constants we get $c_{1}=10$ and $c_{2}=10$,
+        therefore we get, 
+        \begin{equation}
+            r(t) = 20e^{5t} + 10e^{2t} 
+        \end{equation}
+        and
+        \begin{equation}
+            w(t) = 10e^{5t} + 20e^{2t}
+        \end{equation}
+        Lastly if we take the limit as time approach infintiy,
+        \begin{equation}
+            \lim_{t \to \infty} \frac{r(t)}{w(t)}
+            =
+            \lim_{t \to \infty} 
+                \frac{20e^{5t} + 10e^{2t}}
+                {10e^{5t} + 20e^{2t}} 
+                = \frac{20}{10}
+        \end{equation}
+        we can see that the rabbits will out number the wolves 2 to 1.
+    \end{mdframed}
+\end{enumerate}

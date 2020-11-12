@@ -1,0 +1,268 @@
+\section{Exercise 1}
+\subsection{Part a}
+
+Describe clearly but briefly the meaning of each term below, including
+advantages and disadvantages, number of operations, etc.,  in your
+\emph{\textbf{own}} words (not \emph{\textbf{anyone}} else's words, so not copied
+from any book, Wikipedia, internet, etc.,) and without using
+\emph{\textbf{any}} equations \emph{\textbf{whatsoever}}.
+
+\begin{enumerate}[label=\arabic*.]
+    \item Eigenvalues and eigenvectors
+    \item Digitalization 
+    \item Singular value decomposition
+    \item Algebraic and geometric multiplicity
+    \item Positive definite matrix   
+\end{enumerate}
+
+\subsection{Part b}
+
+\begin{enumerate}[label=\arabic*.]
+    \item Find the eigenvalues and eigenvectors of $A$, $A^{2}$, $A^{-1}$,
+        and $A+4I$.
+        \begin{equation}
+            A =
+            \begin{bmatrix}
+                2  & -1 \\
+                -1 & 2  \\
+            \end{bmatrix}
+        \end{equation}
+        Check that the trace is $\lambda_{1} + \lambda_{2}$ and the
+        determinant is $\lambda_{1} \lambda_{2}$ for $A$ and $A^{2}$.
+        \begin{mdframed}[style=MyFrame]
+            We can easily find the eigenvalues using $\deter(A-\lambda I) =
+            0$. Starting by finding the eigenvalues of $A$ we get the
+            following,
+            \begin{equation}
+                \deter(A-\lambda I) = 
+                \deter
+                \begin{bmatrix}
+                    2-\lambda           &   -1              \\
+                    -1                  &   2-\lambda
+                \end{bmatrix}
+                = 0
+            \end{equation}
+            This gives the following characteristic polynomial,
+            \begin{equation}
+                \lambda^{2}-4\lambda+3 = (\lambda -3)(\lambda -1)=0
+            \end{equation}
+            Therefore  $\lambda_{1} =3$ and $\lambda_{2} = 1$. Applying the
+            same methodology to $A^{2}$ we get,
+            \begin{equation}
+                \deter \left(A^{2} -\lambda I \right) = 
+                \deter
+                \begin{bmatrix}
+                    5-\lambda           &   -4             \\
+                    -4                  &   5-\lambda
+                \end{bmatrix}
+                = 0
+            \end{equation}
+            This gives,
+            \begin{equation}
+                \left(5-\lambda\right)\left(5-\lambda\right)-16 = 0 
+            \end{equation}
+            Simplifying we get,
+            \begin{equation}
+                \lambda^{2} - 10\lambda + 9 = 
+                \left(\lambda -9\right)\left(\lambda - 1\right) = 0
+            \end{equation}
+            Therefore $\lambda_{1} = 9$ and  $\lambda_{2} = 5$. Clearly we
+            can see that the eigenvalues of $A^{2}$ are the square of the
+            eigenvalues of $A$.  Moreover, applying the same logic as above
+            we get the following characteristic equation for $A^{-1}$,
+            \begin{equation}
+                \lambda^{2} -\frac{4}{3} \lambda + \frac{1}{3} =
+                \left(\lambda -1\right)\left(\lambda - \frac{1}{3}\right)
+                = 0
+            \end{equation}
+            Thus, $\lambda_{1} = 1$ and $\lambda_{2} = \frac{1}{3}$.
+            Lastly, it can be shown that the eigenvalues for $A+4I$ are
+            $\lambda_{1} = 7$ and $\lambda_{2} = 3$. 
+        \end{mdframed}
+    \item Find the eigenvalues of $A$, $B$,$AB$, and $BA$:
+        \begin{equation}
+            A = 
+            \begin{bmatrix}
+                1  & 0 \\
+                1  & 1 \\
+            \end{bmatrix}
+        \end{equation}
+        and 
+        \begin{equation}
+            B = 
+            \begin{bmatrix}
+                1   & 2 \\
+                0  & 1  \\
+            \end{bmatrix}
+        \end{equation}
+        \begin{enumerate}[label=(\alph*)]
+            \item Are the eigenvalues of $AB$ equal to eigenvalues of
+                $A$ times the eigenvalues of $B$?
+            \item Are the eigenvalues of $AB$ equal to the eigenvalues
+                of $BA$?
+        \end{enumerate}
+        \begin{mdframed}[style=MyFrame]
+            Again we can apply $\deter(A-\lambda I) = 0$ to find the
+            eigenvalues for the above matrices. Starting with $A$ we
+            get the following,
+            \begin{equation}
+                \deter \left(A\right) =
+                \left(1-\lambda\right)\left(1-\lambda\right) = 0
+            \end{equation}
+            Therefore, $\lambda_{1} = \lambda_{2} =1$. Furthermore, for
+            $B$ we get the following characteristic polynomial, 
+            \begin{equation}
+                \deter \left(B\right) = 
+                \left(1-\lambda\right)\left(1-\lambda\right) = 0
+            \end{equation}
+            This gives $\lambda_{1} = \lambda_{2} = 1$ which we clearly
+            are the same as the eigenvalues of $A$. 
+            \\
+            \\
+            Next, we can evaluate both $AB$ and $BA$, starting with the
+            eigenvalues of $AB$,
+            \begin{equation}
+                \deter(AB-\lambda I ) = 
+                \left(1-\lambda\right)\left(3-\lambda\right)-2= 0
+            \end{equation}
+            Thus for $AB$ we get $\lambda_{1} = 2+\sqrt{3}$ and
+            $\lambda_{2} =  2-\sqrt{3}$. Moreover, we can find the
+            eigenvalues of $BA$ which gives,
+            \begin{equation}
+                \deter(BA-\lambda I ) = 
+                \left(1-\lambda\right) \left(3-\lambda\right)-2= 0
+            \end{equation}
+            Clearly we can see that the characteristic polynomial for
+            $BA$ and $AB$ are the same and  therefore they produce the
+            same eigenvalues. Lastly, we can clearly see that the
+            eigenvalues of $A$ times the eigenvalues of $B$ are not
+            equal to the eigenvalues of $AB$. 
+        \end{mdframed}
+
+    \item  A $3 \times 3$ matrix $B$ is known to have eigenvalues 0, 1,
+        2. This information is enough to find three of these (give the
+        answer when possible):
+        \begin{enumerate}[label=(\alph*)]
+            \item The rank of $B$
+                \begin{mdframed}[style=MyFrame]
+                    The rank of any square matrix equal the number of
+                    nonzero eigenvalues, therefore the rank of
+                    matrix $B$ is 2.
+                \end{mdframed}
+            \item The determinant of $B^{T}B$
+                \begin{mdframed}[style=MyFrame]
+                    By factoring the determinant to both terms and
+                    simplifying gives, 
+                    \begin{equation}
+                        \deter\left(B^{T}B\right)
+                        = 
+                        \deter\left(B^{T}\right)
+                        \deter\left(B\right)
+                        = 
+                        \deter\left(B\right)^{2}
+                        =
+                        1 \cdot 2 \cdot 0
+                        = 0
+                    \end{equation}
+                \end{mdframed}
+            \item The eigenvalues of $B^{T}B$
+                \begin{mdframed}[style=MyFrame]
+                    Not enough information to obtain the eigenvalues
+                    of $B^{T}B$.
+                \end{mdframed}
+            \item The eigenvalues of $(B^{2}+I)^{-1}$
+                \begin{mdframed}[style=MyFrame]
+                    From question 1 we can see that the eigenvalues
+                    of $B^{2}$ are 0, 1, and 4. Additionally, we know
+                    that the eigenvalues of $B^{2}+I$ are 1, 2, and
+                    5. Thus the eigenvalues of $\left(B^{2} + I
+                    \right)^{-1}$ must be $1$, $1/2$, and $1/5$. 
+                \end{mdframed}
+        \end{enumerate}
+    \item Find the eigenvalues of $A$, $B$, and $C$
+        \begin{equation}
+            A =
+            \begin{bmatrix}
+                1 & 2 & 3 \\ 
+                0 & 4 & 5 \\
+                0 & 0 & 6
+            \end{bmatrix}
+        \end{equation}
+        \begin{mdframed}[style=MyFrame]
+            Staring with the definition of eigenvalues
+            \begin{equation}
+                \deter(A-\lambda I) =
+                \deter
+                \begin{bmatrix}
+                    1-\lambda     &   2           &   3           \\ 
+                    0             &   4-\lambda   &   5           \\
+                    0             &   0           & 6-\lambda
+                \end{bmatrix}
+            \end{equation}
+            This gives the following characteristic polynomial
+            \begin{equation}
+                \lambda^{3}-11\lambda^{2}+34\lambda+24
+                =
+                \left(\lambda-6\right)
+                \left(\lambda-4\right)
+                \left(\lambda-1\right)
+                = 0
+            \end{equation}
+            Thus $\lambda_{1} = 6$, $\lambda_{2} = 4$, and $\lambda_{3}
+            =1$. 
+        \end{mdframed}
+        \begin{equation}
+            B =
+            \begin{bmatrix}
+                0 & 0 & 1 \\ 
+                0 & 2 & 0 \\
+                3 & 0 & 0
+            \end{bmatrix}
+        \end{equation}
+        \begin{mdframed}[style=MyFrame]
+            Using the same methodology as above gives,
+            \begin{equation}
+                \deter \left(B - \lambda I\right) 
+                =
+                \deter
+                \begin{bmatrix}
+                    0-\lambda   &   0           & 1             \\ 
+                    0           &   2-\lambda   & 0             \\
+                    3           &   0           & 0-\lambda 
+                \end{bmatrix}
+            \end{equation}
+            This gives the following characteristic polynoimial,
+            \begin{equation}
+                \left(\lambda^{2}-3\right)\left(\lambda-2\right) = 0
+            \end{equation}
+            Thus $\lambda_{1} =  \sqrt{3}$, $\lambda_{2} = -\sqrt{3}$, and
+            $\lambda_{3} =2 $.
+        \end{mdframed}
+            \begin{equation}
+                C =
+                \begin{bmatrix}
+                    2 & 2 & 2 \\ 
+                    2 & 2 & 2 \\
+                    2 & 2 & 2
+                \end{bmatrix}
+            \end{equation}
+            \begin{mdframed}[style=MyFrame]
+                Again we get,
+                \begin{equation}
+                    \deter\left(C-\lambda I\right)
+                    =
+                    \deter
+                    \begin{bmatrix}
+                        2-\lambda       &       2           &   2           \\ 
+                        2               &       2-\lambda   &   2           \\
+                        2               &       2           &   2-\lambda
+                    \end{bmatrix}
+                \end{equation}
+                This gives,
+                \begin{equation}
+                    \lambda^{2}\left(\lambda-6\right)=0
+                \end{equation}
+                Thus the eignevalues of $C$ are $\lambda_{1} = 6$ and
+                $\lambda_{2} = \lambda_{3} = 0$.
+            \end{mdframed}
+    \end{enumerate}
