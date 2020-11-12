@@ -12,4 +12,10 @@ tags
 *.dvi
 *.ipynb
 *.pdf
+assignment-5/python/Faces.mat
+assignment-5/media/*.png
 assignment-4/media/determinant-study.png
+assignment-2/.ipynb_checkpoints
+assignment-2/latex/*.png
+work-schedule
+
